@@ -1,5 +1,6 @@
 import Close from "@src/assets/close";
 import { modalProps } from "@src/libs/interfaces/header";
+import DetailMenu from "./DetailMenu";
 import * as S from "./styles";
 
 export default function Menu({ ModalHandle, ModalState }: modalProps) {
@@ -9,10 +10,10 @@ export default function Menu({ ModalHandle, ModalState }: modalProps) {
       <S.Container ModalState={ModalState}>
         <Close ModalHandle={ModalHandle} />
         <div>
-          <S.Menu className="active">메인</S.Menu>
-          <S.Menu>피드</S.Menu>
-          <S.Menu>전체보기</S.Menu>
-          <S.Menu>플레이리스트</S.Menu>
+          <DetailMenu href="" title="메인"/>
+          <DetailMenu href="feed" title="피드"/>
+          <DetailMenu href="all" title="전체보기"/>
+          <DetailMenu href="chart" title="차트"/>
         </div>
         <div>
           <S.BottomMenu>마이페이지</S.BottomMenu>
