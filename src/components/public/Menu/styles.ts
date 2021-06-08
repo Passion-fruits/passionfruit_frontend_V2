@@ -5,7 +5,7 @@ export const Wrapepr = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgb(0, 0, 0, 0.7);
+  background: rgb(0, 0, 0, 0.5);
   display: ${(e: modalProps) => (e.ModalState ? `flex` : `none`)};
 `;
 
@@ -13,11 +13,11 @@ export const Container = styled.div`
   background: white;
   position: absolute;
   right: 0;
-  width: 800px;
+  width: 700px;
   height: 100%;
   box-shadow: 0px 2px 20px #c9c9c9;
   padding: 70px 60px;
-  transition: 1s;
+  transition: 0.9s;
   transform: ${(e: modalProps) =>
     e.ModalState ? `translateX(0px)` : `translateX(830px)`};
   .active {

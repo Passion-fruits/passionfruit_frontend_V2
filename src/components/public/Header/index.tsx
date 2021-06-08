@@ -17,12 +17,12 @@ export default function Header() {
           <Logo />
           <S.SearchBar>
             <Search />
-            <S.Input placeholder="정보를 찾아드릴게요" />
+            <S.Input placeholder="Search on here" />
             <S.Select>
-              <option value="">All</option>
-              <option value="">Track</option>
-              <option value="">User</option>
-              <option value="">PlayList</option>
+              <option value="">all</option>
+              <option value="">track</option>
+              <option value="">user</option>
+              <option value="">playList</option>
             </S.Select>
           </S.SearchBar>
         </S.Container>
