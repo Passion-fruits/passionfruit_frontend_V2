@@ -22,9 +22,9 @@ export default function HambergerMenu({ ModalHandle }: modalProps) {
           transform="translate(0 0.553)"
           fill="none"
           stroke="#5a5a5a"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
         />
         <path
           id="패스_2"
@@ -32,9 +32,9 @@ export default function HambergerMenu({ ModalHandle }: modalProps) {
           d="M4.5,9H33.159"
           fill="none"
           stroke="#5a5a5a"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
         />
         <path
           id="패스_3"
@@ -43,9 +43,9 @@ export default function HambergerMenu({ ModalHandle }: modalProps) {
           transform="translate(0 1.106)"
           fill="none"
           stroke="#5a5a5a"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
         />
       </g>
     </svg>

@@ -1,33 +1,25 @@
-import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
+import { modalProps } from "@src/libs/interfaces/header";
 
 export const Wrapepr = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
   background: rgb(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: flex-end;
-  overflow:hidden;
+  display: ${(e: modalProps) => (e.ModalState ? `flex` : `none`)};
 `;
-
-const Slide = keyframes`
-0%{
-    transform:translateX(800px);
-}
-100%{
-    transform:translateX(0px);
-}
-`
 
 export const Container = styled.div`
   background: white;
+  position: absolute;
+  right: 0;
   width: 800px;
   height: 100%;
   box-shadow: 0px 2px 20px #c9c9c9;
   padding: 70px 60px;
-  animation:${Slide} 1s;
-  transition:1s;
+  transition: 1s;
+  transform: ${(e: modalProps) =>
+    e.ModalState ? `translateX(0px)` : `translateX(830px)`};
   .active {
     background: #f3f3f3;
     :hover {

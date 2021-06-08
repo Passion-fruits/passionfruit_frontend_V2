@@ -8,12 +8,6 @@ import * as S from "./styles";
 export default function Header() {
   const [ModalOn,setModalOn] = useState<boolean>(false);
   const modalHandle=():void=>{
-    if(ModalOn){
-      setTimeout(()=>{
-        setModalOn(!ModalOn);
-      },1000)
-      return;
-    }
     setModalOn(!ModalOn);
   }
   return (
@@ -36,7 +30,7 @@ export default function Header() {
           <HambergerMenu ModalHandle={modalHandle} />
         </S.Container>
       </S.Wrapper>
-      {ModalOn && <Menu ModalHandle={modalHandle} />}
+      <Menu ModalHandle={modalHandle} ModalState={ModalOn} />
     </>
   );
 }

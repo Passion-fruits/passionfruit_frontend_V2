@@ -1,3 +1,4 @@
 export interface modalProps{
-    ModalHandle() : void;
+    ModalHandle?() : void;
+    ModalState? : boolean;
 }
