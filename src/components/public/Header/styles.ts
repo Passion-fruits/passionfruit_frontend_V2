@@ -55,4 +55,5 @@ export const Select = styled.select`
   outline: none;
   text-align-last: right;
   padding: 0 5px;
+  cursor: pointer;
 `;

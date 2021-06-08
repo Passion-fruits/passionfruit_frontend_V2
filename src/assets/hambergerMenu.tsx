@@ -1,6 +1,9 @@
-export default function HambergerMenu() {
+import { modalProps } from "@src/libs/interfaces/header";
+
+export default function HambergerMenu({ ModalHandle }: modalProps) {
   return (
     <svg
+      onClick={ModalHandle}
       style={{ cursor: "pointer" }}
       xmlns="http://www.w3.org/2000/svg"
       width="30.659"
