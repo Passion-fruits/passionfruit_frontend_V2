@@ -1,3 +1,5 @@
+import { Header } from "@src/components/public";
+
 export default function Home() {
-  return <div>passion</div>;
+  return <div><Header/></div>;
 }

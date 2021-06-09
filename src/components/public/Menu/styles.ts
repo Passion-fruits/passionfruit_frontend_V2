@@ -1,25 +1,17 @@
 import styled from "@emotion/styled";
 import { modalProps } from "@src/libs/interfaces/header";
 
-export const Wrapepr = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgb(0, 0, 0, 0.5);
-  display: ${(e: modalProps) => (e.ModalState ? `flex` : `none`)};
-`;
-
 export const Container = styled.div`
   background: white;
   position: absolute;
   right: 0;
-  width: 700px;
   height: 100%;
   box-shadow: 0px 2px 20px #c9c9c9;
   padding: 70px 60px;
   transition: 0.9s;
-  transform: ${(e: modalProps) =>
-    e.ModalState ? `translateX(0px)` : `translateX(830px)`};
+  overflow:hidden;
+  width: ${(e: modalProps) =>
+    e.ModalState ? `700px` : `0`};
   .active {
     background: #f3f3f3;
     :hover {
@@ -33,7 +25,7 @@ export const Menu = styled.div`
   padding: 20px 40px;
   border-radius: 15px;
   font-weight: 1000;
-  font-size: 30px;
+  font-size: 2vmin;
   margin-top: 10px;
   cursor: pointer;
   transition: 0.3s;

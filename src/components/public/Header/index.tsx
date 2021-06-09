@@ -30,7 +30,7 @@ export default function Header() {
           <HambergerMenu ModalHandle={modalHandle} />
         </S.Container>
       </S.Wrapper>
-      <Menu ModalHandle={modalHandle} ModalState={ModalOn} />
+{/*       <Menu ModalHandle={modalHandle} ModalState={ModalOn} /> */}
     </>
   );
 }
