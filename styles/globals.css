@@ -6,7 +6,6 @@ body {
     height: 100%;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
         Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    background: #161616;
     position: absolute;
     overflow-x: hidden;
 }
