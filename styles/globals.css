@@ -1,4 +1,11 @@
-html,
+html{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'NanumSquare', sans-serif; 
+    position: absolute;    
+}
 body {
     padding: 0;
     margin: 0;
