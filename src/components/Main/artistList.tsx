@@ -1,6 +1,6 @@
 import * as S from "./styles";
 import UserProfile from "../public/UserProfile";
-import { ArtistInfor } from "../public/Interactions/main";
+import { ArtistInfor } from "../../libs/interfaces/main";
 
 export default function ArtisList() {
   const artistArr: ArtistInfor[] = [

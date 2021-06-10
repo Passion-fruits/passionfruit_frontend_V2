@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { HEADER_HEIGHT } from "styles";
-import { GradationColor } from "../public/Interactions/main";
+import { GradationColor } from "../../libs/interfaces/main";
 
 const WIDTH = "1260px";
 

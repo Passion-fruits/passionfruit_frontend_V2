@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { Button } from "../../../../styles/index";
 
 export const Wrapper = styled.div`
     width: 220px;
@@ -32,7 +31,7 @@ export const ImgWrapper = styled.div`
     }
 `;
 
-export const PlayButton = styled(Button)`
+export const PlayButton = styled.button`
     width: 56px;
     height: 56px;
     display: flex;

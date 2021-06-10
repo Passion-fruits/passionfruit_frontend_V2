@@ -1,4 +1,4 @@
-import { MenuArr } from "../public/Interactions/main";
+import { MenuArr } from "../../libs/interfaces/main";
 import * as S from "./styles";
 
 export default function MenuCard() {

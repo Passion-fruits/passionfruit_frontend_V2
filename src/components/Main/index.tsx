@@ -1,4 +1,3 @@
-import { Header,PlayBar } from "../public";
 import MenuCard from "./menuCard";
 import * as S from "./styles";
 import ArtisList from './artistList';
@@ -6,8 +5,6 @@ import ArtisList from './artistList';
 export default function MainComponent() {
   return (
     <>
-      <Header />
-      <PlayBar/>
       <S.Wrapper>
         <S.Container>
           <S.ContainerComment>나와야 음악이다, 버터멜론 </S.ContainerComment>
