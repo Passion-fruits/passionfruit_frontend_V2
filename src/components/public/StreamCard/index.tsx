@@ -1,11 +1,19 @@
 import * as S from "./styles";
+import { Play } from "../../../assets";
 
 function StreamCard(props) {
-    const {} = props;
+    const { title } = props;
 
     return (
         <S.Wrapper>
-            <S.CoverImg />
+            <S.ImgWrapper>
+                <S.CoverImg />
+                <S.CoverImgHover>
+                    <S.PlayButton>
+                        <Play />
+                    </S.PlayButton>
+                </S.CoverImgHover>
+            </S.ImgWrapper>
             <S.Title></S.Title>
             <S.UserName></S.UserName>
         </S.Wrapper>

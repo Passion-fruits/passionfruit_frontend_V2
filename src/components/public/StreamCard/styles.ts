@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Button } from "../../../../styles/index";
 
 export const Wrapper = styled.div`
     width: 220px;
@@ -7,9 +8,43 @@ export const Wrapper = styled.div`
     align-items: flex-start;
 `;
 
-export const CoverImg = styled.img`
+export const CoverImgHover = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const ImgWrapper = styled.div`
     width: 100%;
     height: 220px;
+    position: relative;
+    cursor: pointer;
+
+    &:hover div {
+        visibility: visible;
+    }
+`;
+
+export const PlayButton = styled(Button)`
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 3px solid #8fffb1;
+`;
+
+export const CoverImg = styled.img`
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 `;
 
