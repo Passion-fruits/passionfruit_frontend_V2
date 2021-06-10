@@ -17,3 +17,5 @@ export const ProfileImg = styled(CoverImg)`
 border-radius:80%;
 box-shadow:0px 0px 20px rgb(10,10,10);
 `
+
+export const HEADER_HEIGHT = "100px";
