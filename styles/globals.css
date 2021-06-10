@@ -1,11 +1,19 @@
-html,
+html{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'NanumSquare', sans-serif; 
+    position: absolute;    
+}
 body {
     padding: 0;
     margin: 0;
     width: 100%;
     height: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: 'NanumSquare', sans-serif; 
+    position: absolute;
+    background: #161616;
 }
 
 a {
@@ -14,5 +22,18 @@ a {
 }
 
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; 
+    font-family: 'NanumSquare', sans-serif; 
+}
+
+input{
+    outline: none;
+    background: none;
+    border:none;
+}
+
+button{
+    outline: none;
+    background: none;
+    border:none;
 }

@@ -1,9 +1,9 @@
-import StreamCard from "../src/components/public/StreamCard";
+import MainComponent from "@src/components/Main";
 
 export default function Home() {
-    return (
-        <div>
-            <StreamCard title="asd" />
-        </div>
-    );
+  return (
+    <>
+    <MainComponent/>
+    </>
+  );
 }
