@@ -15,6 +15,16 @@ export default function PlayBar() {
             <PlayBtn />
             <NextBtn />
           </S.IconContainer>
+          <S.PlayBarContainer>
+            <S.Time>00:00</S.Time>
+            <S.PlayBar>
+            <S.ControlCircle className="ControlCircle"/>
+              <S.ProgressBarWrapper>
+                <S.ProgressBar/>
+              </S.ProgressBarWrapper>
+            </S.PlayBar>
+            <S.Time>03:11</S.Time>
+          </S.PlayBarContainer>
         </S.ControlContainer>
 
         <S.ProfileContainer>
