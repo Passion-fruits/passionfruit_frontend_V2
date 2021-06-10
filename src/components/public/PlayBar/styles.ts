@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
-
-const WIDTH = "1260px";
+import { COLOR, MAIN_WIDTH } from "styles";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -16,7 +15,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Container = styled.div`
-  width: ${WIDTH};
+  width: ${MAIN_WIDTH};
   height: 80px;
   display: flex;
   justify-content: space-between;
@@ -74,4 +73,58 @@ width:200px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+`
+
+export const PlayBarContainer = styled.div`
+width:580px;
+height:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:15px;
+`
+
+export const Time = styled.span`
+color:#AFAFAF;
+font-size:13px;
+`
+
+export const PlayBar = styled.div`
+width:480px;
+height:100%;
+display:flex;
+align-items:center;
+cursor: pointer;
+position:relative;
+:hover .ControlCircle{
+  opacity:1;
+}
+`
+
+export const ProgressBarWrapper = styled.div`
+width:100%;
+height:3px;
+background:#3A3A3A;
+border-radius:24px;
+overflow:hidden;
+`
+
+export const ProgressBar = styled.div`
+width:10%;
+height:100%;
+background:${COLOR.pink};
+border-radius:24px;
+`
+
+export const ControlCircle = styled.div`
+width:3px;
+height:3px;
+border:3px solid ${COLOR.pink};
+background:white;
+position:absolute;
+border-radius:80%;
+box-sizing:content-box;
+margin-left:10%;
+opacity:0;
+transition:0.3s;
 `
