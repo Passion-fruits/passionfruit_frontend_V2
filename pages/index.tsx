@@ -1,3 +1,9 @@
+import StreamCard from "../src/components/public/StreamCard";
+
 export default function Home() {
-    return <div>passion</div>;
+    return (
+        <div>
+            <StreamCard title="asd" />
+        </div>
+    );
 }
