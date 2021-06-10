@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { HEADER_HEIGHT } from "styles";
 
 const BACKGROUND_COLOR = "#161616";
 
@@ -8,7 +9,7 @@ const PADDING = "225px";
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 100px;
+  height: ${HEADER_HEIGHT};
   background: ${BACKGROUND_COLOR};
   border-bottom: 1px solid ${BORDER};
   padding: 0 ${PADDING};
@@ -17,6 +18,7 @@ export const Wrapper = styled.div`
   color: white;
   justify-content: space-between;
   position: fixed;
+  z-index:100;
 `;
 
 export const SearchBar = styled.div`

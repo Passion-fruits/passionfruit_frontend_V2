@@ -6,13 +6,16 @@ export const Wrapper = styled.div`
   height: ${(e: WrapperProps) => `${e.height}px`};
   background: #212121;
   border-radius: 6px;
-  padding: 25px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   cursor: pointer;
   position: relative;
   transition: 0.5s;
   font-size: 10px;
+  :hover{
+    background:#333333;
+  }
   :hover > .follow {
     opacity: 1;
   }
@@ -35,8 +38,8 @@ export const Follower = styled.div`
 `;
 
 export const FollowCircle = styled.div`
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   position: absolute;
   background: #0099ff;
   display: flex;

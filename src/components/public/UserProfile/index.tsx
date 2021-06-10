@@ -15,7 +15,7 @@ export default function UserProfile({
       <ImgWrapper>
         <CoverImg src={imgUrl} />
       </ImgWrapper>
-      <S.FollowCircle className="follow">+</S.FollowCircle>
+{/*       <S.FollowCircle className="follow">+</S.FollowCircle> */}
       <S.Name>{name}</S.Name>
       <S.Follower>
         <FollowerIcon />
