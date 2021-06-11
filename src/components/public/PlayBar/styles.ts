@@ -120,6 +120,8 @@ export const ProgressBar = styled.div`
   background: ${COLOR.pink};
   border-radius: 24px;
   pointer-events:none;
+  transition:1s;
+  transition-timing-function:linear;
 `;
 
 export const ControlCircle = styled.div`

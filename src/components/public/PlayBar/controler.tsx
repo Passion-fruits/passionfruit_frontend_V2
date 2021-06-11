@@ -52,9 +52,7 @@ export default function Controler() {
   },[playBool,time])
   useEffect(()=>{
     if(!isNaN(music.duration)) if(time > music.duration) {
-      setTime(0);
       setPlayBool(false);
-      setProgress(0);
     }
   },[time])
   return (
