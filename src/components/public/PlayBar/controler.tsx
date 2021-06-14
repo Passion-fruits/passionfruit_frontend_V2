@@ -30,6 +30,7 @@ export default function Controler() {
     const TimeLinePx = e.clientX - e.target.getBoundingClientRect().left;
     const TimeLine = TimeLinePx / e.target.offsetWidth * 100;
     const Time = Math.round(music.duration * (TimeLine / 100));
+    setPlayBool(true);
     setProgress(TimeLine);
     setChange(true);
     setTime(Time);
@@ -49,7 +50,7 @@ export default function Controler() {
           setProgress(time / music.duration * 100+1);
         } 
       },1000)
-  },[playBool,time])
+  },[playBool,time,change])
   useEffect(()=>{
     if(!isNaN(music.duration)) if(time > music.duration) {
       setPlayBool(false);
