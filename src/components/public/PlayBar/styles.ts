@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { ProgressBarProps } from "@src/libs/interfaces/playBar";
 import { COLOR, MAIN_WIDTH } from "styles";
 
 export const Wrapper = styled.div`
@@ -94,34 +95,10 @@ export const PlayBar = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  cursor: pointer;
   position: relative;
   :hover .ControlCircle {
     background: white;
   }
-`;
-
-export const ProgressBarWrapper = styled.div`
-  width: 100%;
-  height: 3px;
-  background: #3a3a3a;
-  border-radius: 24px;
-  display:flex;
-  align-items:center;
-`;
-
-interface props{
-  progress : number
-}
-
-export const ProgressBar = styled.div`
-  width: ${(e:props)=>e.progress}%;
-  height: 100%;
-  background: ${COLOR.pink};
-  border-radius: 24px;
-  pointer-events:none;
-/*   transition:1s; */
-  transition-timing-function:linear;
 `;
 
 export const ControlCircle = styled.div`
@@ -130,7 +107,33 @@ export const ControlCircle = styled.div`
   border: 3px solid ${COLOR.pink};
   border-radius: 80%;
   box-sizing: content-box;
-  pointer-events:none;
-  background:gray;
-  transition:0.4s;
+  pointer-events: none;
+  background: gray;
+  transition: 0.4s;
+`;
+
+export const RangePlayBar = styled.input`
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  background: ${(e: ProgressBarProps) =>
+    `linear-gradient(to right, dodgerblue 0%, dodgerblue 
+    ${e.progress}%, #3A3A3A ${e.progress}%, #3A3A3A 100%)`};
+  cursor: pointer;
+  transition: background 450ms ease-in;
+  border-radius: 2px;
+  overflow: hidden;
+  border:none;
+  ::-webkit-slider-thumb {
+    opacity:0;
+  }
+  ::-moz-range-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border: 1px solid dodgerblue;
+    border-radius: 50%;
+    cursor: pointer;
+  }
 `;

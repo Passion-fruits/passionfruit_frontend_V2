@@ -16,68 +16,60 @@ export default function Controler() {
   const ChangeRef = useRef(change);
   PlayBoolRef.current = playBool;
   ChangeRef.current = change;
-  useEffect(()=>{
-    if(playBool){
+
+  useEffect(() => {
+    if (playBool) {
       music.play();
-    }else{
-      music.pause();
+      return;
     }
-  },[playBool])
+    music.pause();
+  }, [playBool]);
+
   const MusicOnOff=():void=>{
     setPlayBool(!playBool);
   }
-  const MoveMusic=(e : any):void=>{
-    const TimeLinePx = e.clientX - e.target.getBoundingClientRect().left;
-    const TimeLine = TimeLinePx / e.target.offsetWidth * 100;
-    const Time = Math.round(music.duration * (TimeLine / 100));
-    setPlayBool(true);
-    setProgress(TimeLine);
+
+  const MoveMusic = (e: any): void => {
+    const value: number = e.target.value;
+    const timeMove : number = music.duration * (value / 100);
+    music.currentTime = timeMove;
     setChange(true);
-    setTime(Time);
-    music.currentTime = Time;
-  }
+    setProgress(value);
+    setTime(timeMove);
+  };
   useEffect(()=>{
-    if(!isNaN(music.duration)) if(time > music.duration) {
-      return;
-    }
+    if(isNaN(music.duration) || time > music.duration) return;
       setTimeout(()=>{
         if(ChangeRef.current){
           setChange(false);
           return;
         }
         if(PlayBoolRef.current){
-          setTime(time + 1);
-          setProgress(time / music.duration * 100+1);
+          setTime(time + 0.1);
+          setProgress(Math.floor(time / music.duration * 100+1));
         } 
-      },1000)
+      },100)
   },[playBool,time,change])
   useEffect(()=>{
-    if(!isNaN(music.duration)) if(time > music.duration) {
-      setPlayBool(false);
-    }
+    if(!isNaN(music.duration) && time > music.duration) setPlayBool(false);
   },[time])
+
   return (
     <S.ControlContainer>
       <S.IconContainer>
         <BeforeBtn />
-        {
-          playBool ? <Pause onClickEvent={MusicOnOff}/> :<PlayBtn onClickEvent={MusicOnOff} />
-        }
+        { playBool ? <Pause onClickEvent={MusicOnOff}/> :<PlayBtn onClickEvent={MusicOnOff} /> }
         <NextBtn />
       </S.IconContainer>
 
       <S.PlayBarContainer>
-        <S.Time>00:{lpad(time,2,0)}</S.Time>
-        <S.PlayBar onClick={MoveMusic}>
-          <S.ProgressBarWrapper>
-            <S.ProgressBar progress={progress} />
-            
-          <S.ControlCircle className="ControlCircle" />
-          </S.ProgressBarWrapper>
+        <S.Time>00:{lpad(Math.floor(time),2,0)}</S.Time>
+        <S.PlayBar>
+            <S.RangePlayBar defaultValue="0" progress={progress} onClick={MoveMusic} type="range" />
         </S.PlayBar>
         <S.Time>
           {isNaN(music.duration) ? "00" : lpad(Math.floor((music.duration%3600)/60),2,0)}:
-          {isNaN(music.duration) ? "00" : lpad(Math.ceil(music.duration),2,0)}</S.Time>
+          {isNaN(music.duration) ? "00" : lpad(Math.floor(music.duration),2,0)}</S.Time>
       </S.PlayBarContainer>
     </S.ControlContainer>
   );
