@@ -4,17 +4,18 @@ import { WrapperProps } from "@src/libs/interfaces/userProfile";
 export const Wrapper = styled.div`
   width: ${(e: WrapperProps) => `${e.width}px`};
   height: ${(e: WrapperProps) => `${e.height}px`};
-  background: #212121;
-  border-radius: 6px;
-  padding: 20px;
+  background: rgb(30,30,30);
+  border-radius: 3px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   cursor: pointer;
   position: relative;
   transition: 0.5s;
   font-size: 10px;
+  align-items:center;
   :hover{
-    background:#333333;
+    background:rgb(40,40,40);
   }
   :hover > .follow {
     opacity: 1;
@@ -24,12 +25,12 @@ export const Wrapper = styled.div`
 export const Name = styled.span`
   color: white;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 16px;
   margin-top: 18px;
 `;
 
 export const Follower = styled.div`
-  color: #616161;
+  color: rgb(150,150,150);
   font-size: 12px;
   font-weight: bold;
   margin-top: 8px;
