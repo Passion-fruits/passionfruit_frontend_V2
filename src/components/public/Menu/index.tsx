@@ -8,10 +8,10 @@ export default function Menu({ ModalHandle }: modalProps) {
     <>
       <S.Container onClick={ModalHandle}>
         <S.MenuWrapper>
-          <DetailMenu href="" title="메인" />
-          <DetailMenu href="all" title="전체보기" />
-          <DetailMenu href="feed" title="플레이리스트" />
-          <DetailMenu href="chart" title="피드" />
+          <DetailMenu sec="0.3" href="" title="메인" />
+          <DetailMenu sec="0.6" href="all" title="전체보기" />
+          <DetailMenu sec="0.9" href="feed" title="플레이리스트" />
+          <DetailMenu sec="1.2" href="chart" title="피드" />
           <SubDetailMenu margin="30" href="chart" title="마이페이지" />
           <SubDetailMenu href="chart" title="로그인" />
           <SubDetailMenu href="chart" title="버터멜론 소개" />

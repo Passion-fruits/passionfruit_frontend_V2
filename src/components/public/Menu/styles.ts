@@ -1,3 +1,4 @@
+import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
@@ -18,6 +19,21 @@ export const MenuWrapper = styled.div`
   flex-direction: column;
 `;
 
+const MenuAnim = keyframes`
+0%{
+  opacity:0;
+  padding-left:10px;
+}
+100%{
+  opacity:1;
+  padding-left:0;
+}
+`
+
+interface a{
+  sec : number | string;
+}
+
 export const Menu = styled.span`
   color: white;
   font-size: 20px;
@@ -25,6 +41,7 @@ export const Menu = styled.span`
   padding: 15px 0;
   cursor: pointer;
   transition: 0.2s;
+  animation:${MenuAnim} ${(e : a)=>`${e.sec}s`};
   :hover {
     opacity: 0.8;
   }
@@ -37,4 +54,5 @@ export const BottomMenu = styled.span`
   cursor: pointer;
   font-size: 13px;
   cursor: pointer;
+  animation:${MenuAnim} 1.5s;
 `;
