@@ -22,7 +22,7 @@ export const Container = styled.div`
   position: relative;
 `;
 
-export const ProfileContainer = styled.div`
+export const MusicInforContainer = styled.div`
   display: flex;
   align-items: center;
   position: relative;
@@ -60,7 +60,7 @@ export const MusicianName = styled.span`
 
 export const ControlContainer = styled.div`
   width: 100%;
-  height:100%;
+  height: 100%;
   display: flex;
   position: absolute;
   flex-direction: column;
@@ -69,62 +69,68 @@ export const ControlContainer = styled.div`
 `;
 
 export const IconContainer = styled.div`
-width:200px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-`
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 export const PlayBarContainer = styled.div`
-width:580px;
-height:20px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-top:15px;
-`
+  width: 580px;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+`;
 
 export const Time = styled.span`
-color:#AFAFAF;
-font-size:13px;
-`
+  color: #afafaf;
+  font-size: 13px;
+`;
 
 export const PlayBar = styled.div`
-width:480px;
-height:100%;
-display:flex;
-align-items:center;
-cursor: pointer;
-position:relative;
-:hover .ControlCircle{
-  opacity:1;
-}
-`
+  width: 480px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  :hover .ControlCircle {
+    background: white;
+  }
+`;
 
 export const ProgressBarWrapper = styled.div`
-width:100%;
-height:3px;
-background:#3A3A3A;
-border-radius:24px;
-overflow:hidden;
-`
+  width: 100%;
+  height: 3px;
+  background: #3a3a3a;
+  border-radius: 24px;
+  display:flex;
+  align-items:center;
+`;
+
+interface props{
+  progress : number
+}
 
 export const ProgressBar = styled.div`
-width:10%;
-height:100%;
-background:${COLOR.pink};
-border-radius:24px;
-`
+  width: ${(e:props)=>e.progress}%;
+  height: 100%;
+  background: ${COLOR.pink};
+  border-radius: 24px;
+  pointer-events:none;
+/*   transition:1s; */
+  transition-timing-function:linear;
+`;
 
 export const ControlCircle = styled.div`
-width:3px;
-height:3px;
-border:3px solid ${COLOR.pink};
-background:white;
-position:absolute;
-border-radius:80%;
-box-sizing:content-box;
-margin-left:10%;
-opacity:0;
-transition:0.3s;
-`
+  width: 3px;
+  height: 3px;
+  border: 3px solid ${COLOR.pink};
+  border-radius: 80%;
+  box-sizing: content-box;
+  pointer-events:none;
+  background:gray;
+  transition:0.4s;
+`;

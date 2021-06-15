@@ -5,6 +5,7 @@ export default function NextBtn() {
       width="13.088"
       height="20"
       viewBox="0 0 13.088 22.437"
+      className="svg"
     >
       <path
         id="Icon_metro-next"

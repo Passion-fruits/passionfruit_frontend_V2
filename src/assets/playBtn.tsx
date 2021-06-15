@@ -1,10 +1,14 @@
-export default function PlayBtn() {
+import { SvgProps } from "@src/libs/interfaces/playBar";
+
+export default function PlayBtn({onClickEvent} : SvgProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="18"
-      height="25.809"
-      viewBox="0 0 22.581 25.809"
+      height="22"
+      viewBox="0 0 22.581 22"
+      onClick={onClickEvent}
+      className="svg"
     >
       <path
         id="Icon_awesome-play"

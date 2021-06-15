@@ -11,6 +11,12 @@ export default function MainComponent() {
           <MenuCard/>
           <S.ContainerComment>추천 아티스트를 만나보세요</S.ContainerComment>
           <ArtisList/>
+          <S.ContainerComment>추천 아티스트를 만나보세요</S.ContainerComment>
+          <ArtisList/>
+          <S.ContainerComment>추천 아티스트를 만나보세요</S.ContainerComment>
+          <ArtisList/>
+          <S.ContainerComment>추천 아티스트를 만나보세요</S.ContainerComment>
+          <ArtisList/>
         </S.Container>
       </S.Wrapper>
     </>
