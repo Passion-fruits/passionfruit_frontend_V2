@@ -1,6 +1,6 @@
 import FollowerIcon from "@src/assets/followerIcon";
 import { UserProfileProps } from "@src/libs/interfaces/userProfile";
-import { ImgWrapper, CoverImg } from "styles";
+import { ImgWrapper, CoverImg, ProfileImg } from "styles";
 import * as S from "./styles";
 
 export default function UserProfile({
@@ -13,14 +13,13 @@ export default function UserProfile({
   return (
     <S.Wrapper width={width} height={height}>
       <ImgWrapper>
-        <CoverImg src={imgUrl} />
+        <ProfileImg src={imgUrl} />
       </ImgWrapper>
-{/*       <S.FollowCircle className="follow">+</S.FollowCircle> */}
-      <S.Name>{name}</S.Name>
-      <S.Follower>
-        <FollowerIcon />
-        {followerCount} 명
-      </S.Follower>
+      {/*       <S.FollowCircle className="follow">+</S.FollowCircle> */}
+        <S.Name>{name}</S.Name>
+        <S.Follower>
+          팔로워 15
+        </S.Follower>
     </S.Wrapper>
   );
 }
