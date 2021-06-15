@@ -13,6 +13,7 @@ export default function Header() {
   return (
     <>
       <S.Wrapper>
+        <S.WidthContainer>
         <S.Container>
           <Logo />
           <S.SearchBar>
@@ -29,8 +30,8 @@ export default function Header() {
         <S.Container>
           <HambergerMenu ModalHandle={modalHandle} />
         </S.Container>
+        </S.WidthContainer>
       </S.Wrapper>
-{/*       <Menu ModalHandle={modalHandle} ModalState={ModalOn} /> */}
     </>
   );
 }

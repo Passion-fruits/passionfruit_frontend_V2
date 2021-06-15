@@ -6,7 +6,7 @@ import * as S from "./styles";
 export default function Menu({ ModalHandle, ModalState }: modalProps) {
   return (
     <>
-      <S.Container ModalState={ModalState}>
+      <S.Container>
         <div>
           <Close ModalHandle={ModalHandle} />
           <div>
