@@ -1,9 +1,7 @@
 import * as S from "./styles";
 import { Play } from "../../../assets";
 
-function StreamCard(props) {
-    const { title } = props;
-
+function StreamCard() {
     return (
         <S.Wrapper>
             <S.ImgWrapper>
