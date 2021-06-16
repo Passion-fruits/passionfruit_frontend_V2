@@ -22,12 +22,12 @@ export default function MusicList() {
     {
       title: "Get dope",
       name: "logic",
-      src: "https://i1.sndcdn.com/artworks-000338417394-2uvjyi-large.jpg",
+      src: "https://cdn.univ20.com/wp-content/uploads/2018/10/ea6345acc53bb8cbac3564f661ae9dd4.png",
     },
     {
       title: "Get dope",
       name: "logic",
-      src: "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F220BAB39567FE26720",
+      src: "https://file.mk.co.kr/meet/neds/2019/01/image_readtop_2019_4937_15464799083591382.jpg",
     },
   ];
   return (
