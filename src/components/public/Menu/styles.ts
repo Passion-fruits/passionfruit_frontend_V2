@@ -1,50 +1,58 @@
+import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
-import { modalProps } from "@src/libs/interfaces/header";
 
 export const Container = styled.div`
-  background: white;
-  position: absolute;
-  right: 0;
+  background: rgb(0, 0, 0, 0.7);
+  position: fixed;
+  z-index: 300;
   height: 100%;
-  box-shadow: 0px 2px 20px #c9c9c9;
-  padding: 70px 60px;
-  transition: 0.9s;
-  overflow:hidden;
-  width: ${(e: modalProps) =>
-    e.ModalState ? `700px` : `0`};
-  .active {
-    background: #f3f3f3;
-    :hover {
-      opacity: 1;
-    }
-  }
-`;
-
-export const Menu = styled.div`
   width: 100%;
-  padding: 20px 40px;
-  border-radius: 15px;
-  font-weight: 1000;
-  font-size: 2vmin;
-  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+`;
+
+export const MenuWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const MenuAnim = keyframes`
+0%{
+  opacity:0;
+  padding-left:10px;
+}
+100%{
+  opacity:1;
+  padding-left:0;
+}
+`
+
+interface a{
+  sec : number | string;
+}
+
+export const Menu = styled.span`
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 15px 0;
   cursor: pointer;
-  transition: 0.3s;
-  :first-of-type {
-    margin-top: 60px;
-  }
+  transition: 0.2s;
+  animation:${MenuAnim} ${(e : a)=>`${e.sec}s`};
   :hover {
-    opacity: 0.4;
+    opacity: 0.8;
   }
 `;
 
-export const BottomMenu = styled.div`
+export const BottomMenu = styled.span`
   color: #afafaf;
   font-weight: 600;
-  margin-top: 30px;
+  padding: 10px 0;
   cursor: pointer;
-  padding: 0 40px;
-  font-size: 16px;
-  :first-of-type {
-    margin-top: 150px;
-  }
+  font-size: 13px;
+  cursor: pointer;
+  animation:${MenuAnim} 1.5s;
 `;
