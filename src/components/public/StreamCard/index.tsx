@@ -1,21 +1,22 @@
 import * as S from "./styles";
 import { Play } from "../../../assets";
+import { StreamCardProps } from "@src/libs/interfaces/streamCard";
 
-function StreamCard(props) {
-    const { title } = props;
+function StreamCard(props : StreamCardProps) {
+    const { title, name, src } = props;
 
     return (
         <S.Wrapper>
             <S.ImgWrapper>
-                <S.CoverImg />
+                <S.CoverImg src={src} />
                 <S.CoverImgHover>
                     <S.PlayButton>
                         <Play />
                     </S.PlayButton>
                 </S.CoverImgHover>
             </S.ImgWrapper>
-            <S.Title></S.Title>
-            <S.UserName></S.UserName>
+            <S.Title>{title}</S.Title>
+            <S.UserName>{name}</S.UserName>
         </S.Wrapper>
     );
 }

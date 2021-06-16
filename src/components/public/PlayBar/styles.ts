@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 import { ProgressBarProps } from "@src/libs/interfaces/playBar";
-import { COLOR, MAIN_WIDTH } from "styles";
+import { COLOR, MAIN_WIDTH, PLAYBAR_HEIGHT } from "styles";
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 110px;
+  height: ${PLAYBAR_HEIGHT};
   background: black;
   position: fixed;
   bottom: 0;

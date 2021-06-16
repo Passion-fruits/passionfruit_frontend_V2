@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   padding-top: ${HEADER_HEIGHT};
+  position:relative;
 `;
 
 export const SpaceContainer = styled.div`
@@ -17,6 +18,17 @@ export const SpaceContainer = styled.div`
   justify-content: space-between;
   padding-bottom: 30px;
   border-bottom: 0.5px solid #2e2e2e;
+`;
+
+export const LayOut = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns:repeat(5,220px);
+  padding-bottom: 30px;
+  border-bottom: 0.5px solid #2e2e2e;
+  position:relative;
+  justify-content:space-between;
+  gap: 30px 0;
 `;
 
 export const Container = styled.div`
@@ -76,3 +88,23 @@ export const CardCover = styled(IntroCard)`
     color: #bebebe;
   }
 `;
+
+export const Genre = styled.div`
+width:220px;
+height:127px;
+padding:26px 20px;
+background:${(e:GradationColor)=>`linear-gradient(to right,${e.start},${e.last})`};
+color:white;
+border-radius:16px;
+`
+
+export const GenreName = styled.span`
+font-size:16px;
+font-weight:bold;
+`
+
+export const GenreDescription = styled.p`
+color:white;
+font-size:12px;
+margin-top:8px;
+`

@@ -51,6 +51,7 @@ export const Title = styled.h3`
     color: white;
     font-size: 17px;
     font-weight: bold;
+    margin-bottom:7px;
 `;
 
 export const UserName = styled.span`
