@@ -7,7 +7,6 @@ import Controler from "./controler";
 export default function MusicInfor() {
   const [volume, setVolume] = useState<number>(0.5);
   const volumeControl = (e): void => {
-    console.log(e.target.value);
     setVolume(e.target.value / 100);
   };
   return (
