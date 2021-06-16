@@ -5,8 +5,9 @@ import { useEffect, useState,useRef } from "react";
 import * as S from "./styles";
 import Pause from './../../../assets/pause';
 import { lpad } from './../../../libs/functions/lpad';
+import { ControlerProps } from "@src/libs/interfaces/playBar";
 
-export default function Controler() {
+export default function Controler({volume} : ControlerProps) {
   const [playBool,setPlayBool] = useState<boolean>(false);
   const [music] = useState(typeof Audio !== "undefined" && new Audio("https://p.scdn.co/mp3-preview/ed802aef330353ab73debe7d59fda5dbbe060867?cid=53603d8d7f0e4e2a85cb1339d65303ce"));
   const [progress,setProgress] = useState<number>(0);
@@ -16,6 +17,10 @@ export default function Controler() {
   const ChangeRef = useRef(change);
   PlayBoolRef.current = playBool;
   ChangeRef.current = change;
+
+  useEffect(()=>{
+    if(music) music.volume = volume;
+  },[volume])
 
   useEffect(() => {
     if (playBool) {
@@ -36,6 +41,7 @@ export default function Controler() {
     setChange(true);
     setProgress(value);
     setTime(timeMove);
+    setPlayBool(true);
   };
   useEffect(()=>{
     if(isNaN(music.duration) || time > music.duration) return;
