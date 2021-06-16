@@ -11,6 +11,8 @@ export default function MainComponent() {
         <S.Container>
           <S.ContainerComment>나와야 음악이다, 버터멜론 </S.ContainerComment>
           <IntroList/>
+          <S.ContainerComment>오늘의 인기곡을 만나보세요!</S.ContainerComment>
+          <MusicList/>
           <S.ContainerComment>#힙합, 오늘을 힙하게</S.ContainerComment>
           <MusicList/>
           <S.ContainerComment>#재즈, 분위기에 취하다</S.ContainerComment>

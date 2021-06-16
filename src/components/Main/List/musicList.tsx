@@ -22,7 +22,7 @@ export default function MusicList() {
     {
       title: "Get dope",
       name: "logic",
-      src: "https://t1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/6wHY/image/k2yudZfDdVGimli8FcUuEuSz2Ic",
+      src: "https://i1.sndcdn.com/artworks-000338417394-2uvjyi-large.jpg",
     },
     {
       title: "Get dope",
