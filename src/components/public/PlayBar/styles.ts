@@ -120,8 +120,8 @@ export const RangePlayBar = styled.input`
   border-radius: 2px;
   overflow: hidden;
   border: none;
-  :hover{
-    height:5px;
+  :hover {
+    height: 5px;
   }
   ::-webkit-slider-thumb {
     opacity: 0;
@@ -144,18 +144,23 @@ export const VolumeContainer = styled.div`
 `;
 
 export const VolumeBar = styled.input`
--webkit-appearance: none;
-  height: 5px;
+  -webkit-appearance: none;
+  height: 2px;
   background: #3a3a3a;
   border: 1px solid #000000;
   width: 80px;
   margin-left: 20px;
-  outline:none;
+  border-radius:24px;
+  outline: none;
   cursor: pointer;
+  border:none;
   background: ${(e: ProgressBarProps) =>
     `linear-gradient(to right, #919191 0%, #919191 
     ${e.progress}%, #3A3A3A ${e.progress}%, #3A3A3A 100%)`};
   ::-webkit-slider-thumb {
     opacity: 0;
+  }
+  :hover{
+    height:4px;
   }
 `;
