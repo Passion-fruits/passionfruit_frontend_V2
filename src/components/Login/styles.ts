@@ -43,49 +43,50 @@ export const CoverWrapper = styled.div`
   position: absolute;
   background: rgb(0, 0, 0, 0.6);
   backdrop-filter: blur(12px);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom:100px;
 `;
 
 export const IntroMent = styled.span`
-font-size:23px;
-font-weight:bold;
-color:white;
-`
+  font-size: 23px;
+  font-weight: bold;
+  color: white;
+`;
 
 export const SubMent = styled.span`
-color:#C2C2C2;
-font-size:15px;
-margin-top:20px;
-`
+  color: #c2c2c2;
+  font-size: 15px;
+  margin-top: 20px;
+`;
 
-interface Props{
-    color : string;
-    fontColor? : string;
+interface Props {
+  color: string;
+  fontColor?: string;
 }
 
 export const SNSContainer = styled.div`
-background:${(e: Props)=>e.color};
-width:300px;
-padding:12px 0;
-color:${({fontColor = "white"}:Props)=>fontColor};
-font-weight:800;
-text-align:center;
-font-size:15px;
-border-radius:3px;
-margin-top:15px;
-cursor: pointer;
-:first-of-type{
-    margin-top:50px;
-}
+  background: ${(e: Props) => e.color};
+  width: 300px;
+  padding: 12px 0;
+  color: ${({ fontColor = "white" }: Props) => fontColor};
+  font-weight: 800;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 3px;
+  margin-top: 15px;
+  cursor: pointer;
+  :first-of-type {
+    margin-top: 50px;
+  }
 
-:nth-child(1){
-    color:blue;
-}
-`
+  :nth-child(1) {
+    color: blue;
+  }
+`;
 
 export const ColorSpan = styled.span`
-color:${(e:Props)=>e.color}
-`
+  color: ${(e: Props) => e.color};
+`;
