@@ -1,7 +1,7 @@
-import { MenuArr } from "../../libs/interfaces/main";
-import * as S from "./styles";
+import { MenuArr } from "../../../libs/interfaces/main";
+import * as S from "../styles";
 
-export default function MenuCard() {
+export default function IntroList() {
   const menuArr: MenuArr[] = [
     {
       start: "#2063FF",
