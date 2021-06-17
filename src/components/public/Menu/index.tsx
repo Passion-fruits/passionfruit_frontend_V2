@@ -13,7 +13,7 @@ export default function Menu({ ModalHandle }: modalProps) {
           <DetailMenu sec="0.9" href="feed" title="플레이리스트" />
           <DetailMenu sec="1.2" href="chart" title="피드" />
           <SubDetailMenu margin="30" href="chart" title="마이페이지" />
-          <SubDetailMenu href="chart" title="로그인" />
+          <SubDetailMenu href="login" title="로그인" />
           <SubDetailMenu href="chart" title="버터멜론 소개" />
         </S.MenuWrapper>
       </S.Container>
