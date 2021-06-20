@@ -19,6 +19,14 @@ export const ImgWrapper = styled.div`
   padding-bottom: 100%;
 `;
 
+export const CircleImgWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  overflow:hidden;
+  border-radius:80%;
+`
+
 export const CoverImg = styled.img`
   width: 100%;
   position: absolute;
