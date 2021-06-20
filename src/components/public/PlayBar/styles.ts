@@ -164,3 +164,14 @@ export const VolumeBar = styled.input`
     height:4px;
   }
 `;
+
+export const notMusic = styled.div`
+width:80px;
+height:80px;
+background:#606060;
+display:flex;
+justify-content:center;
+align-items:center;
+color:whitesmoke;
+font-size:12px;
+`

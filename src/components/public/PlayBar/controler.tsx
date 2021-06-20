@@ -7,9 +7,9 @@ import Pause from './../../../assets/pause';
 import { lpad } from './../../../libs/functions/lpad';
 import { ControlerProps } from "@src/libs/interfaces/playBar";
 
-export default function Controler({volume} : ControlerProps) {
+export default function Controler({volume,musicUrl} : ControlerProps) {
   const [playBool,setPlayBool] = useState<boolean>(false);
-  const [music] = useState(typeof Audio !== "undefined" && new Audio("https://p.scdn.co/mp3-preview/ed802aef330353ab73debe7d59fda5dbbe060867?cid=53603d8d7f0e4e2a85cb1339d65303ce"));
+  const [music] = useState(typeof Audio !== "undefined" && new Audio(musicUrl));
   const [progress,setProgress] = useState<number>(0);
   const [time,setTime] = useState<number>(0);
   const [change,setChange] = useState<boolean>(false);

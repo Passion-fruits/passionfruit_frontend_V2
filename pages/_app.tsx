@@ -1,13 +1,14 @@
-import { PlayBar } from '@src/components/public'
-import '../styles/globals.css'
+import { PlayBar } from "@src/components/public";
+import { SampleProvider } from "@src/libs/context";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
-    <PlayBar/>
-  <Component {...pageProps} />
-  </>
-  )
+    <SampleProvider>
+      <PlayBar />
+      <Component {...pageProps} />
+    </SampleProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;
