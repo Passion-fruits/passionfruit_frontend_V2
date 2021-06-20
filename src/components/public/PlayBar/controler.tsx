@@ -19,6 +19,15 @@ export default function Controler({volume,musicUrl} : ControlerProps) {
   ChangeRef.current = change;
 
   useEffect(()=>{
+    console.log(musicUrl)
+    if(musicUrl!==''){
+      setProgress(0);
+      setTime(0);
+      setPlayBool(true); 
+    }
+  },[musicUrl])
+
+  useEffect(()=>{
     if(music) music.volume = volume;
   },[volume])
 
