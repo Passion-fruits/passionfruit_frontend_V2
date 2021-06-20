@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
+import { CARD_WIDTH } from "styles";
 
 export const Wrapper = styled.div`
-    width: 220px;
+    width: ${CARD_WIDTH};
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -22,7 +23,7 @@ export const CoverImgHover = styled.div`
 
 export const ImgWrapper = styled.div`
     width: 100%;
-    height: 220px;
+    height: ${CARD_WIDTH};
     position: relative;
     cursor: pointer;
 

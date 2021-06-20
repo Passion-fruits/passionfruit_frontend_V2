@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import { HEADER_HEIGHT } from "styles";
+import { CARD_WIDTH, HEADER_HEIGHT, MAIN_WIDTH } from "styles";
 import { GradationColor } from "../../libs/interfaces/main";
 
-const WIDTH = "1260px";
+const WIDTH = MAIN_WIDTH;
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -45,8 +45,8 @@ export const ContainerComment = styled.div`
 `;
 
 export const MenuCard = styled.div`
-  width: 220px;
-  height: 220px;
+  width: ${CARD_WIDTH};
+  height: ${CARD_WIDTH};
   padding: 25px;
   color: white;
   background: ${(e: GradationColor) =>
@@ -90,7 +90,7 @@ export const CardCover = styled(IntroCard)`
 `;
 
 export const Genre = styled.div`
-  width: 220px;
+  width: ${CARD_WIDTH};
   height: 127px;
   padding: 26px 20px;
   background: ${(e: GradationColor) =>

@@ -4,6 +4,8 @@ export const HEADER_HEIGHT = "100px";
 
 export const MAIN_WIDTH = "1260px";
 
+export const CARD_WIDTH = "220px";
+
 export const PLAYBAR_HEIGHT = "110px";
 
 export const COLOR = {
