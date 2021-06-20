@@ -40,7 +40,7 @@ export default function Controler({volume,musicUrl} : ControlerProps) {
 
   useEffect(()=>{
     if(music) music.volume = volume;
-  },[volume])
+  },[volume,musicLoader])
 
   useEffect(() => {
     if (playBool) {
