@@ -81,10 +81,6 @@ export const SNSContainer = styled.div`
   :first-of-type {
     margin-top: 50px;
   }
-
-  :nth-child(1) {
-    color: blue;
-  }
 `;
 
 export const ColorSpan = styled.span`

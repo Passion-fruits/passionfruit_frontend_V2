@@ -13,7 +13,7 @@ export const CoverImgHover = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.2);
     visibility: hidden;
     display: flex;
     align-items: center;
@@ -38,7 +38,9 @@ export const PlayButton = styled.button`
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    border: 3px solid #8fffb1;
+    border: 2px solid white;
+    background:rgb(0,0,0,0.4);
+    cursor: pointer;
 `;
 
 export const CoverImg = styled.img`
