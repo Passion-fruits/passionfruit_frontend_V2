@@ -9,9 +9,7 @@ function StreamCard(props) {
             <S.ImgWrapper>
                 <S.CoverImg />
                 <S.CoverImgHover>
-                    <S.PlayButton>
-                        <Play />
-                    </S.PlayButton>
+                    <Play size={56} />
                 </S.CoverImgHover>
             </S.ImgWrapper>
             <S.Title></S.Title>

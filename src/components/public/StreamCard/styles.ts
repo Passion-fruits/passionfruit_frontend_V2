@@ -31,16 +31,6 @@ export const ImgWrapper = styled.div`
     }
 `;
 
-export const PlayButton = styled.button`
-    width: 56px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    border: 3px solid #8fffb1;
-`;
-
 export const CoverImg = styled.img`
     width: 100%;
     height: 100%;
