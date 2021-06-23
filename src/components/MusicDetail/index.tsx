@@ -19,11 +19,11 @@ export default function MusicDetail() {
 
         <S.CommentContainer>
           <S.ProfileImg src="https://static.highsnobiety.com/thumbor/fJpC1G6h33nBnQllq3f912l8bx8=/1600x1067/static.highsnobiety.com/wp-content/uploads/2015/07/28105919/rapper-snapchat-usernames-main.jpg" />
-          <S.Input placeholder="공개댓글 추가하기" />
+          <S.Input placeholder="공개댓글을 추가할 수 있습니다." />
         </S.CommentContainer>
         <S.BtnContainer>
           <S.ControlBtn>취소</S.ControlBtn>
-          <S.ControlBtn>등록</S.ControlBtn>
+          <S.ControlBtn>등록</S.ControlBtn> 
         </S.BtnContainer>
 
         <Comment

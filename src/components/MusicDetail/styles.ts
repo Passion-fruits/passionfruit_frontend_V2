@@ -134,15 +134,17 @@ export const ProfileImg = styled.img`
   object-fit: cover;
 `;
 
+const INPUT_COLOR = "#777777";
+
 export const Input = styled.input`
   width: 92%;
-  color: #c2c2c2;
-  font-size: 15px;
-  border-bottom: 1px solid #c2c2c2;
-  padding: 10px 5px;
+  color: ${INPUT_COLOR};
+  font-size: 14px;
+  border-bottom: 1px solid ${INPUT_COLOR};
+  padding: 12px 5px;
   transition: 0.3s;
   ::placeholder {
-    color: #c2c2c2;
+    color: ${INPUT_COLOR};
   }
 `;
 
@@ -159,7 +161,7 @@ export const ControlBtn = styled.button`
   font-size: 13px;
   cursor: pointer;
   background: #464242;
-  border-radius: 5px;
+  border-radius: 2px;
   :nth-of-type(2) {
     background: ${COLOR.blue};
     margin-left: 10px;
@@ -169,32 +171,39 @@ export const ControlBtn = styled.button`
 export const Comment = styled.div`
   width: 100%;
   display: flex;
-  margin-top: 30px;
+  margin: 20px 0;
 `;
 
 export const CommentDetail = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-left: 17px;
+padding:12px 15px;
+background:#242424;
+margin-left:12px;
+border-radius:10px;
+max-width:600px;
 `;
 
 export const Writter = styled.p`
-  color: white;
-  font-size: 15px;
+  color:#a9a9a9;
+  font-size: 13px;
   padding: 0;
   margin: 0;
+  font-weight:500;
+  display:flex;
+  align-items:center;
   time {
     padding: 0 5px;
-    color: #a9a9a9;
+    color: #8A8A8A;
     font-size: 12px;
   }
 `;
 
-export const CommentContent = styled.p`
-  color: white;
-  font-size: 16px;
+export const CommentContent = styled.div`
+font-weight:bold;
+  color: #C9C9C9;
+  font-size: 14px;
   margin-top: 12px;
   letter-spacing:1px;
-  line-height:25px;
-  width:800px;
+  line-height:17px;
+  margin:0;
+  padding-top:10px;
 `;
