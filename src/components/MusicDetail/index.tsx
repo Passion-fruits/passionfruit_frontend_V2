@@ -1,3 +1,4 @@
+import Comment from "./comment";
 import MusicInformation from "./musicInformation";
 import * as S from "./styles";
 
@@ -7,6 +8,7 @@ export default function MusicDetail() {
       <S.Wrapper>
         <MusicInformation />
         <S.Line />
+
         <S.MusicDescriptionContainer>
           <span>곡 설명</span>
           <S.MusicDescripton>
@@ -24,18 +26,31 @@ export default function MusicDetail() {
           <S.ControlBtn>등록</S.ControlBtn>
         </S.BtnContainer>
 
-        <S.Comment>
-          <S.ProfileImg src="https://i.guim.co.uk/img/media/07928d2cd676c69d0573b4ed3b756b7db3ad49ac/428_204_1722_1034/master/1722.jpg?width=445&quality=45&auto=format&fit=max&dpr=2&s=54a6af1026bcca5046c5a84d862721b4" />
-          <S.CommentDetail>
-            <S.Writter>
-              장필준 <time>2020-01-01</time>
-            </S.Writter>
-            <S.CommentContent>
-              What the fuck is this song?? 곡이 ㅈ되뿌노
-            </S.CommentContent>
-          </S.CommentDetail>
-        </S.Comment>
-        
+        <Comment
+          name="김팔복"
+          date="2020-01-12"
+          content="곡이 ㅈ되뿌노 ㅋㅋㅋ ㅋ이ㅏㄹ너이런이런이러ㅣ먼압러나ㅣ얼마ㅣㅇ란어ㅏ미러ㅏㅣㄴㅇ러ㅣㅏㅁㄴ어리;ㅏ먼ㅇ리ㅏㅓㅁ나ㅣㅇ러마ㅣ러ㅣㅏ;먼ㅇ리ㅏㅁㄴㅇ라ㅣㅓㅣ"
+          src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
+        />
+        <Comment
+          name="김팔복"
+          date="2020-01-12"
+          content="곡이 ㅈ되뿌노 ㅋㅋㅋasdkjf;alsdjk"
+          src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
+        />
+        <Comment
+          name="김팔복"
+          date="2020-01-12"
+          content="곡이 ㅈ되뿌노 ㅋㅋㅋ"
+          src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
+        />
+        <Comment
+          name="김팔복"
+          date="2020-01-12"
+          content="곡이 ㅈ되뿌노 ㅋㅋㅋ"
+          src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
+        />
+
       </S.Wrapper>
     </S.AllWrapper>
   );

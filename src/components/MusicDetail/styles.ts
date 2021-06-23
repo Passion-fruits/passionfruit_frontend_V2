@@ -195,4 +195,6 @@ export const CommentContent = styled.p`
   font-size: 16px;
   margin-top: 12px;
   letter-spacing:1px;
+  line-height:25px;
+  width:800px;
 `;

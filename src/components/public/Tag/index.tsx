@@ -4,8 +4,8 @@ function Tag(props) {
     const { tags } = props;
     return (
         <S.Wrapper>
-            {tags.map((tag) => (
-                <S.Tag># {tag}</S.Tag>
+            {tags.map((tag,index) => (
+                <S.Tag key={index}># {tag}</S.Tag>
             ))}
         </S.Wrapper>
     );
