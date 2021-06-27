@@ -1,5 +1,5 @@
 import { UserProfileProps } from "@src/libs/interfaces/userProfile";
-import { StreamCardProps } from "./streamCard";
+import { musicObj } from "./music";
 
 export interface GradationColor{
     start? : string;
@@ -15,7 +15,7 @@ export interface ArtistInfor extends UserProfileProps{
 
 }
 
-export interface MusicArr extends StreamCardProps{
+export interface MusicArr extends musicObj{
 }
 
 export interface GenreArr extends MenuArr{};

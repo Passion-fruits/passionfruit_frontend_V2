@@ -1,5 +1,4 @@
-export interface StreamCardProps{
-    title : string;
-    src : string;
-    name : string;
+import { musicObj } from "./music";
+
+export interface StreamCardProps extends musicObj{
 }
