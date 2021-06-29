@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { CARD_WIDTH } from "styles";
+import { CARD_WIDTH, COLOR } from "styles";
 
 export const Wrapper = styled.div`
   width: ${CARD_WIDTH};
@@ -73,4 +73,29 @@ export const Bottom = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+`;
+
+export const BottomContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top:5px;
+  div {
+    display: flex;
+  }
+  p {
+    color: ${COLOR.green};
+    font-size: 13px;
+  }
+  span {
+    color: white;
+    font-size: 13px;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    b {
+      padding-left: 5px;
+    }
+  }
 `;
