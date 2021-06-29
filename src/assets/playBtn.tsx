@@ -11,7 +11,7 @@ export default function PlayBtn({ onClickEvent }: SvgProps) {
       className="svg"
     >
       <path
-        id="다각형_5"
+        id="다각형5"
         data-name="다각형 5"
         d="M9.492,1.538a1,1,0,0,1,1.741,0L19.88,16.817a1,1,0,0,1-.87,1.493H1.715a1,1,0,0,1-.87-1.493Z"
         transform="translate(18.309) rotate(90)"
