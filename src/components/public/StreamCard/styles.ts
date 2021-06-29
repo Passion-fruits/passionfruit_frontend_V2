@@ -56,14 +56,14 @@ export const CoverImg = styled.img`
 
 export const Title = styled.h3`
   color: white;
-  font-size: 19px;
+  font-size: 17px;
   font-weight: bold;
   margin-bottom: 7px;
 `;
 
 export const UserName = styled.span`
   color: #9F9F9F;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: bold;
 `;
 

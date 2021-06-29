@@ -66,8 +66,7 @@ export const MenuCard = styled.div`
 `;
 
 export const IntroCard = styled(MenuCard)`
-  width: 490px;/* 
-  background-image: url("https://img.etnews.com/photonews/1608/835856_20160812174712_552_0003.jpg"); */
+  width: 490px;
   background:#0078E1;
   background-repeat: no-repeat;
   background-size: cover;
@@ -77,7 +76,6 @@ export const IntroCard = styled(MenuCard)`
 export const CardCover = styled(IntroCard)`
   position: absolute;
   background: none;
-/*   background-color: rgb(0, 0, 0, 0.7); */
   padding: 25px;
   padding-left: 50px;
   h3 {
