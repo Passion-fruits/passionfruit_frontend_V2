@@ -51,7 +51,7 @@ export const MenuCard = styled.div`
   color: white;
   background: ${(e: GradationColor) =>
     `linear-gradient(120deg,${e.start},${e.last})`};
-  border-radius: 20px;
+  border-radius: 15px;
   cursor: pointer;
   h3 {
     margin: 0;
@@ -59,15 +59,16 @@ export const MenuCard = styled.div`
     font-weight: 800;
   }
   p {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     margin-top: 15px;
   }
 `;
 
 export const IntroCard = styled(MenuCard)`
-  width: 490px;
-  background-image: url("https://img.etnews.com/photonews/1608/835856_20160812174712_552_0003.jpg");
+  width: 490px;/* 
+  background-image: url("https://img.etnews.com/photonews/1608/835856_20160812174712_552_0003.jpg"); */
+  background:#0078E1;
   background-repeat: no-repeat;
   background-size: cover;
   padding: 0;
@@ -76,16 +77,14 @@ export const IntroCard = styled(MenuCard)`
 export const CardCover = styled(IntroCard)`
   position: absolute;
   background: none;
-  background-color: rgb(0, 0, 0, 0.7);
+/*   background-color: rgb(0, 0, 0, 0.7); */
   padding: 25px;
   padding-left: 50px;
   h3 {
     font-weight: 600;
   }
   p {
-    line-height: 20px;
-    font-weight: 500;
-    color: #bebebe;
+    line-height: 20px;  
   }
 `;
 
