@@ -26,7 +26,7 @@ export const ImgWrapper = styled.div`
   height: ${CARD_WIDTH};
   position: relative;
   cursor: pointer;
-
+  border:1px solid rgb(30,30,30);
   &:hover div {
     visibility: visible;
   }
@@ -56,15 +56,15 @@ export const CoverImg = styled.img`
 
 export const Title = styled.h3`
   color: white;
-  font-size: 17px;
+  font-size: 19px;
   font-weight: bold;
   margin-bottom: 7px;
 `;
 
 export const UserName = styled.span`
-  color: #929292;
-  font-size: 12px;
-  font-weight: normal;
+  color: #9F9F9F;
+  font-size: 15px;
+  font-weight: bold;
 `;
 
 export const Bottom = styled.div`
