@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   align-items: center;
   z-index: 200;
   background: rgb(0, 0, 0, 0.8);
+  position:fixed;
   #loading {
     display: inline-block;
     width: 50px;
