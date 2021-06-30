@@ -1,3 +1,4 @@
+import Genre from "../public/Genre";
 import StreamCardMap from "../public/Map/streamCardMap";
 import * as S from "./styles";
 
@@ -87,24 +88,19 @@ export default function AllMusic() {
   return (
     <S.Wrapper>
       <S.Container>
-        <S.LEFT_SIDE>
-          <div
-            style={{
-              width: "230px",
-              height: "500px",
-              background: "white",
-              position: "fixed",
-            }}
-          ></div>
-        </S.LEFT_SIDE>
+        <S.SIDE_BAR>
+          <Genre/>
+        </S.SIDE_BAR>
         <S.RIGHT_SIDE>
-            <S.TopContainer>
-                <b>힙합 전체 트랙</b>
-                <S.UploadBox>
-                    <p>음악을 <span>업로드</span> 해보세요</p> 
-                    <b>{">"}</b>
-                </S.UploadBox>
-            </S.TopContainer>
+          <S.TopContainer>
+            <b>힙합 전체 트랙</b>
+            <S.UploadBox>
+              <p>
+                음악을 <span>업로드</span> 해보세요
+              </p>
+              <b>{">"}</b>
+            </S.UploadBox>
+          </S.TopContainer>
           <S.MusicWrapper>
             <StreamCardMap arr={arr} />
             <StreamCardMap arr={arr} />

@@ -28,10 +28,11 @@ const TOP_HEIGHT = "40px";
 
 const TOP_PADDING_BOTTOM = "20px";
 
-export const LEFT_SIDE = styled.div`
+export const SIDE_BAR = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: calc((${HEADER_HEIGHT} + ${PADDING_TOP}));
+  height: 800px;
 `;
 
 export const MusicWrapper = styled.div`
@@ -39,7 +40,9 @@ export const MusicWrapper = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-row-gap: ${GRID_GAP};
   grid-column-gap: 20px;
-  padding-top: calc((${PADDING_TOP}) + (${TOP_HEIGHT}) + (${TOP_PADDING_BOTTOM}));
+  padding-top: calc(
+    (${PADDING_TOP}) + (${TOP_HEIGHT}) + (${TOP_PADDING_BOTTOM})
+  );
 `;
 
 export const TopContainer = styled.div`
