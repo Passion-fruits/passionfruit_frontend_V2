@@ -1,6 +1,6 @@
 import * as S from "../styles";
-import StreamCard from "@src/components/public/StreamCard";
 import { MusicArr } from "@src/libs/interfaces/main";
+import StreamCardMap from "@src/components/public/Map/streamCardMap";
 
 export default function MusicList() {
   const arr: MusicArr[] = [
@@ -37,15 +37,7 @@ export default function MusicList() {
   ];
   return (
     <S.LayOut>
-      {arr.map((e: MusicArr, index: number) => (
-        <StreamCard
-          key={index}
-          title={e.title}
-          name={e.name}
-          coverImg={e.coverImg}
-          musicUrl={e.musicUrl}
-        />
-      ))}
+      <StreamCardMap arr={arr}/>
     </S.LayOut>
   );
 }
