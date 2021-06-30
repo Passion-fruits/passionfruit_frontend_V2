@@ -3,6 +3,7 @@ import { SampleProvider } from "@src/libs/context";
 import "../styles/globals.css";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import LoadingPage from "@src/components/public/Loading";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -20,6 +21,7 @@ function MyApp({ Component, pageProps }) {
   }, [router]);
   return (
     <SampleProvider>
+      {pageLoading && <LoadingPage/>}  
       <PlayBar />
       <Component {...pageProps} />
     </SampleProvider>
