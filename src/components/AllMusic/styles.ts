@@ -20,24 +20,26 @@ export const RIGHT_SIDE = styled.div`
   padding-top: calc((${HEADER_HEIGHT}));
 `;
 
-export const LEFT_SIDE = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-top: calc((${HEADER_HEIGHT} + 50px));
-`;
+const PADDING_TOP = "30px";
 
 const GRID_GAP = "20px";
 
-const TOP_HEIGHT = "50px";
+const TOP_HEIGHT = "40px";
 
-const TOP_PADDING_BOTTOM = "10px";
+const TOP_PADDING_BOTTOM = "20px";
+
+export const LEFT_SIDE = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-top: calc((${HEADER_HEIGHT} + ${PADDING_TOP}));
+`;
 
 export const MusicWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-row-gap: ${GRID_GAP};
   grid-column-gap: 20px;
-  padding-top: calc(50px + (${TOP_HEIGHT}) + (${TOP_PADDING_BOTTOM}));
+  padding-top: calc((${PADDING_TOP}) + (${TOP_HEIGHT}) + (${TOP_PADDING_BOTTOM}));
 `;
 
 export const TopContainer = styled.div`
@@ -46,7 +48,7 @@ export const TopContainer = styled.div`
   background: ${COLOR.dark};
   position: fixed;
   box-sizing: content-box;
-  padding-top: 50px;
+  padding-top: ${PADDING_TOP};
   padding-bottom: ${TOP_PADDING_BOTTOM};
   z-index: 2;
   color: white;
