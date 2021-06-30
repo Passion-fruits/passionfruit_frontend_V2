@@ -8,7 +8,7 @@ export interface GradationColor{
 
 export interface MenuArr extends GradationColor{
     title : string;
-    description : string;
+    description? : string;
 }
 
 export interface ArtistInfor extends UserProfileProps{
