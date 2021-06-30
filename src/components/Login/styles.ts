@@ -31,7 +31,7 @@ export const WaveBar = styled.div`
   width: 25px;
   background: ${COLOR.green};
   border-radius: 24px;
-  margin-left: 50px;
+  margin:0 25px;
   box-shadow: 0px 0px 40px ${COLOR.green};
   animation: ${WaveAnim} ${(e: waveProps) => `${e.time}s`} infinite;
   animation-timing-function: linear;

@@ -13,6 +13,7 @@ export const COLOR = {
   green: "#8FFFB1",
   main: "#212121",
   blue: "#0099FF",
+  dark: "#161616"
 };
 
 export const ImgWrapper = styled.div`
