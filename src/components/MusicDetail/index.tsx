@@ -24,6 +24,24 @@ export default function MusicDetail() {
           content="곡이 ㅈ되뿌노 ㅋㅋㅋ"
           src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
         />
+                <Comment
+          name="김팔복"
+          date="5일 전"
+          content="곡이 ㅈ되뿌노 ㅋㅋㅋ"
+          src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
+        />
+                <Comment
+          name="김팔복"
+          date="5일 전"
+          content="곡이 ㅈ되뿌노 ㅋㅋㅋ"
+          src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
+        />
+                <Comment
+          name="김팔복"
+          date="5일 전"
+          content="곡이 ㅈ되뿌노 ㅋㅋㅋ"
+          src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
+        />
 
       </S.Wrapper>
     </S.AllWrapper>

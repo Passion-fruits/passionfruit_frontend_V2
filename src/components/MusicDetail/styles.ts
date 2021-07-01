@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { COLOR, HEADER_HEIGHT } from "styles";
+import { COLOR, HEADER_HEIGHT, MAIN_WIDTH } from "styles";
 
 export const AllWrapper = styled.div`
   width: 100%;
@@ -11,7 +11,7 @@ export const AllWrapper = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  width: 1000px;
+  width: ${MAIN_WIDTH};
 `;
 
 export const BackgroundGradient = styled.div`
@@ -29,12 +29,12 @@ export const MusicInforContainer = styled.div`
 `;
 
 export const CoverImg = styled.img`
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
+  margin-right:30px;
 `;
 
 export const DetailContainer = styled.div`
-  padding-left: 30px;
   display: flex;
   flex-direction: column;
   padding-top: 10px;
@@ -59,7 +59,7 @@ export const PlayBtn = styled.button`
   border: 2px solid white;
   padding-left: 12px;
   padding-top: 2px;
-  margin-right: 15px;
+  margin-right: 10px;
   cursor: pointer;
   &:hover {
     opacity: 0.8;
@@ -73,7 +73,7 @@ export const Title = styled.div`
   & span {
     color: white;
     font-size: 30px;
-    font-weight: 600;
+    font-weight: 800;
   }
 `;
 
@@ -120,6 +120,8 @@ export const MusicDescriptionContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 30px;
+  border-left:2px solid ${COLOR.green};
+  padding: 10px 0px 10px 20px;
   span {
     font-size: 15px;
     font-weight: 500;
@@ -132,6 +134,7 @@ export const MusicDescripton = styled.p`
   font-size: 15px;
   line-height: 24px;
   margin-top: 15px;
+  margin-bottom:0;
 `;
 
 export const CommentContainer = styled.div`
@@ -193,7 +196,7 @@ export const ControlBtn = styled.button`
 export const Comment = styled.div`
   width: 100%;
   display: flex;
-  margin: 20px 0;
+  margin: 30px 0;
 `;
 
 export const CommentDetail = styled.div`
@@ -205,7 +208,7 @@ export const CommentDetail = styled.div`
 
 export const Writter = styled.div`
   color: #c2c2c2;
-  font-size: 15px;
+  font-size: 14px;
   padding: 0;
   margin: 0;
   font-weight: 500;
@@ -216,9 +219,8 @@ export const Writter = styled.div`
 export const CommentContent = styled.div`
   color: white;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 16px;
   margin-top: 12px;
-  letter-spacing: 1px;
   line-height: 17px;
   margin: 0;
   padding-top: 10px;
