@@ -14,9 +14,13 @@ export const Wrapper = styled.div`
   width: ${MAIN_WIDTH};
 `;
 
+interface gradient {
+  color : string;
+}
+
 export const BackgroundGradient = styled.div`
-  background: ${`linear-gradient(pink,${COLOR.dark})`};
-  opacity: 0.3;
+  background: ${(e : gradient)=>`linear-gradient(${e.color},${COLOR.dark})`};
+  opacity: 0.4;
   z-index: -1;
   width: 100%;
   height: 400px;

@@ -7,12 +7,34 @@ import {
   Share,
   Alert,
 } from "../../assets/musicDetail";
+import { useEffect,useRef } from "react";
 
-export default function MusicInformation() {
+interface props{
+  setGradient(e) : void;
+}
+
+export default function MusicInformation({setGradient} : props) {
+  const url = "https://i1.sndcdn.com/avatars-000265518371-amlg8s-t250x250.jpg"
+  const canvas = useRef();
+  const cv: HTMLCanvasElement = canvas.current;
+  useEffect(()=>{
+    var img = new Image();
+    img.crossOrigin = "Anonymous";
+    img.src = url;
+    img.onload =()=>{
+      const ctx = cv?.getContext("2d");
+      ctx?.drawImage(img,0,0,300,300);
+      var pixel = ctx?.getImageData(50, 50, 1, 1);
+      const data = pixel?.data;
+      if(data) setGradient(`rgba(${data[0]},${data[1]},${data[2]})`)
+    }
+  })
   return (
     <>
+
+      <canvas style={{display:"none"}} ref={canvas}/>
       <S.MusicInforContainer>
-        <S.CoverImg src="https://i.pinimg.com/originals/b4/75/00/b4750046d94fed05d00dd849aa5f0ab7.jpg" />
+        <S.CoverImg src={url} />
         <S.DetailContainer>
           <S.Hashtag>
             <span># 힙합</span>
