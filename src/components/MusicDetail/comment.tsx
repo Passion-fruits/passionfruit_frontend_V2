@@ -6,8 +6,10 @@ export default function Comment({ name, date, content, src }: commentProps) {
     <S.Comment>
       <S.ProfileImg src={src} />
       <S.CommentDetail>
-      <S.Writter>
-          {name} <time>{date}</time>
+        <S.Writter>
+          {name}
+          <S.CIRCLE />
+          <time>{date}</time>
         </S.Writter>
         <S.CommentContent>{content}</S.CommentContent>
       </S.CommentDetail>
