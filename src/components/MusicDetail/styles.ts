@@ -31,7 +31,6 @@ export const MusicInforContainer = styled.div`
 export const CoverImg = styled.img`
   width: 200px;
   height: 200px;
-  margin-right:30px;
 `;
 
 export const DetailContainer = styled.div`
@@ -40,6 +39,7 @@ export const DetailContainer = styled.div`
   padding-top: 10px;
   position: relative;
   width: 100%;
+  margin-left:30px;
 `;
 
 export const Hashtag = styled.div`
