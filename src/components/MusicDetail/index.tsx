@@ -17,9 +17,11 @@ export default function MusicDetail() {
           <S.Input placeholder="공개댓글 추가 ( 엔터를 누르면 등록됩니다. )" />
           <S.InputLimit>0 / 220</S.InputLimit>
         </S.CommentContainer>
+        {/* 댓글 보기 */}
         <S.CommentBoundary>
           Comment <span>(15)</span>
         </S.CommentBoundary>
+
         <Comment
           name="김팔복"
           date="5일 전"
@@ -45,6 +47,7 @@ export default function MusicDetail() {
           src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
         />
 
+        
       </S.Wrapper>
     </S.AllWrapper>
   );

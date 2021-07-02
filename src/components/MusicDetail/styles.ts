@@ -30,6 +30,7 @@ export const BackgroundGradient = styled.div`
 export const MusicInforContainer = styled.div`
   display: flex;
   padding-top: 60px;
+  width:100%;
 `;
 
 export const CoverImg = styled.img`
@@ -42,8 +43,8 @@ export const DetailContainer = styled.div`
   flex-direction: column;
   padding-top: 10px;
   position: relative;
-  width: 100%;
-  margin-left:30px;
+  padding-left:30px;
+  width: calc(100% - 200px);
 `;
 
 export const Hashtag = styled.div`
