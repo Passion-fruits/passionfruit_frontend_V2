@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { HEADER_HEIGHT, MAIN_WIDTH } from "styles";
+import { COLOR, HEADER_HEIGHT, MAIN_WIDTH } from "styles";
 
 const BACKGROUND_COLOR = "#161616";
 
@@ -16,6 +16,7 @@ export const Wrapper = styled.div`
   color: white;
   position: fixed;
   z-index:100;
+  box-shadow:0px 0px 10px ${COLOR.dark};
 `;
 
 export const WidthContainer = styled.div`

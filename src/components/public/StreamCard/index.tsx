@@ -4,10 +4,12 @@ import { StreamCardProps } from "@src/libs/interfaces/streamCard";
 import { setValue } from "@src/libs/context";
 import StreamCardHeart from "@src/assets/streamCardHeart";
 import StreamCardComment from "@src/assets/streamCardComment";
+import { useRouter } from "next/router";
 
 function StreamCard(props: StreamCardProps) {
   const { title, name, coverImg, musicUrl } = props;
   const dispatch = setValue();
+  const router = useRouter();
   const changeMusic = () => {
     dispatch({
       type: "MUSIC_CHANGE",
@@ -20,11 +22,16 @@ function StreamCard(props: StreamCardProps) {
     });
   };
 
+  const enterMusicDetail = (e) => {
+    if (e.target.id !== "wrapper") return;
+    router.push("/musicDetail/3");
+  };
+
   return (
     <S.Wrapper>
       <S.ImgWrapper>
         <S.CoverImg src={coverImg} />
-        <S.CoverImgHover>
+        <S.CoverImgHover id="wrapper" onClick={enterMusicDetail}>
           <S.PlayButton onClick={changeMusic}>
             <Play />
           </S.PlayButton>
