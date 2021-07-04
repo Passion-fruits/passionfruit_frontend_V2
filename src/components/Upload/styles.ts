@@ -9,16 +9,16 @@ interface UPLOAD_BTN_PROPS {
 export const UPLOAD_BTN = styled.button<UPLOAD_BTN_PROPS>`
   background: ${COLOR.blue};
   color: white;
-  font-size:15px;
+  font-size: 15px;
   font-weight: 600;
   padding: 7px 0;
   width: ${(e) => e.width};
   border-radius: 3px;
   margin-top: ${(e) => e.margin};
   cursor: pointer;
-  transition:0.4s;
-  &:hover{
-    opacity:0.8;
+  transition: 0.4s;
+  &:hover {
+    opacity: 0.8;
   }
 `;
 
@@ -27,6 +27,9 @@ export const Wrapper = styled.div`
   padding-top: ${HEADER_HEIGHT};
   display: flex;
   justify-content: center;
+  & input[type="file"] {
+    display: none;
+  }
 `;
 
 export const Container = styled.div`
@@ -50,8 +53,8 @@ export const Description = styled.div`
   font-size: 17px;
   font-weight: bold;
   grid-area: description;
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   & b {
     color: ${COLOR.green};
   }
@@ -66,6 +69,8 @@ export const CoverPhotoContainer = styled.div`
   & img {
     width: 260px;
     height: 260px;
+    border:1px solid rgb(30,30,30);
+    object-fit:cover;
   }
 `;
 
@@ -128,6 +133,6 @@ export const Select = styled.select`
   padding: 13px 20px;
   font-size: 15px;
   width: 100%;
-  outline:none;
-  color:${COLOR.green};
+  outline: none;
+  color: ${COLOR.green};
 `;
