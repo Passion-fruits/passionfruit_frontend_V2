@@ -5,6 +5,10 @@ import { Play } from "../../../assets";
 function FeedCard() {
     return (
         <S.Container>
+            <S.UserWrapper>
+                <S.UserAvatar src="http://t1.daumcdn.net/movie/1c14dd7ab60196f8a12233e7c777a186a37b5c1d" />
+                <S.UserName>hello123</S.UserName>
+            </S.UserWrapper>
             <S.Wrapper>
                 <S.CoverImg />
                 <S.Content>
