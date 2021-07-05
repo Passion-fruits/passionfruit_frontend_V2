@@ -1,12 +1,15 @@
 import * as S from "./styles";
 import { useEffect, useRef, useState } from "react";
 import Menu from "./menu";
+import ProfileList from "./profileList";
+import TrackList from './trackList';
 
 export default function Profile() {
   const url = "https://i1.sndcdn.com/artworks-000169142537-e22x2o-large.jpg";
   const canvas = useRef();
   const cv: HTMLCanvasElement = canvas.current;
   const [gradient, setGradient] = useState<string>("");
+  const [nowMenu,setNowMenu] = useState<string>("track");
   useEffect(() => {
     var img = new Image();
     img.crossOrigin = "Anonymous";
@@ -39,11 +42,14 @@ export default function Profile() {
             </S.BtnBox>
           </S.TOP_BAR>
           <S.MenuBox>
-              <Menu content="track" value="10"/>
-              <Menu content="follower" value="10"/>
-              <Menu content="following" value="10"/>
-              <Menu content="playlist" value="10"/>
+              <Menu content="track" value="10" nowMenu={nowMenu} handle={setNowMenu}/>
+              <Menu content="follower" value="10" nowMenu={nowMenu} handle={setNowMenu}/>
+              <Menu content="following" value="10" nowMenu={nowMenu} handle={setNowMenu}/>
+              <Menu content="playlist" value="10" nowMenu={nowMenu} handle={setNowMenu}/>
           </S.MenuBox>
+          {nowMenu === "track" && <TrackList/>}
+          {nowMenu === "follower" && <ProfileList/>}
+          {nowMenu === "following" && <ProfileList/>}
         </S.Container>
       </S.Wrapper>
     </>

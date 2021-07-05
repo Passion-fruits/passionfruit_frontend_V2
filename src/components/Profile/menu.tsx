@@ -1,8 +1,15 @@
-import * as S from './styles'
-import { MenuProps } from './../../libs/interfaces/profile';
+import * as S from "./styles";
+import { MenuProps } from "./../../libs/interfaces/profile";
 
-export default function Menu({content,value} : MenuProps){
-    return(
-        <S.Menu>{content} ( {value} )</S.Menu>
-    )
+const NavLink = {
+    color:"white",
+    borderBottom : "2px solid white"
+}
+
+export default function Menu({ content, value, nowMenu, handle }: MenuProps) {
+  return (
+    <S.Menu onClick={() => handle(content)} style={content === nowMenu ? NavLink : {}}>
+      {content} ( {value} )
+    </S.Menu>
+  );
 }

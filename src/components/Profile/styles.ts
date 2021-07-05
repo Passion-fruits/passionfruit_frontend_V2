@@ -28,7 +28,7 @@ export const Container = styled.div`
 
 export const TOP_BAR = styled.div`
   display: flex;
-  margin-top: 70px;
+  margin-top: 50px;
   position: relative;
 `;
 
@@ -89,6 +89,7 @@ export const MenuBox = styled.div`
   justify-content: center;
   border-bottom: 1px solid #464646;
   margin-top: 30px;
+  margin-bottom:60px;
 `;
 
 export const Menu = styled.span`
@@ -99,3 +100,11 @@ export const Menu = styled.span`
   margin: 0 25px;
   cursor: pointer;
 `;
+
+export const GRID_BOX = styled.div`
+width:100%;
+display:grid;
+grid-template-columns:repeat(5,1fr);
+justify-items:center;
+grid-row-gap:30px;
+`
