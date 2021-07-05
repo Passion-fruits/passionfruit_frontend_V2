@@ -1,23 +1,23 @@
-import { MenuArr } from "../public/Interactions/main";
-import * as S from "./styles";
+import { MenuArr } from "../../../libs/interfaces/main";
+import * as S from "../styles";
 
-export default function MenuCard() {
+export default function IntroList() {
   const menuArr: MenuArr[] = [
     {
-      start: "#2063FF",
-      last: "#00E1B3",
+      start: "#9327FF",
+      last: "#EA78FF",
       title: "#업로드",
       description: "음악을 세상에 공개하세요!",
     },
     {
-      start: "#304BFF",
+      start: "#FF2E9E",
       last: "#E881D3",
       title: "#전체보기",
       description: "사람들의 곡을 들어보세요!",
     },
     {
-      start: "#FF3730",
-      last: "#C7FF0C",
+      start: "#00AE7F",
+      last: "#00F1AF",
       title: "#피드",
       description: "음악의 하이라이트만 만나보기!",
     },

@@ -1,25 +1,29 @@
 import styled from "@emotion/styled";
-import { HEADER_HEIGHT } from "styles";
+import { COLOR, HEADER_HEIGHT, MAIN_WIDTH } from "styles";
 
 const BACKGROUND_COLOR = "#161616";
 
 const BORDER = "#2C2C2C";
-
-const PADDING = "225px";
 
 export const Wrapper = styled.div`
   width: 100%;
   height: ${HEADER_HEIGHT};
   background: ${BACKGROUND_COLOR};
   border-bottom: 1px solid ${BORDER};
-  padding: 0 ${PADDING};
   display: flex;
   align-items: center;
+  justify-content: center;
   color: white;
-  justify-content: space-between;
   position: fixed;
   z-index:100;
+  box-shadow:0px 0px 10px ${COLOR.dark};
 `;
+
+export const WidthContainer = styled.div`
+  justify-content: space-between;
+  width:${MAIN_WIDTH};
+  display:flex;
+`
 
 export const SearchBar = styled.div`
   width: 320px;

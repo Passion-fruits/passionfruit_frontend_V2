@@ -26,6 +26,16 @@ a {
     font-family: 'NanumSquare', sans-serif; 
 }
 
+.svg{
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+*.svg:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}
+
 input{
     outline: none;
     background: none;
