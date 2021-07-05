@@ -2,7 +2,7 @@ import { FileUpload } from "@src/assets";
 import { useEffect, useState } from "react";
 import * as S from "./styles";
 import { MusicObj } from './../../libs/interfaces/upload';
-import { CoverImg, ImgWrapper } from "styles";
+import { CoverImg, ImgWrapper, PLAYBAR_HEIGHT } from "styles";
 
 export default function Upload() {
   const [musicObj,setMusicObj] = useState<MusicObj>({
@@ -60,7 +60,7 @@ export default function Upload() {
         <input type="file" id="musicInp" onChange={(e) => getMusicSrc(e.target)} accept="audio/*"/>
         <S.Container>
           <S.Description>
-          <b>쿤더</b>에서는 음악 업로드에는 <b>시간제한</b>이 없습니다. 
+          <b>쿤더</b>에서는 음악 업로드에 <b>시간제한</b>이 없습니다. 
           </S.Description>
           {/* 커버사진 업로드 */}
           <S.CoverPhotoContainer>
@@ -110,7 +110,7 @@ export default function Upload() {
             <S.UPLOAD_BTN
               width="100%"
               margin="30px"
-              style={{ padding: "11px 0", fontSize: "17px" }}
+              style={{ padding: "11px 0", fontSize: "17px",marginBottom:"140px" }}
             >
               음악 공개하기
             </S.UPLOAD_BTN>
