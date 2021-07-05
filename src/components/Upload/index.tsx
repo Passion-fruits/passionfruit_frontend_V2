@@ -1,5 +1,5 @@
 import { FileUpload } from "@src/assets";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as S from "./styles";
 import { MusicObj } from './../../libs/interfaces/upload';
 import { CoverImg, ImgWrapper } from "styles";
@@ -37,6 +37,21 @@ export default function Upload() {
       reader.readAsDataURL(input.files[0]);
     }
   }
+  // audio 시간 검사
+  useEffect(()=>{
+    if(musicObj.musicSrc !== ""){
+      var audio = new Audio(musicObj.musicSrc);
+      audio.oncanplaythrough = ()=>{
+        if(audio.duration < 60 || audio.duration > 300){
+          alert('1분 이상, 5분 이하의 곡을 업로드해주세요!');
+          setMusicObj({
+            ...musicObj,
+            musicSrc : ""
+          })
+        }
+      }
+    }
+  },[musicObj.musicSrc])
   console.log(musicObj)
   return (
     <>
@@ -45,8 +60,7 @@ export default function Upload() {
         <input type="file" id="musicInp" onChange={(e) => getMusicSrc(e.target)} accept="audio/*"/>
         <S.Container>
           <S.Description>
-            음악 전체는 <b>전체보기</b>에 올라가고, <b>하이라이트</b>는 피드에
-            업로드됩니다.
+          <b>쿤더</b>에서는 음악 업로드에는 <b>시간제한</b>이 없습니다. 
           </S.Description>
           {/* 커버사진 업로드 */}
           <S.CoverPhotoContainer>
