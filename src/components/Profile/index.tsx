@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Menu from "./menu";
 import ProfileList from "./profileList";
 import TrackList from './trackList';
+import { useRouter } from 'next/router';
 
 export default function Profile() {
   const url = "https://i1.sndcdn.com/artworks-000169142537-e22x2o-large.jpg";
@@ -10,6 +11,7 @@ export default function Profile() {
   const cv: HTMLCanvasElement = canvas.current;
   const [gradient, setGradient] = useState<string>("");
   const [nowMenu,setNowMenu] = useState<string>("track");
+  const router = useRouter();
   useEffect(() => {
     var img = new Image();
     img.crossOrigin = "Anonymous";
@@ -37,7 +39,7 @@ export default function Profile() {
               </S.UserInfor>
             </S.ProfileInfor>
             <S.BtnBox>
-              <button>upload</button>
+              <button onClick={()=>router.push('/upload')}>upload</button>
               <button>edit profile</button>
             </S.BtnBox>
           </S.TOP_BAR>

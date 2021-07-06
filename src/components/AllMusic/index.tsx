@@ -1,8 +1,10 @@
 import Genre from "../public/Genre";
 import StreamCardMap from "../public/Map/streamCardMap";
 import * as S from "./styles";
+import { useRouter } from 'next/router';
 
 export default function AllMusic() {
+  const router = useRouter();
   const arr = [
     {
       title: "Get dope",
@@ -94,7 +96,7 @@ export default function AllMusic() {
         <S.RIGHT_SIDE>
           <S.TopContainer>
             <b>힙합 전체 트랙</b>
-            <S.UploadBox>
+            <S.UploadBox onClick={()=>router.push('/upload')}>
               <p>
                 음악을 <span>업로드</span> 해보세요
               </p>
