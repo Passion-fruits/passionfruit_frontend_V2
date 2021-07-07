@@ -3,6 +3,7 @@ import Heart from "@src/assets/heart";
 import { UserProfileProps } from "@src/libs/interfaces/userProfile";
 import { CircleImgWrapper } from "styles";
 import * as S from "./styles";
+import { useRouter } from 'next/router';
 
 export default function UserProfile({
   width = "200",
@@ -11,8 +12,12 @@ export default function UserProfile({
   followerCount,
   imgUrl,
 }: UserProfileProps) {
+  const router = useRouter();
+  const linking=():void=>{
+    router.push(`/profile/${name}`)
+  }
   return (
-    <S.Wrapper width={width} height={height}>
+    <S.Wrapper onClick={linking} width={width} height={height}>
       <CircleImgWrapper>
         <S.Profile src={imgUrl} />
       </CircleImgWrapper>
