@@ -1,4 +1,5 @@
 import * as S from "./styles";
+import Wave from "./wave";
 
 export default function Login() {
   return (
@@ -18,12 +19,7 @@ export default function Login() {
         </S.SNSContainer>
         <S.SNSContainer color="#00BF18">NAVER 로그인</S.SNSContainer>
       </S.CoverWrapper>
-      <S.WaveBar time="4" />
-      <S.WaveBar time="7" />
-      <S.WaveBar time="3" />
-      <S.WaveBar time="2.7" />
-      <S.WaveBar time="5" />
-      <S.WaveBar time="3" />
+      <Wave/>
     </S.Wrapper>
   );
 }

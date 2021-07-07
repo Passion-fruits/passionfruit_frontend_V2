@@ -48,6 +48,17 @@ export const CoverWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   padding-bottom:100px;
+  & input{
+    border-bottom:2px solid ${COLOR.green};
+    width:500px;
+    color:${COLOR.green};
+    font-size:19px;
+    font-weight:bold;
+    padding:15px 0;
+    &::placeholder{
+      color:${COLOR.green};
+    }
+  }
 `;
 
 export const IntroMent = styled.span`
@@ -86,3 +97,5 @@ export const SNSContainer = styled.div`
 export const ColorSpan = styled.span`
   color: ${(e: Props) => e.color};
 `;
+/* 
+export const Slid */
