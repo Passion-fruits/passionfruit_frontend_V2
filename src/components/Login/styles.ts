@@ -1,6 +1,6 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
-import { COLOR, PLAYBAR_HEIGHT } from "styles";
+import { COLOR } from "styles";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -91,7 +91,7 @@ export const Container = styled.div`
   width: 460px;
   background: white;
   box-shadow: 0px 0px 10px white;
-  padding: 100px 40px;
+  padding: 90px 40px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -154,4 +154,39 @@ font-weight:800;
 border-radius:3px;
 margin-top:30px;
 cursor: pointer;
+`
+
+export const GenreList = styled.div`
+display:grid;
+grid-template-columns:repeat(3,1fr);
+justify-items:center;
+height:200px;
+overflow-y:scroll;
+grid-row-gap:20px;
+margin-bottom:10px;
+::-webkit-scrollbar{
+  width:3px;
+  background:whitesmoke;
+  border-radius:24px;
+  overflow:hidden;
+}
+::-webkit-scrollbar-thumb{
+  background:black;
+  border-radius:24px;
+}
+`
+
+export const Genre = styled.div`
+width:100px;
+height:100px;
+border-radius:80%;
+border:1px solid #C2C2C2;
+cursor: pointer;
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:0 10px;
+color:#C2C2C2;
+font-size:16px;
 `
