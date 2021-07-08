@@ -1,6 +1,6 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
-import { COLOR } from "styles";
+import { COLOR, PLAYBAR_HEIGHT } from "styles";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -31,7 +31,7 @@ export const WaveBar = styled.div`
   width: 25px;
   background: ${COLOR.green};
   border-radius: 24px;
-  margin:0 25px;
+  margin: 0 25px;
   box-shadow: 0px 0px 40px ${COLOR.green};
   animation: ${WaveAnim} ${(e: waveProps) => `${e.time}s`} infinite;
   animation-timing-function: linear;
@@ -47,18 +47,7 @@ export const CoverWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding-bottom:100px;
-  & input{
-    border-bottom:2px solid ${COLOR.green};
-    width:500px;
-    color:${COLOR.green};
-    font-size:19px;
-    font-weight:bold;
-    padding:15px 0;
-    &::placeholder{
-      color:${COLOR.green};
-    }
-  }
+  padding-bottom: 100px;
 `;
 
 export const IntroMent = styled.span`
@@ -97,5 +86,72 @@ export const SNSContainer = styled.div`
 export const ColorSpan = styled.span`
   color: ${(e: Props) => e.color};
 `;
-/* 
-export const Slid */
+
+export const Container = styled.div`
+  width: 460px;
+  background: white;
+  box-shadow: 0px 0px 10px white;
+  padding: 100px 40px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  & h1{
+    font-size:24px;
+    font-weight:800;
+    color:black;
+    margin:0;
+  }
+  & h3{
+    font-size:17px;
+    font-weight:bold;
+    color:#C1C1C1;
+    margin-top:11px;
+    margin-bottom:30px;
+  }
+  & input {
+    background: #f3f3f3;
+    border-radius: 3px;
+    padding: 0 20px;
+    border: 1px solid #b8b8b8;
+    width: 100%;
+    height: 60px;
+    color: black;
+    font-size: 17px;
+    font-weight: bold;
+    &::placeholder {
+      color: #b8b8b8;
+    }
+  }
+`;
+
+export const CheckBox = styled.div`
+width:100%;
+display:flex;
+justify-content:flex-end;
+align-items:center;
+margin-top:22px;
+& label{
+  color:#C1C1C1;
+  font-size:13px;
+  border-bottom:1px solid #C1C1C1;
+  margin-right:10px;
+}
+& input[type="checkbox"]{
+  cursor: pointer;
+  border-radius:3px;
+  width:20px;
+  height:20px;
+}
+`
+
+export const SubBtn = styled.button`
+width:100%;
+height:60px;
+background:black;
+color:white;
+font-size:22px;
+font-weight:800;
+border-radius:3px;
+margin-top:30px;
+cursor: pointer;
+`
