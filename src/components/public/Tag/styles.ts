@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
 
 export const Tag = styled.span`
     padding: 5px 16px;
-    border: 1px solid #8fffb1;
+    border: 2px solid #8fffb1;
     border-radius: 15px;
     font-size: 12px;
     font-weight: bold;
