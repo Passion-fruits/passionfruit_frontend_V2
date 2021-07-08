@@ -7,6 +7,7 @@ export const Container = styled.div`
     flex-direction: column;
     background: #242424;
     border-radius: 10px;
+    position: relative;
 `;
 
 export const Wrapper = styled.div`
@@ -71,4 +72,25 @@ export const UserName = styled.span`
     font-size: 14px;
     color: #fff5f5;
     font-weight: bold;
+`;
+
+export const IconWrapper = styled.div`
+    position: absolute;
+    left: 530px;
+    bottom: 25px;
+    display: flex;
+    height: 23px;
+`;
+
+export const PointerWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 30px;
+`;
+
+export const Value = styled.span`
+    color: white;
+    font-size: 13px;
+    margin-left: 7px;
 `;

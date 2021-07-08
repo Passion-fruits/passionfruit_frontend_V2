@@ -1,6 +1,8 @@
 import * as S from "./styles";
 import Tag from "../../public/Tag";
 import { Play } from "../../../assets";
+import Comment from "../../../assets/comment";
+import Heart from "../../../assets/heart";
 
 function FeedCard() {
     return (
@@ -24,6 +26,16 @@ function FeedCard() {
                     </S.Des>
                 </S.Content>
             </S.Wrapper>
+            <S.IconWrapper>
+                <S.PointerWrapper>
+                    <Comment />
+                    <S.Value>100</S.Value>
+                </S.PointerWrapper>
+                <S.PointerWrapper>
+                    <Heart />
+                    <S.Value>12</S.Value>
+                </S.PointerWrapper>
+            </S.IconWrapper>
         </S.Container>
     );
 }
