@@ -3,12 +3,16 @@ import { FileUpload } from "@src/assets";
 import { useEffect, useState } from "react";
 import { MusicObj } from "./../../libs/interfaces/upload";
 import { CoverImg, ImgWrapper } from "styles";
+import { useRouter } from 'next/router';
 import { TimeCheck } from "./util/timeCheck";
 import upload from "../../libs/api/upload";
 import FileInput from "./input/fileInput";
 import Select from "./select/select";
+import LoadingPage from "../public/Loading";
 
 export default function Upload() {
+  const router = useRouter();
+  const [loading,setLoading] = useState<boolean>(false);
   const [preview, setPreview] = useState<string>(
     "https://jetekpro.vn/images/noimage.jpg"
   );
@@ -22,9 +26,14 @@ export default function Upload() {
     duration: "",
   });
   const submit = () => {
-    upload.uploadMusic(musicObj).then((e) => {
-      console.log(e);
-    });
+    const {musicSrc,coverSrc,title,description,duration} = musicObj;
+    if(musicSrc && coverSrc && title && description && duration){
+      setLoading(true);
+      upload.uploadMusic(musicObj).then(() => {
+        router.push('/profile/1');
+      })
+    }
+    else alert('모든 정보를 입력해주세요!')
   };
   const getSrc = (target: HTMLInputElement) => {
     setMusicObj({
@@ -51,6 +60,7 @@ export default function Upload() {
   console.log(musicObj);
   return (
     <>
+     {loading && <LoadingPage/>}
       <S.Wrapper>
         <FileInput event={getSrc} />
         <S.Container>
