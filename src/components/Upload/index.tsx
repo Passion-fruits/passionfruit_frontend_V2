@@ -6,7 +6,7 @@ import { CoverImg, ImgWrapper } from "styles";
 import upload from "../../libs/api/upload";
 
 export default function Upload() {
-  const [preview,setPreview] = useState<string>("");
+  const [preview,setPreview] = useState<string>("https://jetekpro.vn/images/noimage.jpg");
   const [musicObj, setMusicObj] = useState<MusicObj>({
     musicSrc: "",
     coverSrc: "",
@@ -60,19 +60,10 @@ export default function Upload() {
     musicObj.coverSrc && reader.readAsDataURL(musicObj.coverSrc);
   },[musicObj.coverSrc])
   const submit = () => {
-    var fd = new FormData();
-    fd.append("song", musicObj.coverSrc);
-    fd.append("song", musicObj.musicSrc);
-    fd.append("title", musicObj.title);
-    fd.append("description", musicObj.description);
-    fd.append("genre", musicObj.genre);
-    fd.append("mood", musicObj.feeling);
-    fd.append("duration", musicObj.duration);
-    upload.uploadMusic(fd).then((e) => {
+    upload.uploadMusic(musicObj).then((e) => {
       console.log(e);
     });
   };
-  console.log(musicObj);
   return (
     <>
       <S.Wrapper>
