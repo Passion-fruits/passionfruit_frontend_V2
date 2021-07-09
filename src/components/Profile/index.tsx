@@ -1,9 +1,10 @@
 import * as S from "./styles";
+import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from "react";
 import Menu from "./menu";
-import ProfileList from "./profileList";
-import TrackList from './trackList';
-import { useRouter } from 'next/router';
+import ProfileList from "./List/profileList";
+import TrackList from './List/trackList';
+import profile from '../../libs/api/profile'
 
 export default function Profile() {
   const url = "https://i1.sndcdn.com/artworks-000169142537-e22x2o-large.jpg";
@@ -11,6 +12,7 @@ export default function Profile() {
   const cv: HTMLCanvasElement = canvas.current;
   const [gradient, setGradient] = useState<string>("");
   const [nowMenu,setNowMenu] = useState<string>("track");
+  const [musicArr,setMusicArr] = useState<any[]>([]);
   const router = useRouter();
   useEffect(() => {
     var img = new Image();
@@ -24,6 +26,13 @@ export default function Profile() {
       if (data) setGradient(`rgba(${data[0]},${data[1]},${data[2]})`);
     };
   });
+  useEffect(()=>{
+    if(router.query.id === "myprofile"){
+     profile.getMyMusic().then((e)=>{
+       setMusicArr(e.data);
+     }) 
+    }
+  },[router])
   return (
     <>
       <canvas style={{ display: "none" }} ref={canvas} />
@@ -49,7 +58,7 @@ export default function Profile() {
               <Menu content="following" value="10" nowMenu={nowMenu} handle={setNowMenu}/>
               <Menu content="playlist" value="10" nowMenu={nowMenu} handle={setNowMenu}/>
           </S.MenuBox>
-          {nowMenu === "track" && <TrackList/>}
+          {nowMenu === "track" && <TrackList musicArr={musicArr}/>}
           {nowMenu === "follower" && <ProfileList/>}
           {nowMenu === "following" && <ProfileList/>}
         </S.Container>
