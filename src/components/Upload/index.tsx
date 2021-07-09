@@ -1,15 +1,17 @@
+import * as S from "./styles";
 import { FileUpload } from "@src/assets";
 import { useEffect, useState } from "react";
-import * as S from "./styles";
 import { MusicObj } from "./../../libs/interfaces/upload";
 import { CoverImg, ImgWrapper } from "styles";
+import { TimeCheck } from "./util/timeCheck";
 import upload from "../../libs/api/upload";
 import FileInput from "./input/fileInput";
 import Select from "./select/select";
-import { TimeCheck } from "./util/timeCheck";
 
 export default function Upload() {
-  const [preview,setPreview] = useState<string>("https://jetekpro.vn/images/noimage.jpg");
+  const [preview, setPreview] = useState<string>(
+    "https://jetekpro.vn/images/noimage.jpg"
+  );
   const [musicObj, setMusicObj] = useState<MusicObj>({
     musicSrc: "",
     coverSrc: "",
@@ -17,8 +19,13 @@ export default function Upload() {
     description: "",
     genre: "1",
     feeling: "1",
-    duration: ""
+    duration: "",
   });
+  const submit = () => {
+    upload.uploadMusic(musicObj).then((e) => {
+      console.log(e);
+    });
+  };
   const getSrc = (target: HTMLInputElement) => {
     setMusicObj({
       ...musicObj,
@@ -32,25 +39,20 @@ export default function Upload() {
       [name]: value,
     });
   };
+  const fileUpload = (id) => document.getElementById(id).click();
   useEffect(() => {
-    TimeCheck(musicObj,setMusicObj);
+    TimeCheck(musicObj, setMusicObj);
   }, [musicObj.musicSrc]);
-  useEffect(()=>{
+  useEffect(() => {
     const reader = new FileReader();
-    reader.onload =(e)=> setPreview(e.target.result.toString());
+    reader.onload = (e) => setPreview(e.target.result.toString());
     musicObj.coverSrc && reader.readAsDataURL(musicObj.coverSrc);
-  },[musicObj.coverSrc])
-  const submit = () => {
-    upload.uploadMusic(musicObj).then((e) => {
-      console.log(e);
-    });
-  };
-  const fileUpload=(id)=>document.getElementById(id).click()
-  console.log(musicObj)
+  }, [musicObj.coverSrc]);
+  console.log(musicObj);
   return (
     <>
       <S.Wrapper>
-        <FileInput event={getSrc}/>
+        <FileInput event={getSrc} />
         <S.Container>
           <S.Description>
             <b>쿤더</b>에서는 음악 업로드에 <b>시간제한</b>이 없습니다.
@@ -59,19 +61,22 @@ export default function Upload() {
             <ImgWrapper>
               <CoverImg src={preview} />
             </ImgWrapper>
-            <S.ChangeCover onClick={()=>fileUpload('coverInp')}>Change Cover</S.ChangeCover>
+            <S.ChangeCover onClick={() => fileUpload("coverInp")}>
+              Change Cover
+            </S.ChangeCover>
           </S.CoverPhotoContainer>
           <S.InputsContainer>
             <S.InpTitle style={{ marginTop: 0 }}>file (mp3)</S.InpTitle>
             <S.FileUpload>
               <input
-                placeholder={musicObj.musicSrc !== "" ? `${musicObj.musicSrc.name}` : "업로드한 파일이 없습니다."}
+                placeholder={
+                  musicObj.musicSrc !== ""
+                    ? `${musicObj.musicSrc.name}`
+                    : "업로드한 파일이 없습니다."
+                }
                 readOnly
               />
-              <S.UPLOAD_BTN
-                width="50px"
-                onClick={()=>fileUpload('musicInp')}
-              >
+              <S.UPLOAD_BTN width="50px" onClick={() => fileUpload("musicInp")}>
                 <FileUpload />
               </S.UPLOAD_BTN>
             </S.FileUpload>
@@ -88,8 +93,16 @@ export default function Upload() {
               onChange={handleMusicObj}
             />
             <S.SelectContainer>
-              <Select name="genre" event={handleMusicObj} listArr={["힙합","브루스"]}/>
-              <Select name="feeling" event={handleMusicObj} listArr={["아침에","뜨거운"]}/>
+              <Select
+                name="genre"
+                event={handleMusicObj}
+                listArr={["힙합", "브루스"]}
+              />
+              <Select
+                name="feeling"
+                event={handleMusicObj}
+                listArr={["아침에", "뜨거운"]}
+              />
             </S.SelectContainer>
             <S.Submit onClick={submit}>음악 공개하기</S.Submit>
           </S.InputsContainer>
