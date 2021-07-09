@@ -30,7 +30,7 @@ export default function Upload() {
     if(musicSrc && coverSrc && title && description && duration){
       setLoading(true);
       upload.uploadMusic(musicObj).then(() => {
-        router.push('/profile/1');
+        router.push('/profile/myprofile');
       })
     }
     else alert('모든 정보를 입력해주세요!')
