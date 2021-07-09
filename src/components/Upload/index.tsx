@@ -6,67 +6,83 @@ import { CoverImg, ImgWrapper } from "styles";
 import upload from "../../libs/api/upload";
 
 export default function Upload() {
-  const [cover, setCover] = useState();
-  const [music, setMusic] = useState();
   const [musicObj, setMusicObj] = useState<MusicObj>({
     musicSrc: "",
     coverSrc: "",
     title: "",
     description: "",
-    genre: "",
-    feeling: "",
+    genre: "1",
+    feeling: "1",
+    duration: ""
   });
-  function getCoverSrc(target: any) {
-    setCover(target.files[0])
-  }
-  function getMusicSrc(target: any) {
-    setMusic(target.files[0])
-  }
+  const getSrc = (target: HTMLInputElement) => {
+    setMusicObj({
+      ...musicObj,
+      [target.name]: target.files[0],
+    });
+  };
+  const handleMusicObj = (e) => {
+    const { name, value } = e.target;
+    setMusicObj({
+      ...musicObj,
+      [name]: value,
+    });
+  };
   // audio 시간 검사
   useEffect(() => {
     if (musicObj.musicSrc !== "") {
-      var audio = new Audio(musicObj.musicSrc);
-      audio.oncanplaythrough = () => {
-        if (audio.duration < 60 || audio.duration > 300) {
-          alert("1분 이상, 5분 이하의 곡을 업로드해주세요!");
+      const reader = new FileReader();
+      reader.readAsDataURL(musicObj.musicSrc);
+      reader.onload = (e) => {
+        const result: any = e.target.result;
+        const audio = new Audio(result);
+        audio.oncanplaythrough = () => {
           setMusicObj({
             ...musicObj,
-            musicSrc: "",
-          });
-        }
+            duration : audio.duration.toString()
+          })
+          if (audio.duration < 60 || audio.duration > 300) {
+            alert("1분 이상, 5분 이하의 곡을 업로드해주세요!");
+            setMusicObj({
+              ...musicObj,
+              musicSrc: "",
+              duration : ""
+            });
+          }
+        };
       };
     }
   }, [musicObj.musicSrc]);
-  const submit = ()=>{
+  const submit = () => {
     var fd = new FormData();
-    fd.append("song", cover)
-    fd.append("song",  music);
-    fd.append("title", "제목제목제목");
-    fd.append("description", "설명");
-    fd.append("genre", "1");
-    fd.append("mood", "1");
-    fd.append("duration", "100");
-    cover && music && upload.uploadMusic(fd).then((e) => {
+    fd.append("song", musicObj.coverSrc);
+    fd.append("song", musicObj.musicSrc);
+    fd.append("title", musicObj.title);
+    fd.append("description", musicObj.description);
+    fd.append("genre", musicObj.genre);
+    fd.append("mood", musicObj.feeling);
+    fd.append("duration", musicObj.duration);
+    upload.uploadMusic(fd).then((e) => {
       console.log(e);
     });
-    upload.getMyMusic().then((e)=>{
-      console.log(e)
-    })
-  }
+  };
+  console.log(musicObj);
   return (
     <>
       <S.Wrapper>
         <input
           type="file"
           id="coverInp"
-          onChange={(e) => getCoverSrc(e.target)}
+          onChange={(e) => getSrc(e.target)}
           accept="image/png, image/jpeg, image/jpg"
+          name="coverSrc"
         />
         <input
           type="file"
           id="musicInp"
-          onChange={(e) => getMusicSrc(e.target)}
+          onChange={(e) => getSrc(e.target)}
           accept="audio/*"
+          name="musicSrc"
         />
         <S.Container>
           <S.Description>
@@ -82,7 +98,7 @@ export default function Upload() {
               margin="20px"
               onClick={() => document.getElementById("coverInp").click()}
             >
-              커버사진 변경
+              Change Cover
             </S.UPLOAD_BTN>
           </S.CoverPhotoContainer>
           {/* 곡 정보 입력창 */}
@@ -92,7 +108,7 @@ export default function Upload() {
               <input
                 placeholder={
                   musicObj.musicSrc !== ""
-                    ? "파일이 업로드 되었습니다."
+                    ? `${musicObj.musicSrc.name}`
                     : "업로드한 파일이 없습니다."
                 }
                 readOnly
@@ -105,22 +121,30 @@ export default function Upload() {
               </S.UPLOAD_BTN>
             </S.FileUpload>
             <S.InpTitle>title</S.InpTitle>
-            <input placeholder="곡 제목을 입력해주세요." />
+            <input
+              placeholder="곡 제목을 입력해주세요. (4글자 이상)"
+              name="title"
+              onChange={handleMusicObj}
+            />
             <S.InpTitle>Description</S.InpTitle>
-            <textarea placeholder="곡에 대한 설명을 적어주세요." />
+            <textarea
+              placeholder="곡에 대한 설명을 적어주세요."
+              name="description"
+              onChange={handleMusicObj}
+            />
             {/* 장르 셀렉트 */}
             <S.SelectContainer>
               <div>
                 <S.InpTitle>Genre</S.InpTitle>
-                <S.Select>
-                  <option value="">힙합</option>
-                  <option value="">브루스</option>
-                  <option value="">기타등등...</option>
+                <S.Select name="genre" onChange={handleMusicObj}>
+                  <option value="1">힙합</option>
+                  <option value="2">브루스</option>
+                  <option value="3">기타등등...</option>
                 </S.Select>
               </div>
               <div>
                 <S.InpTitle>Feeling</S.InpTitle>
-                <S.Select>
+                <S.Select name="feeling" onChange={handleMusicObj}>
                   <option value="">힙합</option>
                   <option value="">브루스</option>
                   <option value="">기타등등...</option>

@@ -5,4 +5,5 @@ export interface MusicObj {
     description : string;
     genre : string;
     feeling : string;
+    duration : string;
 }
