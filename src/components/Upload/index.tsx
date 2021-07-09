@@ -57,7 +57,6 @@ export default function Upload() {
     reader.onload = (e) => setPreview(e.target.result.toString());
     musicObj.coverSrc && reader.readAsDataURL(musicObj.coverSrc);
   }, [musicObj.coverSrc]);
-  console.log(musicObj);
   return (
     <>
      {loading && <LoadingPage/>}
