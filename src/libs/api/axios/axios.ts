@@ -3,7 +3,7 @@ import { DOMAIN } from '../export';
 
 const instance = axios.create({
     baseURL: DOMAIN,
-    timeout: 10000
+    timeout: 100000
 });
 instance.interceptors.request.use(
     function (config) {
