@@ -6,6 +6,7 @@ import { CoverImg, ImgWrapper } from "styles";
 import upload from "../../libs/api/upload";
 
 export default function Upload() {
+  const [preview,setPreview] = useState<string>("");
   const [musicObj, setMusicObj] = useState<MusicObj>({
     musicSrc: "",
     coverSrc: "",
@@ -53,6 +54,11 @@ export default function Upload() {
       };
     }
   }, [musicObj.musicSrc]);
+  useEffect(()=>{
+    const reader = new FileReader();
+    reader.onload =(e)=> setPreview(e.target.result.toString());
+    musicObj.coverSrc && reader.readAsDataURL(musicObj.coverSrc);
+  },[musicObj.coverSrc])
   const submit = () => {
     var fd = new FormData();
     fd.append("song", musicObj.coverSrc);
@@ -91,7 +97,7 @@ export default function Upload() {
           {/* 커버사진 업로드 */}
           <S.CoverPhotoContainer>
             <ImgWrapper>
-              <CoverImg src={musicObj.coverSrc} />
+              <CoverImg src={preview} />
             </ImgWrapper>
             <S.UPLOAD_BTN
               width="100%"
