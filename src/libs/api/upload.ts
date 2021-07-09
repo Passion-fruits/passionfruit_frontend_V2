@@ -4,8 +4,8 @@ import { MusicObj } from './../interfaces/upload';
 export default {
     uploadMusic(musicObj : MusicObj){
         var fd = new FormData();
-        fd.append("song", musicObj.coverSrc);
         fd.append("song", musicObj.musicSrc);
+        fd.append("song", musicObj.coverSrc);
         fd.append("title", musicObj.title);
         fd.append("description", musicObj.description);
         fd.append("genre", musicObj.genre);

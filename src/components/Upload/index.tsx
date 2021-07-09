@@ -4,6 +4,9 @@ import * as S from "./styles";
 import { MusicObj } from "./../../libs/interfaces/upload";
 import { CoverImg, ImgWrapper } from "styles";
 import upload from "../../libs/api/upload";
+import FileInput from "./input/fileInput";
+import Select from "./select/select";
+import { TimeCheck } from "./util/timeCheck";
 
 export default function Upload() {
   const [preview,setPreview] = useState<string>("https://jetekpro.vn/images/noimage.jpg");
@@ -29,30 +32,8 @@ export default function Upload() {
       [name]: value,
     });
   };
-  // audio 시간 검사
   useEffect(() => {
-    if (musicObj.musicSrc !== "") {
-      const reader = new FileReader();
-      reader.readAsDataURL(musicObj.musicSrc);
-      reader.onload = (e) => {
-        const result: any = e.target.result;
-        const audio = new Audio(result);
-        audio.oncanplaythrough = () => {
-          setMusicObj({
-            ...musicObj,
-            duration : audio.duration.toString()
-          })
-          if (audio.duration < 60 || audio.duration > 300) {
-            alert("1분 이상, 5분 이하의 곡을 업로드해주세요!");
-            setMusicObj({
-              ...musicObj,
-              musicSrc: "",
-              duration : ""
-            });
-          }
-        };
-      };
-    }
+    TimeCheck(musicObj,setMusicObj);
   }, [musicObj.musicSrc]);
   useEffect(()=>{
     const reader = new FileReader();
@@ -64,55 +45,32 @@ export default function Upload() {
       console.log(e);
     });
   };
+  const fileUpload=(id)=>document.getElementById(id).click()
+  console.log(musicObj)
   return (
     <>
       <S.Wrapper>
-        <input
-          type="file"
-          id="coverInp"
-          onChange={(e) => getSrc(e.target)}
-          accept="image/png, image/jpeg, image/jpg"
-          name="coverSrc"
-        />
-        <input
-          type="file"
-          id="musicInp"
-          onChange={(e) => getSrc(e.target)}
-          accept="audio/*"
-          name="musicSrc"
-        />
+        <FileInput event={getSrc}/>
         <S.Container>
           <S.Description>
             <b>쿤더</b>에서는 음악 업로드에 <b>시간제한</b>이 없습니다.
           </S.Description>
-          {/* 커버사진 업로드 */}
           <S.CoverPhotoContainer>
             <ImgWrapper>
               <CoverImg src={preview} />
             </ImgWrapper>
-            <S.UPLOAD_BTN
-              width="100%"
-              margin="20px"
-              onClick={() => document.getElementById("coverInp").click()}
-            >
-              Change Cover
-            </S.UPLOAD_BTN>
+            <S.ChangeCover onClick={()=>fileUpload('coverInp')}>Change Cover</S.ChangeCover>
           </S.CoverPhotoContainer>
-          {/* 곡 정보 입력창 */}
           <S.InputsContainer>
             <S.InpTitle style={{ marginTop: 0 }}>file (mp3)</S.InpTitle>
             <S.FileUpload>
               <input
-                placeholder={
-                  musicObj.musicSrc !== ""
-                    ? `${musicObj.musicSrc.name}`
-                    : "업로드한 파일이 없습니다."
-                }
+                placeholder={musicObj.musicSrc !== "" ? `${musicObj.musicSrc.name}` : "업로드한 파일이 없습니다."}
                 readOnly
               />
               <S.UPLOAD_BTN
                 width="50px"
-                onClick={() => document.getElementById("musicInp").click()}
+                onClick={()=>fileUpload('musicInp')}
               >
                 <FileUpload />
               </S.UPLOAD_BTN>
@@ -129,37 +87,11 @@ export default function Upload() {
               name="description"
               onChange={handleMusicObj}
             />
-            {/* 장르 셀렉트 */}
             <S.SelectContainer>
-              <div>
-                <S.InpTitle>Genre</S.InpTitle>
-                <S.Select name="genre" onChange={handleMusicObj}>
-                  <option value="1">힙합</option>
-                  <option value="2">브루스</option>
-                  <option value="3">기타등등...</option>
-                </S.Select>
-              </div>
-              <div>
-                <S.InpTitle>Feeling</S.InpTitle>
-                <S.Select name="feeling" onChange={handleMusicObj}>
-                  <option value="">힙합</option>
-                  <option value="">브루스</option>
-                  <option value="">기타등등...</option>
-                </S.Select>
-              </div>
+              <Select name="genre" event={handleMusicObj} listArr={["힙합","브루스"]}/>
+              <Select name="feeling" event={handleMusicObj} listArr={["아침에","뜨거운"]}/>
             </S.SelectContainer>
-            <S.UPLOAD_BTN
-              width="100%"
-              onClick={submit}
-              margin="30px"
-              style={{
-                padding: "11px 0",
-                fontSize: "17px",
-                marginBottom: "140px",
-              }}
-            >
-              음악 공개하기
-            </S.UPLOAD_BTN>
+            <S.Submit onClick={submit}>음악 공개하기</S.Submit>
           </S.InputsContainer>
         </S.Container>
       </S.Wrapper>

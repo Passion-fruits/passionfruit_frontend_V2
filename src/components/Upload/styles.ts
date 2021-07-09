@@ -2,8 +2,7 @@ import styled from "@emotion/styled";
 import { COLOR, HEADER_HEIGHT } from "styles";
 
 interface UPLOAD_BTN_PROPS {
-  width: string;
-  margin?: string;
+  width?: string;
 }
 
 export const UPLOAD_BTN = styled.button<UPLOAD_BTN_PROPS>`
@@ -12,14 +11,26 @@ export const UPLOAD_BTN = styled.button<UPLOAD_BTN_PROPS>`
   font-size: 15px;
   font-weight: 600;
   padding: 7px 0;
-  width: ${(e) => e.width};
   border-radius: 3px;
-  margin-top: ${(e) => e.margin};
   cursor: pointer;
   transition: 0.4s;
+  width: ${(e) => e.width};
   &:hover {
     opacity: 0.8;
   }
+`;
+
+export const ChangeCover = styled(UPLOAD_BTN)`
+  width: 100%;
+  margin-top: 20px;
+`;
+
+export const Submit = styled(UPLOAD_BTN)`
+  width: 100%;
+  margin-top: 40px;
+  padding: 11px 0;
+  font-size: 17px;
+  margin-bottom: 140px;
 `;
 
 export const Wrapper = styled.div`
@@ -69,8 +80,8 @@ export const CoverPhotoContainer = styled.div`
   & img {
     width: 260px;
     height: 260px;
-    border:1px solid rgb(30,30,30);
-    object-fit:cover;
+    border: 1px solid rgb(30, 30, 30);
+    object-fit: cover;
   }
 `;
 
