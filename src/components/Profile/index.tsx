@@ -28,9 +28,11 @@ export default function Profile() {
   });
   useEffect(()=>{
     if(router.query.id === "myprofile"){
-     profile.getMyMusic().then((e)=>{
-       setMusicArr(e.data);
-     }) 
+     profile.getMyMusic().then((res)=>{
+       setMusicArr(res.data);
+     }).catch((err)=>{
+       console.log(err);
+     })
     }
   },[router])
   return (
@@ -53,7 +55,7 @@ export default function Profile() {
             </S.BtnBox>
           </S.TOP_BAR>
           <S.MenuBox>
-              <Menu content="track" value="10" nowMenu={nowMenu} handle={setNowMenu}/>
+              <Menu content="track" value={musicArr.length} nowMenu={nowMenu} handle={setNowMenu}/>
               <Menu content="follower" value="10" nowMenu={nowMenu} handle={setNowMenu}/>
               <Menu content="following" value="10" nowMenu={nowMenu} handle={setNowMenu}/>
               <Menu content="playlist" value="10" nowMenu={nowMenu} handle={setNowMenu}/>

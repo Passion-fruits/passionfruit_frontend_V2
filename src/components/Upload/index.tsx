@@ -31,6 +31,9 @@ export default function Upload() {
       setLoading(true);
       upload.uploadMusic(musicObj).then(() => {
         router.push('/profile/myprofile');
+      }).catch(()=>{
+        alert('음악을 업로드하는데 실패하였습니다.');
+        setLoading(false);
       })
     }
     else alert('모든 정보를 입력해주세요!')
