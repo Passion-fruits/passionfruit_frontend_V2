@@ -1,16 +1,42 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Comment from "./comment";
 import MusicInformation from "./musicInformation";
+import musicDetail from "../../libs/api/musicDetail";
 import * as S from "./styles";
 
 export default function MusicDetail() {
-  const [gradientColor,setGradientColor] = useState<string>("");
+  const [gradientColor, setGradientColor] = useState<string>("");
+  const [musicObj, setMusicObj] = useState({
+    user_id: "",
+    cover_url: "",
+    song_url: "",
+    title: "",
+    description: "",
+    created_at: "",
+    genre: "",
+    mood: "",
+    artist: "",
+    like: "",
+  });
+  const router = useRouter();
+  useEffect(() => {
+    musicDetail
+      .getMusicInfor(router.query.id)
+      .then((res) => {
+        setMusicObj(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [router]);
   return (
     <S.AllWrapper>
-      <S.BackgroundGradient color={gradientColor}/>
+      <S.BackgroundGradient color={gradientColor} />
       <S.Wrapper>
-        { /* 음악 정보 컴포넌트 */ }
-        <MusicInformation setGradient={setGradientColor} />
+        {/* 음악 정보 컴포넌트 */}
+        <MusicInformation musicObj={musicObj} setGradient={setGradientColor} />
         {/* 댓글 쪽 */}
         <S.CommentContainer>
           <S.ProfileImg src="https://static.highsnobiety.com/thumbor/fJpC1G6h33nBnQllq3f912l8bx8=/1600x1067/static.highsnobiety.com/wp-content/uploads/2015/07/28105919/rapper-snapchat-usernames-main.jpg" />
@@ -28,26 +54,24 @@ export default function MusicDetail() {
           content="곡이 ㅈ되뿌노 ㅋㅋㅋ"
           src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
         />
-                <Comment
+        <Comment
           name="김팔복"
           date="5일 전"
           content="곡이 ㅈ되뿌노 ㅋㅋㅋ"
           src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
         />
-                <Comment
+        <Comment
           name="김팔복"
           date="5일 전"
           content="곡이 ㅈ되뿌노 ㅋㅋㅋ"
           src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
         />
-                <Comment
+        <Comment
           name="김팔복"
           date="5일 전"
           content="곡이 ㅈ되뿌노 ㅋㅋㅋ"
           src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
         />
-
-        
       </S.Wrapper>
     </S.AllWrapper>
   );
