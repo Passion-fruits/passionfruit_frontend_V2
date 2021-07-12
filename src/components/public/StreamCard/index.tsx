@@ -7,7 +7,7 @@ import StreamCardComment from "@src/assets/streamCardComment";
 import { useRouter } from "next/router";
 
 function StreamCard(props) {
-  const { title, name, coverImg, musicUrl,id,genre,like,comment } = props;
+  const { title, name, coverImg, musicUrl,id,genre,like,comment,userId } = props;
   const dispatch = setValue();
   const router = useRouter();
   const changeMusic = () => {

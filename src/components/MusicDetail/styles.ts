@@ -89,6 +89,12 @@ export const SingerWithDate = styled.div`
   margin-top: 14px;
   display: flex;
   align-items: center;
+  & span{
+    cursor: pointer;
+    &:hover{
+      opacity:0.6;
+    }
+  }
   & time {
     margin-left: 7px;
   }

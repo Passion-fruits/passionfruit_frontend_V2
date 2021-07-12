@@ -25,7 +25,6 @@ export default function MusicDetail() {
       .getMusicInfor(router.query.id)
       .then((res) => {
         setMusicObj(res.data);
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
