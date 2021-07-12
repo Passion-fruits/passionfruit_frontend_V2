@@ -9,9 +9,9 @@ export default function TrackList({musicArr}) {
         <StreamCard
           key={index}
           title={e.title}
-          name={e.name}
+          name={e.artist}
           coverImg={e.cover_url}
-          musicUrl={e.musicUrl}
+          musicUrl={e.song_url}
           id={e.id}
           like={e.like}
           genre={e.genre}
