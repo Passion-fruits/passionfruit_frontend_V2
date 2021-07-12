@@ -15,7 +15,7 @@ export default function Select({ event, listArr, name }: props) {
           <option value={index} key={index}>
             {e}
           </option>
-        ))}
+        ))} 
       </S.Select>
     </div>
   );

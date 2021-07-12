@@ -8,32 +8,43 @@ import {
   Alert,
 } from "../../assets/musicDetail";
 import { setValue } from "@src/libs/context";
-import { useEffect,useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 
-interface props{
-  setGradient(e) : void;
-  musicObj : any;
+interface props {
+  setGradient(e): void;
+  musicObj: any;
 }
 
-export default function MusicInformation({setGradient,musicObj} : props) {
-  const {title,artist,cover_url,song_url,created_at,like,description,user_id} = musicObj;
+export default function MusicInformation({ setGradient, musicObj }: props) {
+  const {
+    title,
+    artist,
+    cover_url,
+    song_url,
+    created_at,
+    like,
+    description,
+    user_id,
+  } = musicObj;
   const dispatch = setValue();
   const canvas = useRef();
   const router = useRouter();
   const cv: HTMLCanvasElement = canvas.current;
-  useEffect(()=>{
+
+  useEffect(() => {
     var img = new Image();
     img.crossOrigin = "Anonymous";
     img.src = cover_url;
-    img.onload =()=>{
+    img.onload = () => {
       const ctx = cv?.getContext("2d");
-      ctx?.drawImage(img,0,0,300,300);
+      ctx?.drawImage(img, 0, 0, 300, 300);
       var pixel = ctx?.getImageData(0, 0, 1, 1);
       const data = pixel?.data;
-      if(data) setGradient(`rgba(${data[0]},${data[1]},${data[2]})`)
-    }
-  },[musicObj,cv])
+      if (data) setGradient(`rgba(${data[0]},${data[1]},${data[2]})`);
+    };
+  }, [musicObj, cv]);
+
   const changeMusic = () => {
     dispatch({
       type: "MUSIC_CHANGE",
@@ -45,48 +56,57 @@ export default function MusicInformation({setGradient,musicObj} : props) {
       },
     });
   };
-  const linkToUserProfile=()=>{
-    router.push(`/profile/${user_id}`)
-  }
+
+  const linkToUserProfile = () => {
+    router.push(`/profile/${user_id}`);
+  };
+
   return (
     <>
-      <canvas style={{display:"none"}} ref={canvas}/>
       <S.MusicInforContainer>
+        <canvas style={{ display: "none" }} ref={canvas} />
         <S.CoverImg src={cover_url} />
         <S.DetailContainer>
-          <S.Hashtag>
-            <span># 힙합</span>
-            <span># 힙합</span>
-          </S.Hashtag>
-          <S.Title>
-            <S.PlayBtn onClick={changeMusic}>
-              <Play />
-            </S.PlayBtn>
-            <span>{title}</span>
-          </S.Title>
-          <S.SingerWithDate>
-            <span onClick={linkToUserProfile}>{artist}</span>
-            <S.CIRCLE />
-            <Time />
-            <time>{created_at.substring(0,10)}</time>
-          </S.SingerWithDate>
-          <S.IconBox>
-            <AddPlayList />
-            <Share />
-            <Alert />
-          </S.IconBox>
-          <S.HeartBox>
-            <Heart />
-            <span>{like}</span>
-          </S.HeartBox>
+          <>
+            <S.Hashtag>
+              <span># 힙합</span>
+              <span># 힙합</span>
+            </S.Hashtag>
+          </>
+          <>
+            <S.Title>
+              <S.PlayBtn onClick={changeMusic}>
+                <Play />
+              </S.PlayBtn>
+              <span>{title}</span>
+            </S.Title>
+          </>
+          <>
+            <S.SingerWithDate>
+              <span onClick={linkToUserProfile}>{artist}</span>
+              <S.CIRCLE />
+              <Time />
+              <time>{created_at.substring(0, 10)}</time>
+            </S.SingerWithDate>
+          </>
+          <>
+            <S.IconBox>
+              <AddPlayList />
+              <Share />
+              <Alert />
+            </S.IconBox>
+          </>
+          <>
+            <S.HeartBox>
+              <Heart />
+              <span>{like}</span>
+            </S.HeartBox>
+          </>
         </S.DetailContainer>
       </S.MusicInforContainer>
-      {/* 곡설명 */}
       <S.MusicDescriptionContainer>
         <span>곡에 대한 설명</span>
-        <S.MusicDescripton>
-          {description}
-        </S.MusicDescripton>
+        <S.MusicDescripton>{description}</S.MusicDescripton>
       </S.MusicDescriptionContainer>
     </>
   );
