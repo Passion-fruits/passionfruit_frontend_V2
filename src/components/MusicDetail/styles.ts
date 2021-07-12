@@ -36,6 +36,7 @@ export const MusicInforContainer = styled.div`
 export const CoverImg = styled.img`
   width: 200px;
   height: 200px;
+  object-fit:cover;
 `;
 
 export const DetailContainer = styled.div`
@@ -88,6 +89,12 @@ export const SingerWithDate = styled.div`
   margin-top: 14px;
   display: flex;
   align-items: center;
+  & span{
+    cursor: pointer;
+    &:hover{
+      opacity:0.6;
+    }
+  }
   & time {
     margin-left: 7px;
   }

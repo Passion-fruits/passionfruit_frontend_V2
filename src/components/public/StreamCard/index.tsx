@@ -6,8 +6,8 @@ import StreamCardHeart from "@src/assets/streamCardHeart";
 import StreamCardComment from "@src/assets/streamCardComment";
 import { useRouter } from "next/router";
 
-function StreamCard(props: StreamCardProps) {
-  const { title, name, coverImg, musicUrl } = props;
+function StreamCard(props) {
+  const { title, name, coverImg, musicUrl,id,genre,like,comment,userId } = props;
   const dispatch = setValue();
   const router = useRouter();
   const changeMusic = () => {
@@ -24,7 +24,7 @@ function StreamCard(props: StreamCardProps) {
 
   const enterMusicDetail = (e) => {
     if (e.target.id !== "wrapper") return;
-    router.push("/musicDetail/3");
+    router.push(`/musicDetail/${id}`);
   };
 
   return (
@@ -40,13 +40,13 @@ function StreamCard(props: StreamCardProps) {
       <S.Title>{title}</S.Title>
       <S.UserName>{name}</S.UserName>
       <S.BottomContainer>
-        <p># 힙합</p>
+        <p># {genre}</p>
         <div>
           <span>
-            <StreamCardComment /> <b>12</b>
+            <StreamCardComment /> <b>{comment}</b>
           </span>
           <span>
-            <StreamCardHeart /> <b>6</b>
+            <StreamCardHeart /> <b>{like}</b>
           </span>
         </div>
       </S.BottomContainer>
