@@ -25,7 +25,7 @@ export default function Profile() {
       const data = pixel?.data;
       if (data) setGradient(`rgba(${data[0]},${data[1]},${data[2]})`);
     };
-  });
+  },[cv]);
   useEffect(()=>{
     if(router.query.id === "myprofile"){
      profile.getMyMusic().then((res)=>{

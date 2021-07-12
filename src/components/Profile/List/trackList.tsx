@@ -12,7 +12,7 @@ export default function TrackList({musicArr}) {
           name={e.artist}
           coverImg={e.cover_url}
           musicUrl={e.song_url}
-          id={e.id}
+          id={e.song_id}
           like={e.like}
           genre={e.genre}
           comment={e.comment}
