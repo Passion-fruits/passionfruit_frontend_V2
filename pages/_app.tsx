@@ -1,8 +1,8 @@
 import { PlayBar } from "@src/components/public";
 import { SampleProvider } from "@src/libs/context";
-import "../styles/globals.css";
-import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import "../styles/globals.css";
 import LoadingPage from "@src/components/public/Loading";
 
 function MyApp({ Component, pageProps }) {

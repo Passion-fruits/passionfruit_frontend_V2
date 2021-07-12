@@ -124,6 +124,7 @@ export const FileUpload = styled.div`
     cursor: pointer;
     transition: 0.4s;
     width: 50px;
+    margin: 0;
     &:hover {
       opacity: 0.8;
     }

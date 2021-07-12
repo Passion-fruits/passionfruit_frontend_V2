@@ -57,8 +57,9 @@ export default function Upload() {
     });
   };
 
-  const fileUpload = (event) =>
-    document.getElementById(event.target.name).click();
+  const fileUpload = (id) =>{
+    document.getElementById(id).click(); 
+  }
 
   useEffect(() => {
     TimeCheck(musicObj, setMusicObj);
@@ -86,7 +87,7 @@ export default function Upload() {
               <ImgWrapper>
                 <CoverImg src={preview} />
               </ImgWrapper>
-              <button name="coverInp" onClick={fileUpload}>
+              <button onClick={()=>fileUpload('coverInp')}>
                 Change Cover
               </button>
             </S.CoverPhotoContainer>
@@ -97,11 +98,10 @@ export default function Upload() {
                 <h1>file (mp3)</h1>
                 <S.FileUpload>
                   <input
-                    placeholder="업로드한 파일이 없습니다."
-                    value={musicSrc.name}
+                    placeholder={musicSrc ? musicSrc.name : "업로드한 파일이 없습니다."}
                     readOnly
                   />
-                  <button name="musicInp" onClick={fileUpload}>
+                  <button onClick={()=>fileUpload('musicInp')}>
                     <FileUpload />
                   </button>
                 </S.FileUpload>
@@ -136,7 +136,7 @@ export default function Upload() {
                   />
                 </S.SelectContainer>
               </>
-               <button onClick={submit}>음악 공개하기</button> 
+              <button onClick={submit}>음악 공개하기</button>
             </S.InputsContainer>
           </>
         </S.Container>
