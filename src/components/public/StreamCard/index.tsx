@@ -21,7 +21,6 @@ function StreamCard(props) {
       },
     });
   };
-
   const enterMusicDetail = (e) => {
     if (e.target.id !== "wrapper") return;
     router.push(`/musicDetail/${id}`);

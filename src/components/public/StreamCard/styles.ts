@@ -32,7 +32,6 @@ export const ImgWrapper = styled.div`
     visibility: visible;
   }
 `;
-
 export const PlayButton = styled.button`
   width: 56px;
   height: 56px;
@@ -48,7 +47,6 @@ export const PlayButton = styled.button`
     height: 60px;
   }
 `;
-
 export const CoverImg = styled.img`
   width: 100%;
   height: 100%;
