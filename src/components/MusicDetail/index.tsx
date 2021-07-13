@@ -20,7 +20,7 @@ export default function MusicDetail() {
     like: "",
   });
   const router = useRouter();
-  
+
   useEffect(() => {
     musicDetail
       .getMusicInfor(router.query.id)
@@ -44,41 +44,22 @@ export default function MusicDetail() {
         </>
         <>
           <S.CommentContainer>
-            <S.ProfileImg src="https://static.highsnobiety.com/thumbor/fJpC1G6h33nBnQllq3f912l8bx8=/1600x1067/static.highsnobiety.com/wp-content/uploads/2015/07/28105919/rapper-snapchat-usernames-main.jpg" />
-            <S.Input placeholder="공개댓글 추가 ( 엔터를 누르면 등록됩니다. )" />
-            <S.InputLimit>0 / 220</S.InputLimit>
+            <input placeholder="공개댓글 추가 ( 엔터를 누르면 등록됩니다. )" />
+            <span>0 / 220</span>
           </S.CommentContainer>
         </>
         <>
           <S.CommentBoundary>
-            Comment <span>(15)</span>
+            전체댓글 <span>15개</span>
           </S.CommentBoundary>
         </>
         <>
-          <Comment
+{/*           <Comment
             name="김팔복"
             date="5일 전"
             content="곡이 ㅈ되뿌노 ㅋㅋㅋ"
             src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
-          />
-          <Comment
-            name="김팔복"
-            date="5일 전"
-            content="곡이 ㅈ되뿌노 ㅋㅋㅋ"
-            src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
-          />
-          <Comment
-            name="김팔복"
-            date="5일 전"
-            content="곡이 ㅈ되뿌노 ㅋㅋㅋ"
-            src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
-          />
-          <Comment
-            name="김팔복"
-            date="5일 전"
-            content="곡이 ㅈ되뿌노 ㅋㅋㅋ"
-            src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
-          />
+          /> */}
         </>
       </S.Wrapper>
     </S.AllWrapper>

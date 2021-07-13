@@ -1,4 +1,7 @@
 import * as S from "./styles";
+import { setValue } from "@src/libs/context";
+import { useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 import {
   Play,
   Heart,
@@ -7,9 +10,6 @@ import {
   Share,
   Alert,
 } from "../../assets/musicDetail";
-import { setValue } from "@src/libs/context";
-import { useEffect, useRef } from "react";
-import { useRouter } from "next/router";
 
 interface props {
   setGradient(e): void;
@@ -32,19 +32,6 @@ export default function MusicInformation({ setGradient, musicObj }: props) {
   const router = useRouter();
   const cv: HTMLCanvasElement = canvas.current;
 
-  useEffect(() => {
-    var img = new Image();
-    img.crossOrigin = "Anonymous";
-    img.src = cover_url;
-    img.onload = () => {
-      const ctx = cv?.getContext("2d");
-      ctx?.drawImage(img, 0, 0, 300, 300);
-      var pixel = ctx?.getImageData(0, 0, 1, 1);
-      const data = pixel?.data;
-      if (data) setGradient(`rgba(${data[0]},${data[1]},${data[2]})`);
-    };
-  }, [musicObj, cv]);
-
   const changeMusic = () => {
     dispatch({
       type: "MUSIC_CHANGE",
@@ -60,6 +47,19 @@ export default function MusicInformation({ setGradient, musicObj }: props) {
   const linkToUserProfile = () => {
     router.push(`/profile/${user_id}`);
   };
+
+  useEffect(() => {
+    var img = new Image();
+    img.crossOrigin = "Anonymous";
+    img.src = cover_url;
+    img.onload = () => {
+      const ctx = cv?.getContext("2d");
+      ctx?.drawImage(img, 0, 0, 300, 300);
+      var pixel = ctx?.getImageData(0, 0, 1, 1);
+      const data = pixel?.data;
+      if (data) setGradient(`rgba(${data[0]},${data[1]},${data[2]})`);
+    };
+  }, [musicObj, cv]);
 
   return (
     <>
