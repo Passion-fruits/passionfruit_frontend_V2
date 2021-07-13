@@ -7,20 +7,40 @@ import Pause from './../../../assets/pause';
 import { lpad } from './../../../libs/functions/lpad';
 import { ControlerProps } from "@src/libs/interfaces/playBar";
 
-export default function Controler({volume} : ControlerProps) {
+export default function Controler({volume,musicUrl} : ControlerProps) {
   const [playBool,setPlayBool] = useState<boolean>(false);
-  const [music] = useState(typeof Audio !== "undefined" && new Audio("https://p.scdn.co/mp3-preview/ed802aef330353ab73debe7d59fda5dbbe060867?cid=53603d8d7f0e4e2a85cb1339d65303ce"));
+  const [music,setMusic] = useState(typeof Audio !== "undefined" && new Audio(musicUrl));
   const [progress,setProgress] = useState<number>(0);
   const [time,setTime] = useState<number>(0);
   const [change,setChange] = useState<boolean>(false);
+  const [musicLoader,setMusicLoader] = useState<boolean>(false);
   const PlayBoolRef = useRef(playBool);
   const ChangeRef = useRef(change);
   PlayBoolRef.current = playBool;
   ChangeRef.current = change;
 
   useEffect(()=>{
+      setPlayBool(false);
+      setTimeout(()=>{setMusic(typeof Audio !== "undefined" && new Audio(musicUrl));},100)
+  },[musicUrl])
+
+  useEffect(()=>{
+    if(musicUrl!==''){
+      if(isNaN(music.duration)){
+        setTimeout(()=>{setMusicLoader(!musicLoader);},100)
+      }     
+      else{
+        setTime(0);
+        setPlayBool(true);
+        setProgress(0);
+        music.currentTime = 0; 
+      }
+    }
+  },[music,musicLoader])
+
+  useEffect(()=>{
     if(music) music.volume = volume;
-  },[volume])
+  },[volume,musicLoader])
 
   useEffect(() => {
     if (playBool) {

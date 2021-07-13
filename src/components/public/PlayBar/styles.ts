@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 import { ProgressBarProps } from "@src/libs/interfaces/playBar";
-import { COLOR, MAIN_WIDTH } from "styles";
+import { COLOR, MAIN_WIDTH, PLAYBAR_HEIGHT } from "styles";
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 110px;
+  height: ${PLAYBAR_HEIGHT};
   background: black;
   position: fixed;
   bottom: 0;
@@ -33,6 +33,7 @@ export const MusicInforContainer = styled.div`
 export const CoverImg = styled.img`
   width: 80px;
   height: 80px;
+  object-fit:cover;
 `;
 
 export const InforContainer = styled.div`
@@ -164,3 +165,14 @@ export const VolumeBar = styled.input`
     height:4px;
   }
 `;
+
+export const notMusic = styled.div`
+width:80px;
+height:80px;
+background:#606060;
+display:flex;
+justify-content:center;
+align-items:center;
+color:whitesmoke;
+font-size:12px;
+`

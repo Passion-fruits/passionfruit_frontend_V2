@@ -5,7 +5,7 @@ export default function Pause({ onClickEvent }: SvgProps) {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="18.032"
-      height="22"
+      height="20.725"
       viewBox="0 0 18.032 22"
       onClick={onClickEvent}
       className="svg"

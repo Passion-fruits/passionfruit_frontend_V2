@@ -4,23 +4,31 @@ export const HEADER_HEIGHT = "100px";
 
 export const MAIN_WIDTH = "1260px";
 
+export const CARD_WIDTH = "220px";
+
+export const PLAYBAR_HEIGHT = "110px";
+
 export const COLOR = {
   pink: "#D800AC",
   green: "#8FFFB1",
   main: "#212121",
   blue: "#0099FF",
+  dark: "#161616"
 };
 
-/*
- <ImgWrapper>
-    <CoverImg src={src명}/>
- </ImgWrapper>
- */
 export const ImgWrapper = styled.div`
   position: relative;
   width: 100%;
   padding-bottom: 100%;
 `;
+
+export const CircleImgWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  overflow:hidden;
+  border-radius:80%;
+`
 
 export const CoverImg = styled.img`
   width: 100%;
