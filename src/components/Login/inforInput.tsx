@@ -1,5 +1,5 @@
 import * as S from "./styles";
-import Wave from "./wave";
+import Wave from "./components/wave";
 import { useState } from "react";
 import { COLOR } from "styles";
 import { GenreKinds } from "./../../libs/exportFile/genre";
@@ -12,20 +12,24 @@ export default function InforInput() {
     check: false,
   });
   const [toggle, setToggle] = useState<"before" | "after">("before");
+  
   const handling = (e): void => {
     setUserObj({
       ...userObj,
       name: e.target.value,
     });
   };
+
   const submit = (e) => {
     e.preventDefault();
     setToggle("after");
   };
+
   const checkStyle = {
     border: `1px solid ${COLOR.blue}`,
     color: COLOR.blue,
   };
+
   return (
     <S.Wrapper>
       <Wave />
