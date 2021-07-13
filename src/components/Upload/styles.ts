@@ -1,38 +1,6 @@
 import styled from "@emotion/styled";
 import { COLOR, HEADER_HEIGHT } from "styles";
 
-interface UPLOAD_BTN_PROPS {
-  width?: string;
-}
-
-export const UPLOAD_BTN = styled.button<UPLOAD_BTN_PROPS>`
-  background: ${COLOR.blue};
-  color: white;
-  font-size: 15px;
-  font-weight: 600;
-  padding: 7px 0;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: 0.4s;
-  width: ${(e) => e.width};
-  &:hover {
-    opacity: 0.8;
-  }
-`;
-
-export const ChangeCover = styled(UPLOAD_BTN)`
-  width: 100%;
-  margin-top: 20px;
-`;
-
-export const Submit = styled(UPLOAD_BTN)`
-  width: 100%;
-  margin-top: 40px;
-  padding: 11px 0;
-  font-size: 17px;
-  margin-bottom: 140px;
-`;
-
 export const Wrapper = styled.div`
   width: 100%;
   padding-top: ${HEADER_HEIGHT};
@@ -83,12 +51,31 @@ export const CoverPhotoContainer = styled.div`
     border: 1px solid rgb(30, 30, 30);
     object-fit: cover;
   }
+  & button {
+    background: ${COLOR.blue};
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 7px 0;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.4s;
+    margin-top: 20px;
+  }
 `;
 
 export const InputsContainer = styled.div`
   height: 30px;
   grid-area: inputs;
   width: 650px;
+  & h1 {
+    margin-top: 0;
+    color: white;
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 17px;
+    margin-bottom: 17px;
+  }
   & input,
   textarea {
     background: #303030;
@@ -98,6 +85,7 @@ export const InputsContainer = styled.div`
     padding: 13px 20px;
     font-size: 15px;
     width: 100%;
+    margin-bottom: 20px;
     &::placeholder {
       color: #c2c2c2;
     }
@@ -107,26 +95,44 @@ export const InputsContainer = styled.div`
     resize: none;
     outline: none;
   }
+  & button {
+    background: ${COLOR.blue};
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 7px 0;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.4s;
+    width: 100%;
+    margin-top: 40px;
+    padding: 11px 0;
+    margin-bottom: 140px;
+  }
 `;
 
 export const FileUpload = styled.div`
   display: flex;
   justify-content: space-between;
   & button {
+    background: ${COLOR.blue};
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 7px 0;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.4s;
+    width: 50px;
+    margin: 0;
+    &:hover {
+      opacity: 0.8;
+    }
     height: 100%;
   }
   & input {
     width: 580px;
   }
-`;
-
-export const InpTitle = styled.div`
-  color: white;
-  font-weight: bold;
-  text-transform: capitalize;
-  font-size: 17px;
-  margin-top: 20px;
-  margin-bottom: 17px;
 `;
 
 export const SelectContainer = styled.div`
