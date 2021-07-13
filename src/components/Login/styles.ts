@@ -74,7 +74,7 @@ export const SNSContainer = styled.div`
   color: ${({ fontColor = "white" }: Props) => fontColor};
   font-weight: 800;
   text-align: center;
-  font-size: 15px;
+  font-size: 17px;
   border-radius: 3px;
   margin-top: 15px;
   cursor: pointer;
