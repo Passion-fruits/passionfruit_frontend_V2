@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import Comment from "./comment";
 import MusicInformation from "./musicInformation";
-import musicDetail from "../../libs/api/musicDetail";
 import * as S from "./styles";
 
-export default function MusicDetail() {
+export default function MusicDetail({arr}) {
   const [gradientColor, setGradientColor] = useState<string>("");
   const [musicObj, setMusicObj] = useState({
     user_id: "",
@@ -19,18 +17,10 @@ export default function MusicDetail() {
     artist: "",
     like: "",
   });
-  const router = useRouter();
 
   useEffect(() => {
-    musicDetail
-      .getMusicInfor(router.query.id)
-      .then((res) => {
-        setMusicObj(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [router]);
+    setMusicObj(arr);
+  }, []);
 
   return (
     <S.AllWrapper>
