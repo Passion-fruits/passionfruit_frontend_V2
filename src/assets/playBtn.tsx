@@ -8,7 +8,6 @@ export default function PlayBtn({ onClickEvent }: SvgProps) {
       height="20.725"
       viewBox="0 0 18.309 20.725"
       onClick={onClickEvent}
-      className="svg"
     >
       <path
         id="다각형5"
