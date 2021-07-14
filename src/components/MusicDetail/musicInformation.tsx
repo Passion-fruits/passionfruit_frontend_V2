@@ -51,7 +51,7 @@ export default function MusicInformation({ setGradient, musicObj }: props) {
   useEffect(() => {
     var img = new Image();
     img.crossOrigin = "Anonymous";
-    img.src = cover_url;
+    img.src = cover_url + '?' + new Date().getTime()
     img.onload = () => {
       const ctx = cv?.getContext("2d");
       ctx?.drawImage(img, 0, 0, 300, 300);
@@ -59,7 +59,7 @@ export default function MusicInformation({ setGradient, musicObj }: props) {
       const data = pixel?.data;
       if (data) setGradient(`rgba(${data[0]},${data[1]},${data[2]})`);
     };
-  }, [musicObj, cv]);
+  }, [cover_url, cv]);
 
   return (
     <>
