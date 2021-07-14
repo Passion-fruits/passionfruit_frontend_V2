@@ -58,25 +58,12 @@ export const Hashtag = styled.div`
   }
 `;
 
-export const PlayBtn = styled.button`
-  width: 35px;
-  height: 35px;
-  border-radius: 80%;
-  border: 2px solid white;
-  padding-left: 12px;
-  padding-top: 2px;
-  margin-right: 10px;
-  cursor: pointer;
-  &:hover {
-    opacity: 0.8;
-  }
-`;
-
 export const Title = styled.div`
   margin-top: 15px;
   display: flex;
   align-items: center;
   & span {
+    margin-left: 10px;
     color: white;
     font-size: 30px;
     font-weight: 800;
@@ -242,7 +229,7 @@ export const CommentBoundary = styled.div`
   font-size: 17px;
   font-weight: bold;
   margin-top: 30px;
-  border-bottom: 1px solid rgb(60,60,60);
+  border-bottom: 1px solid rgb(60, 60, 60);
   padding-bottom: 15px;
   & span {
     font-weight: 500;

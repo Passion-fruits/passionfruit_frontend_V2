@@ -3,13 +3,13 @@ import { setValue } from "@src/libs/context";
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import {
-  Play,
   Heart,
   Time,
   AddPlayList,
   Share,
   Alert,
 } from "../../assets/musicDetail";
+import { Play } from "@src/assets";
 
 interface props {
   setGradient(e): void;
@@ -75,9 +75,7 @@ export default function MusicInformation({ setGradient, musicObj }: props) {
           </>
           <>
             <S.Title>
-              <S.PlayBtn onClick={changeMusic}>
-                <Play />
-              </S.PlayBtn>
+              <Play size="40" type="white" clickCallback={changeMusic} />
               <span>{title}</span>
             </S.Title>
           </>

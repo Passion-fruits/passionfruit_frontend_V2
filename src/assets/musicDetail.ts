@@ -1,4 +1,3 @@
-export {default as Play} from './musicDetail/play'
 export {default as AddPlayList} from './musicDetail/addPlayList'
 export {default as Share} from './musicDetail/share'
 export {default as Alert} from './musicDetail/alert'
