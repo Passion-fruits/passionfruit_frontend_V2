@@ -4,6 +4,7 @@ import { Play } from "../../../assets";
 import Comment from "../../../assets/comment";
 import Heart from "../../../assets/heart";
 import { FeedCardProps } from "./../../../libs/interfaces/feed";
+import { useRouter } from "next/router";
 
 function FeedCard(param: FeedCardProps) {
   const {
@@ -20,17 +21,24 @@ function FeedCard(param: FeedCardProps) {
     song_id,
     user_id,
   } = param;
+  const router = useRouter();
+  const viewProfile = (): void => {
+    router.push(`/profile/${user_id}`);
+  };
+  const viewMusicDetail = (): void => {
+    router.push(`/musicDetail/${song_id}`);
+  };
   return (
     <S.Container>
       <>
         <S.UserWrapper>
-          <img src={profile_url} />
+          <img onClick={viewProfile} src={profile_url} />
           <span>{user_name}</span>
         </S.UserWrapper>
       </>
       <>
         <S.Wrapper>
-          <S.CoverImg src={cover_url} />
+          <S.CoverImg onClick={viewMusicDetail} src={cover_url} />
           <S.Content>
             <time>{date}</time>
             <S.TitleWrapper>

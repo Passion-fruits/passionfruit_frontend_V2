@@ -15,6 +15,7 @@ export const Container = styled.div`
   display: flex;
   justify-content:space-between;
   position:relative;
+  padding-bottom:50px;
   & div{
       position:relative;
   }

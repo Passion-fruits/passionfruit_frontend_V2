@@ -8,6 +8,12 @@ export const Container = styled.div`
   background: #242424;
   border-radius: 10px;
   position: relative;
+  & img {
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -53,7 +59,7 @@ export const Des = styled.p`
   margin: 0;
   margin-top: 30px;
   line-height: 20px;
-margin-bottom:10px;
+  margin-bottom: 10px;
 `;
 
 export const UserWrapper = styled.div`
@@ -90,6 +96,6 @@ export const PointerWrapper = styled.div`
 
 export const Value = styled.span`
   color: white;
-  font-size: 13px;
+  font-size: 15px;
   margin-left: 7px;
 `;

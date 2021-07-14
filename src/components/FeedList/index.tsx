@@ -18,8 +18,88 @@ export default function Feed() {
       description: "제가 진짜 어렵게 만든 곡이니만큼 열심히 들어주세요!!",
       heart: "1",
       comment: "2",
-      song_id: "",
-      user_id: "",
+      song_id: "2",
+      user_id: "1",
+    },
+    {
+      profile_url:
+        "https://file2.nocutnews.co.kr/newsroom/image/2020/12/10/20201210141744836229_8_450_300.jpg",
+      cover_url:
+        "https://i.pinimg.com/736x/9a/06/39/9a063997299f58d5efe4765af4c12891.jpg",
+      song_url: "",
+      user_name: "윤준식",
+      date: "2020-07-14",
+      title: "when the nice morning",
+      tag: ["힙합", "아침에"],
+      description: "제가 진짜 어렵게 만든 곡이니만큼 열심히 들어주세요!!",
+      heart: "1",
+      comment: "2",
+      song_id: "2",
+      user_id: "1",
+    },
+    {
+      profile_url:
+        "https://file2.nocutnews.co.kr/newsroom/image/2020/12/10/20201210141744836229_8_450_300.jpg",
+      cover_url:
+        "https://i.pinimg.com/736x/9a/06/39/9a063997299f58d5efe4765af4c12891.jpg",
+      song_url: "",
+      user_name: "윤준식",
+      date: "2020-07-14",
+      title: "when the nice morning",
+      tag: ["힙합", "아침에"],
+      description: "제가 진짜 어렵게 만든 곡이니만큼 열심히 들어주세요!!",
+      heart: "1",
+      comment: "2",
+      song_id: "2",
+      user_id: "1",
+    },
+    {
+      profile_url:
+        "https://file2.nocutnews.co.kr/newsroom/image/2020/12/10/20201210141744836229_8_450_300.jpg",
+      cover_url:
+        "https://i.pinimg.com/736x/9a/06/39/9a063997299f58d5efe4765af4c12891.jpg",
+      song_url: "",
+      user_name: "윤준식",
+      date: "2020-07-14",
+      title: "when the nice morning",
+      tag: ["힙합", "아침에"],
+      description: "제가 진짜 어렵게 만든 곡이니만큼 열심히 들어주세요!!",
+      heart: "1",
+      comment: "2",
+      song_id: "2",
+      user_id: "1",
+    },
+    {
+      profile_url:
+        "https://file2.nocutnews.co.kr/newsroom/image/2020/12/10/20201210141744836229_8_450_300.jpg",
+      cover_url:
+        "https://i.pinimg.com/736x/9a/06/39/9a063997299f58d5efe4765af4c12891.jpg",
+      song_url: "",
+      user_name: "윤준식",
+      date: "2020-07-14",
+      title: "when the nice morning",
+      tag: ["힙합", "아침에"],
+      description: "제가 진짜 어렵게 만든 곡이니만큼 열심히 들어주세요!!",
+      heart: "1",
+      comment: "2",
+      song_id: "2",
+      user_id: "1",
+    },
+    {
+      profile_url:
+        "https://file2.nocutnews.co.kr/newsroom/image/2020/12/10/20201210141744836229_8_450_300.jpg",
+      cover_url:
+        "https://i.pinimg.com/736x/9a/06/39/9a063997299f58d5efe4765af4c12891.jpg",
+      song_url: "",
+      user_name: "윤준식",
+      date: "2020-07-14",
+      title: "when the nice morning",
+      tag: ["힙합", "아침에"],
+      description: "제가 진짜 어렵게 만든 곡이니만큼 열심히 들어주세요!!",
+      heart: "1",
+      comment: "2",
+      song_id: "2",
+      user_id: "1",
     },
   ];
   return (
