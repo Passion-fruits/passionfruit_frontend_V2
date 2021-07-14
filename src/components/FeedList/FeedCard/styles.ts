@@ -30,11 +30,10 @@ export const Content = styled.div`
     justify-content: space-between;
     padding-bottom: 45px;
     position: relative;
-`;
-
-export const Date = styled.span`
-    font-size: 11px;
+    & time{
+        font-size: 11px;
     color: #c2c2c2;
+    }
 `;
 
 export const TitleWrapper = styled.div`
@@ -52,31 +51,30 @@ export const Des = styled.p`
     font-size: 15px;
     color: #fff5f5;
     margin: 15px 0 0;
+    line-height:20px;
 `;
 
 export const UserWrapper = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-`;
-
-export const UserAvatar = styled.img`
-    width: 40px;
+    & img{
+        width: 40px;
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
     margin-right: 10px;
-`;
-
-export const UserName = styled.span`
-    font-size: 14px;
+    }
+    & span {
+        font-size: 14px;
     color: #fff5f5;
     font-weight: bold;
+    }
 `;
 
 export const IconWrapper = styled.div`
     position: absolute;
-    left: 530px;
+    left: 510px;
     bottom: 25px;
     display: flex;
     height: 23px;
