@@ -10,7 +10,7 @@ export default function MusicDetailPage({ arr }) {
       arr && (
         <>
         <Head>
-          <title>{arr.title} - KUNDER</title>
+          <title>{arr.title} | KUNDER</title>
           <meta name="description" content={arr.description}></meta>
         </Head>
         <LayoutContainer children={<MusicDetail arr={arr} />} />
