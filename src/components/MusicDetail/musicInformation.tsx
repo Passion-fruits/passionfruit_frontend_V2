@@ -1,6 +1,6 @@
 import * as S from "./styles";
 import { setValue } from "@src/libs/context";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import {
   Heart,

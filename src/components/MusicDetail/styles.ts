@@ -46,7 +46,7 @@ export const DetailContainer = styled.div`
   padding-top: 10px;
   position: relative;
   padding-left: 30px;
-  width: calc(100% - 250px);
+  width: calc(100% - 25k0px);
 `;
 
 export const Title = styled.div`

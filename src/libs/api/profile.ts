@@ -4,7 +4,7 @@ import { TOKEN } from './export'
 export default {
     getMyMusic(){
         return request({
-            url : '/api/song',
+            url : '/song',
             method:'get',
             headers:{
                 "Authorization" : `Bearer ${TOKEN}`
@@ -13,7 +13,7 @@ export default {
     },
     getMyProfile(){
         return request({
-            url : '/api/profile',
+            url : '/profile',
             method : 'get',
             headers :{
                 "Content-type" : "application/json",

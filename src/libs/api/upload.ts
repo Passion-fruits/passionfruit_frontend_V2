@@ -13,7 +13,7 @@ export default {
         fd.append("mood", musicObj.feeling);
         fd.append("duration", musicObj.duration);
         return request({
-            url : '/api/song',
+            url : '/song',
             method:'post',
             headers:{
                 "Content-Type": "multipart/form-data",
