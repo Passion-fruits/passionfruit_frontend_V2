@@ -72,13 +72,13 @@ export const BtnBox = styled.div`
     text-transform: capitalize;
     font-weight: bold;
     border-radius: 5px;
-    background: ${COLOR.blue};
-    color: white;
+    background: white;
+    color: black;
     cursor: pointer;
-    &:last-of-type {
-      background: white;
-      color: black;
-      margin-left: 15px;
+    &:first-of-type {
+      background: ${COLOR.blue};
+    color: white;
+      margin-right: 15px;
     }
   }
 `;
