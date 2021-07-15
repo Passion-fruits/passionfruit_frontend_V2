@@ -4,10 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import Menu from "./menu";
 import ProfileList from "./List/profileList";
 import TrackList from "./List/trackList";
-import profile from "../../libs/api/profile";
+import profileRequest from "../../libs/api/profile";
 
-export default function Profile() {
-  const url = "https://i1.sndcdn.com/artworks-000169142537-e22x2o-large.jpg";
+export default function Profile({ profileObj }) {
+  const { email, name, profile } = profileObj;
+  const url = profile;
   const canvas = useRef();
   const cv: HTMLCanvasElement = canvas.current;
   const [gradient, setGradient] = useState<string>("");
@@ -19,11 +20,11 @@ export default function Profile() {
   useEffect(() => {
     var img = new Image();
     img.crossOrigin = "Anonymous";
-    img.src = url;
+    img.src = url + "?" + new Date().getTime();
     img.onload = () => {
       const ctx = cv?.getContext("2d");
       ctx?.drawImage(img, 0, 0, 300, 300);
-      var pixel = ctx?.getImageData(50, 50, 1, 1);
+      var pixel = ctx?.getImageData(0, 0, 1, 1);
       const data = pixel?.data;
       if (data) setGradient(`rgba(${data[0]},${data[1]},${data[2]})`);
     };
@@ -31,7 +32,7 @@ export default function Profile() {
 
   useEffect(() => {
     if (id === "myprofile") {
-      profile
+      profileRequest
         .getMyMusic()
         .then((res) => {
           setMusicArr(res.data);
@@ -52,8 +53,8 @@ export default function Profile() {
             <S.ProfileInfor>
               <S.Profile src={url} />
               <S.UserInfor>
-                <h1>hash swan</h1>
-                <span>jidole041214@naver.com</span>
+                <h1>{name}</h1>
+                <span>{email}</span>
               </S.UserInfor>
             </S.ProfileInfor>
             <S.BtnBox>

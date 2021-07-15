@@ -10,5 +10,15 @@ export default {
                 "Authorization" : `Bearer ${TOKEN}`
             }
         })
+    },
+    getMyProfile(){
+        return request({
+            url : '/api/profile',
+            method : 'get',
+            headers :{
+                "Content-type" : "application/json",
+                "Authorization" : `Bearer ${TOKEN}`
+            }
+        })
     }
 }
