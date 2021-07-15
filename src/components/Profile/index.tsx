@@ -5,10 +5,10 @@ import Menu from "./menu";
 import ProfileList from "./List/profileList";
 import TrackList from "./List/trackList";
 import profileRequest from "../../libs/api/profile";
+import { ColorThief } from "@src/libs/functions/colorThief";
 
 export default function Profile({ profileObj }) {
   const { email, name, profile } = profileObj;
-  const url = profile;
   const canvas = useRef();
   const cv: HTMLCanvasElement = canvas.current;
   const [gradient, setGradient] = useState<string>("");
@@ -18,16 +18,11 @@ export default function Profile({ profileObj }) {
   const id = router.query.id;
 
   useEffect(() => {
-    var img = new Image();
-    img.crossOrigin = "Anonymous";
-    img.src = url + "?" + new Date().getTime();
-    img.onload = () => {
-      const ctx = cv?.getContext("2d");
-      ctx?.drawImage(img, 0, 0, 300, 300);
-      var pixel = ctx?.getImageData(0, 0, 1, 1);
-      const data = pixel?.data;
-      if (data) setGradient(`rgba(${data[0]},${data[1]},${data[2]})`);
-    };
+    ColorThief({
+      cv: cv,
+      setColor: setGradient,
+      url: profile,
+    });
   }, [cv]);
 
   useEffect(() => {
@@ -51,7 +46,7 @@ export default function Profile({ profileObj }) {
         <>
           <S.TOP_BAR>
             <S.ProfileInfor>
-              <S.Profile src={url} />
+              <S.Profile src={profile} />
               <S.UserInfor>
                 <h1>{name}</h1>
                 <span>{email}</span>

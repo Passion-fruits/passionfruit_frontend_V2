@@ -10,6 +10,7 @@ import {
   Alert,
 } from "../../assets/musicDetail";
 import { Play } from "@src/assets";
+import { ColorThief } from "./../../libs/functions/colorThief";
 
 interface props {
   setGradient(e): void;
@@ -49,16 +50,11 @@ export default function MusicInformation({ setGradient, musicObj }: props) {
   };
 
   useEffect(() => {
-    var img = new Image();
-    img.crossOrigin = "Anonymous";
-    img.src = cover_url + '?' + new Date().getTime()
-    img.onload = () => {
-      const ctx = cv?.getContext("2d");
-      ctx?.drawImage(img, 0, 0, 300, 300);
-      var pixel = ctx?.getImageData(0, 0, 1, 1);
-      const data = pixel?.data;
-      if (data) setGradient(`rgba(${data[0]},${data[1]},${data[2]})`);
-    };
+    ColorThief({
+      cv: cv,
+      setColor: setGradient,
+      url: cover_url,
+    });
   }, [cover_url, cv]);
 
   return (
