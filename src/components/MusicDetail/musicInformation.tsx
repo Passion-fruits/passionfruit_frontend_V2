@@ -65,8 +65,8 @@ export default function MusicInformation({ setGradient, musicObj }: props) {
         <S.DetailContainer>
           <>
             <S.Hashtag>
-              <span># 힙합</span>
-              <span># 힙합</span>
+              <span>#힙합</span>
+              <span>#힙합</span>
             </S.Hashtag>
           </>
           <>

@@ -18,8 +18,8 @@ interface gradient {
   color: string;
 }
 
-export const BackgroundGradient = styled.div`
-  background: ${(e: gradient) => `linear-gradient(${e.color},${COLOR.dark})`};
+export const BackgroundGradient = styled.div<gradient>`
+  background: ${(e) => `linear-gradient(${e.color},${COLOR.dark})`};
   opacity: 0.4;
   z-index: -1;
   width: 100%;
@@ -34,8 +34,9 @@ export const MusicInforContainer = styled.div`
 `;
 
 export const CoverImg = styled.img`
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
+  border-radius:5px;
   object-fit: cover;
 `;
 
@@ -53,13 +54,13 @@ export const Hashtag = styled.div`
   & span {
     color: ${COLOR.green};
     margin-right: 11px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
   }
 `;
 
 export const Title = styled.div`
-  margin-top: 15px;
+  margin-top: 25px;
   display: flex;
   align-items: center;
   & span {
@@ -71,7 +72,7 @@ export const Title = styled.div`
 `;
 
 export const SingerWithDate = styled.div`
-  font-size: 14px;
+  font-size: 15px;
   color: #c2c2c2;
   margin-top: 14px;
   display: flex;
@@ -97,7 +98,7 @@ export const CIRCLE = styled.div`
 
 export const IconBox = styled.div`
   display: grid;
-  margin-top: 20px;
+  margin-top: 40px;
   grid-template-columns: repeat(3, 30px);
 `;
 
