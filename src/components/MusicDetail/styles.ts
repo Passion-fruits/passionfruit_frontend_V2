@@ -36,7 +36,7 @@ export const MusicInforContainer = styled.div`
 export const CoverImg = styled.img`
   width: 250px;
   height: 250px;
-  border-radius:5px;
+  border-radius: 5px;
   object-fit: cover;
 `;
 
@@ -46,21 +46,11 @@ export const DetailContainer = styled.div`
   padding-top: 10px;
   position: relative;
   padding-left: 30px;
-  width: calc(100% - 200px);
-`;
-
-export const Hashtag = styled.div`
-  display: flex;
-  & span {
-    color: ${COLOR.green};
-    margin-right: 11px;
-    font-size: 16px;
-    font-weight: 500;
-  }
+  width: calc(100% - 250px);
 `;
 
 export const Title = styled.div`
-  margin-top: 25px;
+  margin-top: 15px;
   display: flex;
   align-items: center;
   & span {
@@ -74,9 +64,10 @@ export const Title = styled.div`
 export const SingerWithDate = styled.div`
   font-size: 15px;
   color: #c2c2c2;
-  margin-top: 14px;
+  margin-top: 18px;
   display: flex;
   align-items: center;
+  margin-bottom: 25px;
   & span {
     cursor: pointer;
     &:hover {

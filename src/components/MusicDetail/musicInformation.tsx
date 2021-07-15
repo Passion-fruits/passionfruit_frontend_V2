@@ -11,6 +11,7 @@ import {
 } from "../../assets/musicDetail";
 import { Play } from "@src/assets";
 import { ColorThief } from "./../../libs/functions/colorThief";
+import Tag from "../public/Tag";
 
 interface props {
   setGradient(e): void;
@@ -64,12 +65,6 @@ export default function MusicInformation({ setGradient, musicObj }: props) {
         <S.CoverImg src={cover_url} />
         <S.DetailContainer>
           <>
-            <S.Hashtag>
-              <span>#힙합</span>
-              <span>#힙합</span>
-            </S.Hashtag>
-          </>
-          <>
             <S.Title>
               <Play size="40" type="white" clickCallback={changeMusic} />
               <span>{title}</span>
@@ -83,6 +78,7 @@ export default function MusicInformation({ setGradient, musicObj }: props) {
               <time>{created_at.substring(0, 10)}</time>
             </S.SingerWithDate>
           </>
+          <Tag tags={["힙합", "힙합"]} />
           <>
             <S.IconBox>
               <AddPlayList />

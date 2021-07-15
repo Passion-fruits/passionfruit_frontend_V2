@@ -1,27 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Comment from "./comment";
 import MusicInformation from "./musicInformation";
 import * as S from "./styles";
 
-export default function MusicDetail({arr}) {
+export default function MusicDetail({musicObj}) {
   const [gradientColor, setGradientColor] = useState<string>("");
-  const [musicObj, setMusicObj] = useState({
-    user_id: "",
-    cover_url: "",
-    song_url: "",
-    title: "",
-    description: "",
-    created_at: "",
-    genre: "",
-    mood: "",
-    artist: "",
-    like: "",
-  });
-
-  useEffect(() => {
-    setMusicObj(arr);
-  }, []);
-
   return (
     <S.AllWrapper>
       <S.BackgroundGradient color={gradientColor} />
@@ -40,7 +23,7 @@ export default function MusicDetail({arr}) {
         </>
         <>
           <S.CommentBoundary>
-            전체댓글 <span>15개</span>
+            전체댓글 <span>{musicObj.comment}개</span>
           </S.CommentBoundary>
         </>
         <>
