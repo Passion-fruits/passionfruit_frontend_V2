@@ -14,23 +14,40 @@ export default function Profile({ profileObj }) {
   const [gradient, setGradient] = useState<string>("");
   const [nowMenu, setNowMenu] = useState<string>("track");
   const [musicArr, setMusicArr] = useState<any[]>([]);
+  const [mine, setMine] = useState<boolean>(false);
+  const [loader, setLoader] = useState<boolean>(false);
   const router = useRouter();
   const id = router.query.id;
 
+  const getMyData = () => {
+    setMine(true);
+    profileRequest
+      .getMyMusic()
+      .then((res) => {
+        setMusicArr(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
+    setLoader(true);
     ColorThief({
       cv: cv,
       setColor: setGradient,
       url: profile,
     });
-  }, [cv]);
+  }, [loader]);
 
   useEffect(() => {
     if (id === "myprofile") {
+      getMyData();
+    } else {
       profileRequest
-        .getMyMusic()
+        .checkMine(id)
         .then((res) => {
-          setMusicArr(res.data);
+          if (res.data.is_mine) getMyData();
         })
         .catch((err) => {
           console.log(err);
@@ -53,7 +70,7 @@ export default function Profile({ profileObj }) {
               </S.UserInfor>
             </S.ProfileInfor>
             <S.BtnBox>
-              {id === "myprofile" ? (
+              {mine ? (
                 <>
                   <button onClick={() => router.push("/upload")}>upload</button>
                   <button>edit profile</button>
