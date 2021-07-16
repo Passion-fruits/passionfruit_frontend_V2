@@ -3,6 +3,7 @@ import Comment from "./comment";
 import MusicInformation from "./musicInformation";
 import * as S from "./styles";
 import musicRequest from "../../libs/api/musicDetail";
+import { date } from "@src/libs/functions/getDate";
 
 export default function MusicDetail({ musicObj }) {
   const [gradientColor, setGradientColor] = useState<string>("");
@@ -17,6 +18,17 @@ export default function MusicDetail({ musicObj }) {
     setComment(event.target.value);
   };
 
+  const getCommentData = () => {
+    musicRequest
+      .getMusicComment(musicObj.song_id)
+      .then((res) => {
+        setCommentArr((_arr) => res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const postComment = (event) => {
     event.preventDefault();
     if (comment === "") {
@@ -26,7 +38,9 @@ export default function MusicDetail({ musicObj }) {
     setComment("");
     musicRequest
       .writeMusicComment(musicObj.song_id, comment)
-      .then(() => {})
+      .then(() => {
+        getCommentData();
+      })
       .catch((err) => {
         const status: number = err.response.status;
         if (status === 400) {
@@ -38,14 +52,7 @@ export default function MusicDetail({ musicObj }) {
   };
 
   useEffect(() => {
-    musicRequest
-      .getMusicComment(musicObj.song_id)
-      .then((res) => {
-        setCommentArr((_arr) => res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    getCommentData();
   }, []);
 
   return (
@@ -72,7 +79,7 @@ export default function MusicDetail({ musicObj }) {
         </>
         <>
           <S.CommentBoundary>
-            전체댓글 <span>{musicObj.comment}개</span>
+            전체댓글 <span>{commentArr.length === 0 ?  musicObj.comment : commentArr.length}개</span>
           </S.CommentBoundary>
         </>
         <>
@@ -80,9 +87,10 @@ export default function MusicDetail({ musicObj }) {
             <Comment
               key={index}
               name={data.name}
-              date="5일 전"
+              date={date(data.created_at)}
               content={data.comment_content}
               src={data.profile}
+              user_id={data.user_id}
             />
           ))}
         </>

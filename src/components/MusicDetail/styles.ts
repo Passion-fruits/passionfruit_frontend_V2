@@ -46,7 +46,7 @@ export const DetailContainer = styled.div`
   padding-top: 10px;
   position: relative;
   padding-left: 30px;
-  width: calc(100% - 25k0px);
+  width: calc(100% - 250px);
 `;
 
 export const Title = styled.div`
@@ -167,6 +167,9 @@ export const ProfileImg = styled.img`
   border-radius: 80%;
   cursor: pointer;
   object-fit: cover;
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 export const ControlBtn = styled.button`
@@ -203,6 +206,7 @@ export const Writter = styled.div`
   font-weight: 500;
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const CommentContent = styled.div`

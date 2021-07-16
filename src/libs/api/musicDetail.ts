@@ -12,7 +12,6 @@ export default {
     });
   },
   writeMusicComment(id: number, contents: string) {
-    console.log(id, contents);
     return request({
       url: "/comment",
       method: "post",
