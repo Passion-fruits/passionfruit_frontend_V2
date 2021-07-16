@@ -6,8 +6,10 @@ export default function ProfilePage({ profileObj }) {
   return <LayoutContainer children={<Profile profileObj={profileObj} />} />;
 }
 
-export async function getServerSideProps() {
-  const res = profile.getMyProfile();
+export async function getServerSideProps(context) {
+  const id = context.params.id;
+  const res =
+  id ==="myprofile" ? profile.getMyProfile() : profile.getProfile(id);
   return {
     props: {
       profileObj: (await res).data,

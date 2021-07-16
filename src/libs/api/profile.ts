@@ -20,5 +20,14 @@ export default {
                 "Authorization" : `Bearer ${TOKEN}`
             }
         })
-    }
+    },
+    getProfile(id : number | string){
+        return request({
+            url : `/profile/${id}`,
+            method:'get',
+            headers:{
+                "Content-type" : "application/json"
+            }
+        })
+    },
 }
