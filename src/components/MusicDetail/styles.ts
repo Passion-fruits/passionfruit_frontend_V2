@@ -208,7 +208,7 @@ export const Writter = styled.div`
 export const CommentContent = styled.div`
   color: white;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 17px;
   margin-top: 12px;
   line-height: 17px;
   margin: 0;

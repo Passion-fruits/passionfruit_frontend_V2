@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Comment from "./comment";
 import MusicInformation from "./musicInformation";
 import * as S from "./styles";
@@ -7,6 +7,7 @@ import musicRequest from "../../libs/api/musicDetail";
 export default function MusicDetail({ musicObj }) {
   const [gradientColor, setGradientColor] = useState<string>("");
   const [comment, setComment] = useState<string>("");
+  const [commentArr, setCommentArr] = useState<any[]>([]);
 
   const handleCommment = (event) => {
     if (comment.length > 200) {
@@ -25,8 +26,7 @@ export default function MusicDetail({ musicObj }) {
     setComment("");
     musicRequest
       .writeMusicComment(musicObj.song_id, comment)
-      .then(() => {
-      })
+      .then(() => {})
       .catch((err) => {
         const status: number = err.response.status;
         if (status === 400) {
@@ -36,6 +36,17 @@ export default function MusicDetail({ musicObj }) {
         alert("오류가 발생하였습니다.");
       });
   };
+
+  useEffect(() => {
+    musicRequest
+      .getMusicComment(musicObj.song_id)
+      .then((res) => {
+        setCommentArr((_arr) => res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <S.AllWrapper>
@@ -65,12 +76,15 @@ export default function MusicDetail({ musicObj }) {
           </S.CommentBoundary>
         </>
         <>
-          {/*           <Comment
-            name="김팔복"
-            date="5일 전"
-            content="곡이 ㅈ되뿌노 ㅋㅋㅋ"
-            src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
-          /> */}
+          {commentArr.map((data, index) => (
+            <Comment
+              key={index}
+              name={data.name}
+              date="5일 전"
+              content={data.comment_content}
+              src={data.profile}
+            />
+          ))}
         </>
       </S.Wrapper>
     </S.AllWrapper>
