@@ -18,8 +18,8 @@ interface gradient {
   color: string;
 }
 
-export const BackgroundGradient = styled.div`
-  background: ${(e: gradient) => `linear-gradient(${e.color},${COLOR.dark})`};
+export const BackgroundGradient = styled.div<gradient>`
+  background: ${(e) => `linear-gradient(${e.color},${COLOR.dark})`};
   opacity: 0.4;
   z-index: -1;
   width: 100%;
@@ -34,8 +34,9 @@ export const MusicInforContainer = styled.div`
 `;
 
 export const CoverImg = styled.img`
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
+  border-radius: 5px;
   object-fit: cover;
 `;
 
@@ -45,17 +46,7 @@ export const DetailContainer = styled.div`
   padding-top: 10px;
   position: relative;
   padding-left: 30px;
-  width: calc(100% - 200px);
-`;
-
-export const Hashtag = styled.div`
-  display: flex;
-  & span {
-    color: ${COLOR.green};
-    margin-right: 11px;
-    font-size: 14px;
-    font-weight: 500;
-  }
+  width: calc(100% - 250px);
 `;
 
 export const Title = styled.div`
@@ -71,11 +62,12 @@ export const Title = styled.div`
 `;
 
 export const SingerWithDate = styled.div`
-  font-size: 14px;
+  font-size: 15px;
   color: #c2c2c2;
-  margin-top: 14px;
+  margin-top: 18px;
   display: flex;
   align-items: center;
+  margin-bottom: 25px;
   & span {
     cursor: pointer;
     &:hover {
@@ -97,7 +89,7 @@ export const CIRCLE = styled.div`
 
 export const IconBox = styled.div`
   display: grid;
-  margin-top: 20px;
+  margin-top: 40px;
   grid-template-columns: repeat(3, 30px);
 `;
 
@@ -175,6 +167,9 @@ export const ProfileImg = styled.img`
   border-radius: 80%;
   cursor: pointer;
   object-fit: cover;
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 export const ControlBtn = styled.button`
@@ -211,12 +206,13 @@ export const Writter = styled.div`
   font-weight: 500;
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const CommentContent = styled.div`
   color: white;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 17px;
   margin-top: 12px;
   line-height: 17px;
   margin: 0;

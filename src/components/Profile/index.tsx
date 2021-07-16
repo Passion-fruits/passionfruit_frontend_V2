@@ -4,37 +4,50 @@ import { useEffect, useRef, useState } from "react";
 import Menu from "./menu";
 import ProfileList from "./List/profileList";
 import TrackList from "./List/trackList";
-import profile from "../../libs/api/profile";
+import profileRequest from "../../libs/api/profile";
+import { ColorThief } from "@src/libs/functions/colorThief";
 
-export default function Profile() {
-  const url = "https://i1.sndcdn.com/artworks-000169142537-e22x2o-large.jpg";
+export default function Profile({ profileObj }) {
+  const { email, name, profile } = profileObj;
   const canvas = useRef();
   const cv: HTMLCanvasElement = canvas.current;
   const [gradient, setGradient] = useState<string>("");
   const [nowMenu, setNowMenu] = useState<string>("track");
   const [musicArr, setMusicArr] = useState<any[]>([]);
+  const [mine, setMine] = useState<boolean>(false);
+  const [loader, setLoader] = useState<boolean>(false);
   const router = useRouter();
   const id = router.query.id;
 
+  const getMyData = () => {
+    setMine(true);
+    profileRequest
+      .getMyMusic()
+      .then((res) => {
+        setMusicArr(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
-    var img = new Image();
-    img.crossOrigin = "Anonymous";
-    img.src = url;
-    img.onload = () => {
-      const ctx = cv?.getContext("2d");
-      ctx?.drawImage(img, 0, 0, 300, 300);
-      var pixel = ctx?.getImageData(50, 50, 1, 1);
-      const data = pixel?.data;
-      if (data) setGradient(`rgba(${data[0]},${data[1]},${data[2]})`);
-    };
-  }, [cv]);
+    setLoader(true);
+    ColorThief({
+      cv: cv,
+      setColor: setGradient,
+      url: profile,
+    });
+  }, [loader]);
 
   useEffect(() => {
     if (id === "myprofile") {
-      profile
-        .getMyMusic()
+      getMyData();
+    } else {
+      profileRequest
+        .checkMine(id)
         .then((res) => {
-          setMusicArr(res.data);
+          if (res.data.is_mine) getMyData();
         })
         .catch((err) => {
           console.log(err);
@@ -50,14 +63,14 @@ export default function Profile() {
         <>
           <S.TOP_BAR>
             <S.ProfileInfor>
-              <S.Profile src={url} />
+              <S.Profile src={profile} />
               <S.UserInfor>
-                <h1>hash swan</h1>
-                <span>jidole041214@naver.com</span>
+                <h1>{name}</h1>
+                <span>{email}</span>
               </S.UserInfor>
             </S.ProfileInfor>
             <S.BtnBox>
-              {id === "myprofile" ? (
+              {mine ? (
                 <>
                   <button onClick={() => router.push("/upload")}>upload</button>
                   <button>edit profile</button>

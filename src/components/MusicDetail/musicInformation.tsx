@@ -1,6 +1,6 @@
 import * as S from "./styles";
 import { setValue } from "@src/libs/context";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import {
   Heart,
@@ -10,6 +10,8 @@ import {
   Alert,
 } from "../../assets/musicDetail";
 import { Play } from "@src/assets";
+import { ColorThief } from "./../../libs/functions/colorThief";
+import Tag from "../public/Tag";
 
 interface props {
   setGradient(e): void;
@@ -49,16 +51,11 @@ export default function MusicInformation({ setGradient, musicObj }: props) {
   };
 
   useEffect(() => {
-    var img = new Image();
-    img.crossOrigin = "Anonymous";
-    img.src = cover_url + '?' + new Date().getTime()
-    img.onload = () => {
-      const ctx = cv?.getContext("2d");
-      ctx?.drawImage(img, 0, 0, 300, 300);
-      var pixel = ctx?.getImageData(0, 0, 1, 1);
-      const data = pixel?.data;
-      if (data) setGradient(`rgba(${data[0]},${data[1]},${data[2]})`);
-    };
+    ColorThief({
+      cv: cv,
+      setColor: setGradient,
+      url: cover_url,
+    });
   }, [cover_url, cv]);
 
   return (
@@ -67,12 +64,6 @@ export default function MusicInformation({ setGradient, musicObj }: props) {
         <canvas style={{ display: "none" }} ref={canvas} />
         <S.CoverImg src={cover_url} />
         <S.DetailContainer>
-          <>
-            <S.Hashtag>
-              <span># 힙합</span>
-              <span># 힙합</span>
-            </S.Hashtag>
-          </>
           <>
             <S.Title>
               <Play size="40" type="white" clickCallback={changeMusic} />
@@ -87,6 +78,7 @@ export default function MusicInformation({ setGradient, musicObj }: props) {
               <time>{created_at.substring(0, 10)}</time>
             </S.SingerWithDate>
           </>
+          <Tag tags={["힙합", "힙합"]} />
           <>
             <S.IconBox>
               <AddPlayList />
