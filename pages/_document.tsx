@@ -16,6 +16,7 @@ export default class MyDocument extends Document {
             type="text/css"
             href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css"
           />
+          <link rel="icon" href="./logo.ico" />
         </Head>
         <body>
           <div id="root">
