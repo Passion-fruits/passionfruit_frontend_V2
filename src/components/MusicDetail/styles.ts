@@ -36,8 +36,8 @@ export const MusicInforContainer = styled.div`
 export const CoverImg = styled.img`
   width: 250px;
   height: 250px;
-  border-radius: 5px;
   object-fit: cover;
+  box-shadow:0px 0px 40px rgb(20,20,20,0.5);
 `;
 
 export const DetailContainer = styled.div`
