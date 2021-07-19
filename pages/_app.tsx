@@ -1,9 +1,10 @@
 import { PlayBar } from "@src/components/public";
 import { SampleProvider } from "@src/libs/context";
-import "../styles/globals.css";
-import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import "../styles/globals.css";
 import LoadingPage from "@src/components/public/Loading";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -20,11 +21,26 @@ function MyApp({ Component, pageProps }) {
     router.events.on("routeChangeError", handleComplete);
   }, [router]);
   return (
-    <SampleProvider>
-      {pageLoading && <LoadingPage/>}  
-      <PlayBar />
-      <Component {...pageProps} />
-    </SampleProvider>
+    <>
+      <Head>
+        <title>{`쿤더[KUNDER] - KOREA UNDERGROUND MUSIC SITE`}</title>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css"
+        />
+        <link rel="icon" href="/logo.ico" />
+      </Head>
+      <SampleProvider>
+        {pageLoading && <LoadingPage />}
+        <PlayBar />
+        <Component {...pageProps} />
+      </SampleProvider>
+    </>
   );
 }
 

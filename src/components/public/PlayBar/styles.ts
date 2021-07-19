@@ -33,6 +33,7 @@ export const MusicInforContainer = styled.div`
 export const CoverImg = styled.img`
   width: 80px;
   height: 80px;
+  object-fit:cover;
 `;
 
 export const InforContainer = styled.div`
@@ -108,11 +109,11 @@ export const ControlCircle = styled.div`
   transition: 0.4s;
 `;
 
-export const RangePlayBar = styled.input`
+export const RangePlayBar = styled.input<ProgressBarProps>`
   -webkit-appearance: none;
   width: 100%;
   height: 3px;
-  background: ${(e: ProgressBarProps) =>
+  background: ${(e) =>
     `linear-gradient(to right, ${COLOR.green} 0%, ${COLOR.green} 
     ${e.progress}%, #3A3A3A ${e.progress}%, #3A3A3A 100%)`};
   cursor: pointer;

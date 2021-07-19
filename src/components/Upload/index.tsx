@@ -1,120 +1,146 @@
+import * as S from "./styles";
 import { FileUpload } from "@src/assets";
 import { useEffect, useState } from "react";
-import * as S from "./styles";
-import { MusicObj } from './../../libs/interfaces/upload';
-import { CoverImg, ImgWrapper, PLAYBAR_HEIGHT } from "styles";
+import { MusicObj } from "./../../libs/interfaces/upload";
+import { CoverImg, ImgWrapper } from "styles";
+import { useRouter } from "next/router";
+import { TimeCheck } from "./util/timeCheck";
+import upload from "../../libs/api/upload";
+import LoadingPage from "../public/Loading";
+import FileInput from "./input/fileInput";
+import Select from "./select/select";
 
 export default function Upload() {
-  const [musicObj,setMusicObj] = useState<MusicObj>({
-    musicSrc : "",
-    coverSrc : "https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg",
-    title : "",
-    description : "",
-    genre : "",
-    feeling : ""
+  const [musicObj, setMusicObj] = useState<MusicObj>({
+    musicSrc: "",
+    coverSrc: "",
+    title: "",
+    description: "",
+    genre: "1",
+    feeling: "1",
+    duration: "",
   });
-  function getCoverSrc(input: any) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        setMusicObj({
-          ...musicObj,
-          coverSrc : e.target.result
+  const router = useRouter();
+  const { musicSrc, coverSrc, title, description, duration } = musicObj;
+  const [loading, setLoading] = useState<boolean>(false);
+  const [preview, setPreview] = useState<string>(
+    "https://jetekpro.vn/images/noimage.jpg"
+  );
+
+  const submit = () => {
+    if (musicSrc && coverSrc && title && description && duration) {
+      setLoading(true);
+      upload
+        .uploadMusic(musicObj)
+        .then(() => {
+          router.push("/profile/myprofile");
         })
-      };
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
-  function getMusicSrc(input: any) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        setMusicObj({
-          ...musicObj,
-          musicSrc : e.target.result
-        })
-      };
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
-  // audio 시간 검사
-  useEffect(()=>{
-    if(musicObj.musicSrc !== ""){
-      var audio = new Audio(musicObj.musicSrc);
-      audio.oncanplaythrough = ()=>{
-        if(audio.duration < 60 || audio.duration > 300){
-          alert('1분 이상, 5분 이하의 곡을 업로드해주세요!');
-          setMusicObj({
-            ...musicObj,
-            musicSrc : ""
-          })
-        }
-      }
-    }
-  },[musicObj.musicSrc])
-  console.log(musicObj)
+        .catch(() => {
+          alert("음악을 업로드하는데 실패하였습니다.");
+          setLoading(false);
+        });
+    } else alert("모든 정보를 입력해주세요!");
+  };
+
+  const getSrc = (target: HTMLInputElement) => {
+    setMusicObj({
+      ...musicObj,
+      [target.name]: target.files[0],
+    });
+  };
+
+  const handleMusicObj = (e) => {
+    const { name, value } = e.target;
+    setMusicObj({
+      ...musicObj,
+      [name]: value,
+    });
+  };
+
+  const fileUpload = (id) => {
+    document.getElementById(id).click();
+  };
+
+  useEffect(() => {
+    TimeCheck(musicObj, setMusicObj);
+  }, [musicSrc]);
+
+  useEffect(() => {
+    const reader = new FileReader();
+    reader.onload = (e) => setPreview(e.target.result.toString());
+    coverSrc && reader.readAsDataURL(coverSrc);
+  }, [coverSrc]);
+
   return (
     <>
+      {loading && <LoadingPage />}
       <S.Wrapper>
-        <input type="file" id="coverInp" onChange={(e) => getCoverSrc(e.target)} accept="image/png, image/jpeg, image/jpg"/>
-        <input type="file" id="musicInp" onChange={(e) => getMusicSrc(e.target)} accept="audio/*"/>
+        <FileInput event={getSrc} />
         <S.Container>
-          <S.Description>
-          <b>쿤더</b>에서는 음악 업로드에 <b>시간제한</b>이 없습니다. 
-          </S.Description>
-          {/* 커버사진 업로드 */}
-          <S.CoverPhotoContainer>
-            <ImgWrapper>
-              <CoverImg src={musicObj.coverSrc} />
-            </ImgWrapper>
-            <S.UPLOAD_BTN
-              width="100%"
-              margin="20px"
-              onClick={() => document.getElementById("coverInp").click()}
-            >
-              커버사진 변경
-            </S.UPLOAD_BTN>
-          </S.CoverPhotoContainer>
-          {/* 곡 정보 입력창 */}
-          <S.InputsContainer>
-            <S.InpTitle style={{ marginTop: 0 }}>file (mp3)</S.InpTitle>
-            <S.FileUpload>
-              <input placeholder={musicObj.musicSrc !== "" ? "파일이 업로드 되었습니다." : "업로드한 파일이 없습니다."} readOnly/>
-              <S.UPLOAD_BTN width="50px" onClick={() => document.getElementById("musicInp").click()}>
-                <FileUpload />
-              </S.UPLOAD_BTN>
-            </S.FileUpload>
-            <S.InpTitle>title</S.InpTitle>
-            <input placeholder="곡 제목을 입력해주세요." />
-            <S.InpTitle>Description</S.InpTitle>
-            <textarea placeholder="곡에 대한 설명을 적어주세요." />
-            {/* 장르 셀렉트 */}
-            <S.SelectContainer>
-              <div>
-                <S.InpTitle>Genre</S.InpTitle>
-                <S.Select>
-                  <option value="">힙합</option>
-                  <option value="">브루스</option>
-                  <option value="">기타등등...</option>
-                </S.Select>
-              </div>
-              <div>
-                <S.InpTitle>Feeling</S.InpTitle>
-                <S.Select>
-                  <option value="">힙합</option>
-                  <option value="">브루스</option>
-                  <option value="">기타등등...</option>
-                </S.Select>
-              </div>
-            </S.SelectContainer>
-            <S.UPLOAD_BTN
-              width="100%"
-              margin="30px"
-              style={{ padding: "11px 0", fontSize: "17px",marginBottom:"140px" }}
-            >
-              음악 공개하기
-            </S.UPLOAD_BTN>
-          </S.InputsContainer>
+          <>
+            <S.Description>
+              <b>쿤더</b>에서는 음악 업로드에 <b>시간제한</b>이 없습니다.
+            </S.Description>
+          </>
+          <>
+            <S.CoverPhotoContainer>
+              <ImgWrapper>
+                <CoverImg src={preview} />
+              </ImgWrapper>
+              <button onClick={() => fileUpload("coverInp")}>
+                Change Cover
+              </button>
+            </S.CoverPhotoContainer>
+          </>
+          <>
+            <S.InputsContainer>
+              <>
+                <h1>file (mp3)</h1>
+                <S.FileUpload>
+                  <input
+                    placeholder={
+                      musicSrc ? musicSrc.name : "업로드한 파일이 없습니다."
+                    }
+                    readOnly
+                  />
+                  <button onClick={() => fileUpload("musicInp")}>
+                    <FileUpload />
+                  </button>
+                </S.FileUpload>
+              </>
+              <>
+                <h1>title</h1>
+                <input
+                  placeholder="곡 제목을 입력해주세요. (4글자 이상)"
+                  name="title"
+                  onChange={handleMusicObj}
+                />
+              </>
+              <>
+                <h1>Description</h1>
+                <textarea
+                  placeholder="곡에 대한 설명을 적어주세요."
+                  name="description"
+                  onChange={handleMusicObj}
+                />
+              </>
+              <>
+                <S.SelectContainer>
+                  <Select
+                    name="genre"
+                    event={handleMusicObj}
+                    listArr={["힙합", "브루스"]}
+                  />
+                  <Select
+                    name="feeling"
+                    event={handleMusicObj}
+                    listArr={["아침에", "뜨거운"]}
+                  />
+                </S.SelectContainer>
+              </>
+              <button onClick={submit}>음악 공개하기</button>
+            </S.InputsContainer>
+          </>
         </S.Container>
       </S.Wrapper>
     </>

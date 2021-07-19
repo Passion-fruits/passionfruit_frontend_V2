@@ -5,7 +5,7 @@ export const GenreBox = styled.div`
   width: 180px;
   padding: 10px 25px;
   background: #1c1c1c;
-  height: 60%;
+  height: 550px;
   border-radius: 10px;
   color: white;
   position: fixed;

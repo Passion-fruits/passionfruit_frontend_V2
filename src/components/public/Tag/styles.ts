@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Tag = styled.span`
-    padding: 6px 16px;
+    padding: 5px 16px;
     border: 2px solid #8fffb1;
     border-radius: 15px;
     font-size: 12px;

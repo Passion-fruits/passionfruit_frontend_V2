@@ -1,53 +1,99 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Comment from "./comment";
 import MusicInformation from "./musicInformation";
 import * as S from "./styles";
+import musicRequest from "../../libs/api/musicDetail";
+import { date } from "@src/libs/functions/getDate";
 
-export default function MusicDetail() {
-  const [gradientColor,setGradientColor] = useState<string>("");
+export default function MusicDetail({ musicObj }) {
+  const [gradientColor, setGradientColor] = useState<string>("");
+  const [comment, setComment] = useState<string>("");
+  const [commentArr, setCommentArr] = useState<any[]>([]);
+
+  const handleCommment = (event) => {
+    if (comment.length > 200) {
+      alert("댓글은 200자 제한입니다.");
+      return;
+    }
+    setComment(event.target.value);
+  };
+
+  const getCommentData = () => {
+    musicRequest
+      .getMusicComment(musicObj.song_id)
+      .then((res) => {
+        setCommentArr((_arr) => res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const postComment = (event) => {
+    event.preventDefault();
+    if (comment === "") {
+      alert("댓글을 작성해주세요.");
+      return;
+    }
+    setComment("");
+    musicRequest
+      .writeMusicComment(musicObj.song_id, comment)
+      .then(() => {
+        getCommentData();
+      })
+      .catch((err) => {
+        const status: number = err.response.status;
+        if (status === 400) {
+          alert("이미 댓글을 작성하셨습니다.");
+          return;
+        }
+        alert("오류가 발생하였습니다.");
+      });
+  };
+
+  useEffect(() => {
+    getCommentData();
+  }, []);
+
   return (
     <S.AllWrapper>
-      <S.BackgroundGradient color={gradientColor}/>
+      <S.BackgroundGradient color={gradientColor} />
       <S.Wrapper>
-        { /* 음악 정보 컴포넌트 */ }
-        <MusicInformation setGradient={setGradientColor} />
-        {/* 댓글 쪽 */}
-        <S.CommentContainer>
-          <S.ProfileImg src="https://static.highsnobiety.com/thumbor/fJpC1G6h33nBnQllq3f912l8bx8=/1600x1067/static.highsnobiety.com/wp-content/uploads/2015/07/28105919/rapper-snapchat-usernames-main.jpg" />
-          <S.Input placeholder="공개댓글 추가 ( 엔터를 누르면 등록됩니다. )" />
-          <S.InputLimit>0 / 220</S.InputLimit>
-        </S.CommentContainer>
-        {/* 댓글 보기 */}
-        <S.CommentBoundary>
-          Comment <span>(15)</span>
-        </S.CommentBoundary>
-
-        <Comment
-          name="김팔복"
-          date="5일 전"
-          content="곡이 ㅈ되뿌노 ㅋㅋㅋ"
-          src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
-        />
-                <Comment
-          name="김팔복"
-          date="5일 전"
-          content="곡이 ㅈ되뿌노 ㅋㅋㅋ"
-          src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
-        />
-                <Comment
-          name="김팔복"
-          date="5일 전"
-          content="곡이 ㅈ되뿌노 ㅋㅋㅋ"
-          src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
-        />
-                <Comment
-          name="김팔복"
-          date="5일 전"
-          content="곡이 ㅈ되뿌노 ㅋㅋㅋ"
-          src="https://img.theweek.in/content/dam/week/magazine/theweek/leisure/images/2020/2/22/72-Naezy.jpg"
-        />
-
-        
+        <>
+          <MusicInformation
+            musicObj={musicObj}
+            setGradient={setGradientColor}
+          />
+        </>
+        <>
+          <S.CommentContainer>
+            <form onSubmit={postComment}>
+              <input
+                placeholder="공개댓글 추가 ( 엔터를 누르면 등록됩니다. )"
+                onChange={handleCommment}
+                value={comment}
+              />
+            </form>
+            <span>{comment.length} / 200</span>
+          </S.CommentContainer>
+        </>
+        <>
+          <S.CommentBoundary>
+            전체댓글 <span>{commentArr.length === 0 ?  musicObj.comment : commentArr.length}개</span>
+          </S.CommentBoundary>
+        </>
+        <>
+          {commentArr.map((data, index) => (
+            <Comment
+              key={index}
+              name={data.name}
+              date={date(data.created_at)}
+              content={data.comment_content}
+              src={data.profile}
+              user_id={data.user_id}
+            />
+          ))}
+        </>
       </S.Wrapper>
     </S.AllWrapper>
   );

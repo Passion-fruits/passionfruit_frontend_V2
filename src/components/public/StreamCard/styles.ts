@@ -6,7 +6,6 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  
 `;
 
 export const CoverImgHover = styled.div`
@@ -20,6 +19,12 @@ export const CoverImgHover = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  & button {
+    &:hover {
+      width: 60px;
+      height: 60px;
+    }
+  }
 `;
 
 export const ImgWrapper = styled.div`
@@ -27,25 +32,9 @@ export const ImgWrapper = styled.div`
   height: ${CARD_WIDTH};
   position: relative;
   cursor: pointer;
-  border:1px solid rgb(30,30,30);
+  border: 1px solid rgb(30, 30, 30);
   &:hover div {
     visibility: visible;
-  }
-`;
-
-export const PlayButton = styled.button`
-  width: 56px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  border: 2px solid white;
-  background: rgb(0, 0, 0, 0.4);
-  cursor: pointer;
-  &:hover {
-    width: 60px;
-    height: 60px;
   }
 `;
 
@@ -63,7 +52,7 @@ export const Title = styled.h3`
 `;
 
 export const UserName = styled.span`
-  color: #9F9F9F;
+  color: #9f9f9f;
   font-size: 13px;
   font-weight: bold;
 `;
@@ -81,7 +70,7 @@ export const BottomContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top:5px;
+  padding-top: 5px;
   div {
     display: flex;
   }

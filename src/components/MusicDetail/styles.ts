@@ -15,11 +15,11 @@ export const Wrapper = styled.div`
 `;
 
 interface gradient {
-  color : string;
+  color: string;
 }
 
-export const BackgroundGradient = styled.div`
-  background: ${(e : gradient)=>`linear-gradient(${e.color},${COLOR.dark})`};
+export const BackgroundGradient = styled.div<gradient>`
+  background: ${(e) => `linear-gradient(${e.color},${COLOR.dark})`};
   opacity: 0.4;
   z-index: -1;
   width: 100%;
@@ -30,12 +30,14 @@ export const BackgroundGradient = styled.div`
 export const MusicInforContainer = styled.div`
   display: flex;
   padding-top: 60px;
-  width:100%;
+  width: 100%;
 `;
 
 export const CoverImg = styled.img`
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  box-shadow:0px 0px 40px rgb(20,20,20,0.5);
 `;
 
 export const DetailContainer = styled.div`
@@ -43,32 +45,8 @@ export const DetailContainer = styled.div`
   flex-direction: column;
   padding-top: 10px;
   position: relative;
-  padding-left:30px;
-  width: calc(100% - 200px);
-`;
-
-export const Hashtag = styled.div`
-  display: flex;
-  & span {
-    color: ${COLOR.green};
-    margin-right: 11px;
-    font-size: 14px;
-    font-weight: 500;
-  }
-`;
-
-export const PlayBtn = styled.button`
-  width: 35px;
-  height: 35px;
-  border-radius: 80%;
-  border: 2px solid white;
-  padding-left: 12px;
-  padding-top: 2px;
-  margin-right: 10px;
-  cursor: pointer;
-  &:hover {
-    opacity: 0.8;
-  }
+  padding-left: 30px;
+  width: calc(100% - 250px);
 `;
 
 export const Title = styled.div`
@@ -76,6 +54,7 @@ export const Title = styled.div`
   display: flex;
   align-items: center;
   & span {
+    margin-left: 10px;
     color: white;
     font-size: 30px;
     font-weight: 800;
@@ -83,11 +62,18 @@ export const Title = styled.div`
 `;
 
 export const SingerWithDate = styled.div`
-  font-size: 14px;
+  font-size: 15px;
   color: #c2c2c2;
-  margin-top: 14px;
+  margin-top: 18px;
   display: flex;
   align-items: center;
+  margin-bottom: 25px;
+  & span {
+    cursor: pointer;
+    &:hover {
+      opacity: 0.6;
+    }
+  }
   & time {
     margin-left: 7px;
   }
@@ -103,7 +89,7 @@ export const CIRCLE = styled.div`
 
 export const IconBox = styled.div`
   display: grid;
-  margin-top: 20px;
+  margin-top: 40px;
   grid-template-columns: repeat(3, 30px);
 `;
 
@@ -114,9 +100,9 @@ export const HeartBox = styled.div`
   display: flex;
   align-items: center;
   & span {
-    padding: 0 0px 0 5px;
+    padding: 0 0px 0 8px;
     color: white;
-    font-size: 14px;
+    font-size: 15px;
   }
 `;
 
@@ -125,7 +111,7 @@ export const MusicDescriptionContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 30px;
-  border-left:2px solid ${COLOR.green};
+  border-left: 2px solid ${COLOR.green};
   padding: 10px 0px 10px 20px;
   span {
     font-size: 15px;
@@ -136,10 +122,10 @@ export const MusicDescriptionContainer = styled.div`
 
 export const MusicDescripton = styled.p`
   color: #ffffff;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 24px;
   margin-top: 15px;
-  margin-bottom:0;
+  margin-bottom: 0;
 `;
 
 export const CommentContainer = styled.div`
@@ -152,6 +138,27 @@ export const CommentContainer = styled.div`
   border-radius: 10px;
   padding: 0 20px;
   position: relative;
+  & input {
+    width: 800px;
+    color: #c2c2c2;
+    font-size: 14px;
+    padding: 12px 0px;
+    transition: 0.2s;
+    margin-left: 10px;
+    ::placeholder {
+      color: rgb(150, 150, 150);
+    }
+    :focus {
+      color: rgb(230, 230, 230);
+    }
+  }
+  & span {
+    color: rgb(150, 150, 150);
+    right: 0;
+    font-size: 13px;
+    position: absolute;
+    margin-right: 20px;
+  }
 `;
 
 export const ProfileImg = styled.img`
@@ -160,29 +167,9 @@ export const ProfileImg = styled.img`
   border-radius: 80%;
   cursor: pointer;
   object-fit: cover;
-`;
-
-export const Input = styled.input`
-  width: 800px;
-  color: #777777;
-  font-size: 14px;
-  padding: 12px 5px;
-  transition: 0.2s;
-  margin-left: 10px;
-  ::placeholder {
-    color: #777777;
+  &:hover {
+    opacity: 0.8;
   }
-  :focus {
-    color: rgb(230, 230, 230);
-  }
-`;
-
-export const InputLimit = styled.div`
-  color: #777777;
-  right: 0;
-  font-size: 13px;
-  position: absolute;
-  margin-right: 20px;
 `;
 
 export const ControlBtn = styled.button`
@@ -219,12 +206,13 @@ export const Writter = styled.div`
   font-weight: 500;
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const CommentContent = styled.div`
   color: white;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 17px;
   margin-top: 12px;
   line-height: 17px;
   margin: 0;
@@ -234,10 +222,10 @@ export const CommentContent = styled.div`
 export const CommentBoundary = styled.div`
   width: 100%;
   color: white;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: bold;
   margin-top: 30px;
-  border-bottom: 1px solid #2d2929;
+  border-bottom: 1px solid rgb(60, 60, 60);
   padding-bottom: 15px;
   & span {
     font-weight: 500;

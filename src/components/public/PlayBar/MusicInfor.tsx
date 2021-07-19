@@ -4,6 +4,7 @@ import Volume from "@src/assets/volume";
 import { useState } from "react";
 import Controler from "./controler";
 import { getValue } from "@src/libs/context";
+import Head from "next/head";
 
 export default function MusicInfor() {
   const musicInformation = getValue().musicInformation;
@@ -14,28 +15,36 @@ export default function MusicInfor() {
   };
   return (
     <>
+      <Head>
+        <title>{title} | KUNDER</title>
+      </Head>
       <Controler volume={volume} musicUrl={musicUrl} />
-
-      <S.MusicInforContainer>
-        {coverImg === '' ? <S.notMusic>IMG</S.notMusic> : <S.CoverImg src={coverImg} />}
-        <S.InforContainer>
-          <S.Title>{title}</S.Title>
-          <S.MusicianName>{name}</S.MusicianName>
-        </S.InforContainer>
-      </S.MusicInforContainer>
-      <S.MusicInforContainer>
-
-        <S.VolumeContainer>
-          <Volume />
-          <S.VolumeBar
-            progress={volume * 100}
-            onClick={volumeControl}
-            type="range"
-          />
-        </S.VolumeContainer>
-        
-        <Heart />
-      </S.MusicInforContainer>
+      <>
+        <S.MusicInforContainer>
+          {coverImg === "" ? (
+            <S.notMusic>IMG</S.notMusic>
+          ) : (
+            <S.CoverImg src={coverImg} />
+          )}
+          <S.InforContainer>
+            <S.Title>{title}</S.Title>
+            <S.MusicianName>{name}</S.MusicianName>
+          </S.InforContainer>
+        </S.MusicInforContainer>
+      </>
+      <>
+        <S.MusicInforContainer>
+          <S.VolumeContainer>
+            <Volume />
+            <S.VolumeBar
+              progress={volume * 100}
+              onClick={volumeControl}
+              type="range"
+            />
+          </S.VolumeContainer>
+          <Heart />
+        </S.MusicInforContainer>
+      </>
     </>
   );
 }

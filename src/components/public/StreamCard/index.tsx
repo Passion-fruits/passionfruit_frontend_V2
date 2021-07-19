@@ -6,10 +6,11 @@ import StreamCardHeart from "@src/assets/streamCardHeart";
 import StreamCardComment from "@src/assets/streamCardComment";
 import { useRouter } from "next/router";
 
-function StreamCard(props: StreamCardProps) {
-  const { title, name, coverImg, musicUrl } = props;
+function StreamCard(props) {
+  const { title, name, coverImg, musicUrl, id, genre, like, comment } = props;
   const dispatch = setValue();
   const router = useRouter();
+  
   const changeMusic = () => {
     dispatch({
       type: "MUSIC_CHANGE",
@@ -24,7 +25,7 @@ function StreamCard(props: StreamCardProps) {
 
   const enterMusicDetail = (e) => {
     if (e.target.id !== "wrapper") return;
-    router.push("/musicDetail/3");
+    router.push(`/musicDetail/${id}`);
   };
 
   return (
@@ -32,21 +33,19 @@ function StreamCard(props: StreamCardProps) {
       <S.ImgWrapper>
         <S.CoverImg src={coverImg} />
         <S.CoverImgHover id="wrapper" onClick={enterMusicDetail}>
-          <S.PlayButton onClick={changeMusic}>
-            <Play />
-          </S.PlayButton>
+          <Play size="55" type="white" clickCallback={changeMusic} />
         </S.CoverImgHover>
       </S.ImgWrapper>
       <S.Title>{title}</S.Title>
       <S.UserName>{name}</S.UserName>
       <S.BottomContainer>
-        <p># 힙합</p>
+        <p># {genre}</p>
         <div>
           <span>
-            <StreamCardComment /> <b>12</b>
+            <StreamCardComment /> <b>{comment}</b>
           </span>
           <span>
-            <StreamCardHeart /> <b>6</b>
+            <StreamCardHeart /> <b>{like}</b>
           </span>
         </div>
       </S.BottomContainer>

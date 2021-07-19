@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const HEADER_HEIGHT = "100px";
+export const HEADER_HEIGHT = "80px";
 
 export const MAIN_WIDTH = "1260px";
 
