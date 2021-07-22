@@ -13,7 +13,7 @@ export const COLOR = {
   green: "#8FFFB1",
   main: "#212121",
   blue: "#0099FF",
-  dark: "#161616"
+  dark: "#161616",
 };
 
 export const ImgWrapper = styled.div`
@@ -26,9 +26,9 @@ export const CircleImgWrapper = styled.div`
   position: relative;
   width: 100%;
   padding-bottom: 100%;
-  overflow:hidden;
-  border-radius:80%;
-`
+  overflow: hidden;
+  border-radius: 80%;
+`;
 
 export const CoverImg = styled.img`
   width: 100%;
