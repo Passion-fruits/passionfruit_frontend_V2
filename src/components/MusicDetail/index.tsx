@@ -4,11 +4,13 @@ import MusicInformation from "./musicInformation";
 import * as S from "./styles";
 import musicRequest from "../../libs/api/musicDetail";
 import { date } from "@src/libs/functions/getDate";
+import SmallLoading from "../public/SmallLoading";
 
 export default function MusicDetail({ musicObj }) {
   const [gradientColor, setGradientColor] = useState<string>("");
   const [comment, setComment] = useState<string>("");
   const [commentArr, setCommentArr] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const handleCommment = (event) => {
     if (comment.length > 200) {
@@ -23,6 +25,7 @@ export default function MusicDetail({ musicObj }) {
       .getMusicComment(musicObj.song_id)
       .then((res) => {
         setCommentArr((_arr) => res.data);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -79,10 +82,14 @@ export default function MusicDetail({ musicObj }) {
         </>
         <>
           <S.CommentBoundary>
-            전체댓글 <span>{commentArr.length === 0 ?  musicObj.comment : commentArr.length}개</span>
+            전체댓글{" "}
+            <span>
+              {commentArr.length === 0 ? musicObj.comment : commentArr.length}개
+            </span>
           </S.CommentBoundary>
         </>
         <>
+          {loading && <SmallLoading />}
           {commentArr.map((data, index) => (
             <Comment
               key={index}
