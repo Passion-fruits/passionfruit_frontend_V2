@@ -1,11 +1,12 @@
 import * as S from "./styles";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
+import { ColorThief } from "@src/libs/functions/colorThief";
 import Menu from "./menu";
 import ProfileList from "./List/profileList";
 import TrackList from "./List/trackList";
 import profileRequest from "../../libs/api/profile";
-import { ColorThief } from "@src/libs/functions/colorThief";
+import SmallLoading from "../public/SmallLoading";
 
 export default function Profile({ profileObj }) {
   const { email, name, profile } = profileObj;
@@ -16,14 +17,19 @@ export default function Profile({ profileObj }) {
   const [musicArr, setMusicArr] = useState<any[]>([]);
   const [mine, setMine] = useState<boolean>(false);
   const [loader, setLoader] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
+  let page = 1;
   const router = useRouter();
   const id = router.query.id;
 
   const getMyData = () => {
     setMine(true);
     profileRequest
-      .getMyMusic()
+      .getMyMusic(page)
       .then((res) => {
+        setLoading(false);
+        page += 1;
+        getMyData();
         setMusicArr(res.data);
       })
       .catch((err) => {
@@ -110,6 +116,7 @@ export default function Profile({ profileObj }) {
           </S.MenuBox>
         </>
         <>
+          {loading && <SmallLoading />}
           {nowMenu === "track" && <TrackList musicArr={musicArr} />}
           {nowMenu === "follower" && <ProfileList />}
           {nowMenu === "following" && <ProfileList />}

@@ -2,9 +2,9 @@ import request from "./axios/axios";
 import { TOKEN } from "./export";
 
 export default {
-  getMyMusic() {
+  getMyMusic(page : number) {
     return request({
-      url: "/song",
+      url: `/song?page=${page}`,
       method: "get",
       headers: {
         Authorization: `Bearer ${TOKEN}`,
