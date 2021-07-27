@@ -29,6 +29,7 @@ export default function MusicDetail({ musicObj }) {
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
       });
   };
 

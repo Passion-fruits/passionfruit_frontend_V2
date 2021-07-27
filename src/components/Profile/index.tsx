@@ -22,14 +22,14 @@ export default function Profile({ profileObj }) {
   const router = useRouter();
   const id = router.query.id;
 
-  const getMyData = () => {
+  const getData = () => {
     setMine(true);
     profileRequest
-      .getMyMusic(page)
+      .getMusic(page)
       .then((res) => {
         setLoading(false);
         page += 1;
-        getMyData();
+        getData();
         setMusicArr(res.data);
       })
       .catch((err) => {
@@ -47,18 +47,12 @@ export default function Profile({ profileObj }) {
   }, [loader]);
 
   useEffect(() => {
-    if (id === "myprofile") {
-      getMyData();
-    } else {
-      profileRequest
-        .checkMine(id)
-        .then((res) => {
-          if (res.data.is_mine) getMyData();
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+    id === "myprofile"
+      ? setMine(true)
+      : profileObj.is_mine
+      ? setMine(true)
+      : () => {};
+    getData();
   }, [router]);
 
   return (

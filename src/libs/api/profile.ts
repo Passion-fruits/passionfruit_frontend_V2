@@ -2,11 +2,12 @@ import request from "./axios/axios";
 import { TOKEN } from "./export";
 
 export default {
-  getMyMusic(page : number) {
+  getMusic(page: number) {
     return request({
       url: `/song?page=${page}`,
       method: "get",
       headers: {
+        "Content-type": "application/json",
         Authorization: `Bearer ${TOKEN}`,
       },
     });
@@ -27,16 +28,6 @@ export default {
       method: "get",
       headers: {
         "Content-type": "application/json",
-      },
-    });
-  },
-  checkMine(id) {
-    return request({
-      url: `/profile/check/${id}`,
-      method: "get",
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${TOKEN}`,
       },
     });
   },
